@@ -1,0 +1,15 @@
+# Python dependencies for Keychron V1 Raw HID host software
+
+# HID communication library
+hidapi>=0.14.0
+
+# Windows audio control (Core Audio API)
+pycaw>=20220416
+
+# Windows API access (window management, media keys)
+pywin32>=305
+
+# COM types (required by pycaw)
+comtypes>=1.2.0
+
+# Note: tkinter is used for overlay UI (built-in with Python)
