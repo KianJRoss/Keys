@@ -30,6 +30,7 @@ from overlay_ui import UIManager
 from overlay_enhanced import EnhancedUIManager
 from voicemeeter_api import VoicemeeterController
 from led_feedback import LEDFeedback
+from tray_icon import TrayIcon
 
 # Import HID communication
 import hid
@@ -38,12 +39,26 @@ import hid
 # LOGGING SETUP
 # ============================================================================
 
+# Configure logging - handle both console and background execution
+log_handlers = []
+
+# Add file handler for pythonw.exe (no console) scenarios
+log_dir = Path(__file__).parent / "logs"
+log_dir.mkdir(exist_ok=True)
+log_file = log_dir / "keychron_app.log"
+log_handlers.append(logging.FileHandler(log_file, encoding='utf-8'))
+
+# Add console handler if stdout is available (python.exe)
+if sys.stdout is not None:
+    try:
+        log_handlers.append(logging.StreamHandler(sys.stdout))
+    except:
+        pass  # Ignore if console not available
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout)
-    ]
+    handlers=log_handlers
 )
 logger = logging.getLogger("KeychronApp")
 
@@ -97,6 +112,7 @@ class PluginManager:
     def __init__(self, plugins_dir="plugins"):
         self.plugins_dir = plugins_dir
         self.plugins = []
+        self.plugin_handlers = {}
 
     def load_plugins(self, state_machine):
         """Load plugins from plugins directory"""
@@ -105,13 +121,15 @@ class PluginManager:
             return
 
         logger.info(f"Loading plugins from {self.plugins_dir}...")
-        
+
         # Add plugins dir to path so we can import
         sys.path.append(os.path.abspath(self.plugins_dir))
 
         for _, name, _ in pkgutil.iter_modules([self.plugins_dir]):
             try:
                 module = importlib.import_module(name)
+
+                # Load commands
                 if hasattr(module, 'get_commands'):
                     commands = module.get_commands()
                     for cmd in commands:
@@ -121,7 +139,15 @@ class PluginManager:
                             cmd['callback']
                         )
                         logger.info(f"  + Registered plugin command: {cmd['name']}")
-                    self.plugins.append(module)
+
+                # Load mode handlers
+                if hasattr(module, 'get_mode_handlers'):
+                    handlers = module.get_mode_handlers(state_machine)
+                    self.plugin_handlers.update(handlers)
+                    for mode_name in handlers.keys():
+                        logger.info(f"  + Registered plugin mode handler: {mode_name}")
+
+                self.plugins.append(module)
             except Exception as e:
                 logger.error(f"Failed to load plugin {name}: {e}")
 
@@ -164,6 +190,9 @@ class KeychronApp:
         self.led: Optional[LEDFeedback] = None
         self.led_enabled = config['led_feedback']
 
+        # Tray icon
+        self.tray_icon = TrayIcon(self)
+
         self.device: Optional[hid.device] = None
         self.running = threading.Event()
 
@@ -197,13 +226,17 @@ class KeychronApp:
 
         # Register commands
         self._register_commands()
-        
+
         # Load Plugins
         self.plugin_manager.load_plugins(self.state_machine)
 
-        # Register mode handlers
+        # Register mode handlers (built-in)
         handlers = create_handlers(self.api, self.state_machine, self.vm)
         for mode, handler in handlers.items():
+            self.state_machine.register_mode_handler(mode, handler)
+
+        # Register plugin mode handlers
+        for mode, handler in self.plugin_manager.plugin_handlers.items():
             self.state_machine.register_mode_handler(mode, handler)
 
         # Store references in state machine for handlers
@@ -217,6 +250,10 @@ class KeychronApp:
         # Start UI
         logger.info("Starting overlay UI...")
         self.ui.start()
+
+        # Start tray icon
+        logger.info("Starting system tray icon...")
+        self.tray_icon.start()
 
         return True
 
@@ -396,10 +433,9 @@ class KeychronApp:
 
     def _handle_encoder_event(self, event_type: int, value: int):
         """Route encoder events to state machine"""
-        
-        # Get dynamic item count from state machine if possible
-        # This is a simplification; a full refactor would query the menu directly
-        num_items = 4 
+
+        # Get dynamic item count from state machine's command registry
+        num_items = self.state_machine.commands.count() if hasattr(self.state_machine, 'commands') else 4 
 
         if event_type == EVT_ENCODER_CW:
             # Clockwise rotation
@@ -473,6 +509,10 @@ class KeychronApp:
     def stop(self):
         """Stop application"""
         self.running.clear()
+
+        # Stop tray icon
+        if hasattr(self, 'tray_icon') and self.tray_icon:
+            self.tray_icon.stop()
 
         # Close HID device
         if self.device:

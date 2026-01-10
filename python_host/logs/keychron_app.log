@@ -1,0 +1,67 @@
+2026-01-09 19:22:41,608 [INFO] Initializing Keychron V1 Menu System...
+2026-01-09 19:22:41,608 [INFO] API volume: Available
+2026-01-09 19:22:41,609 [INFO] API media: Available
+2026-01-09 19:22:41,609 [INFO] API windows: Available
+2026-01-09 19:22:41,609 [INFO] Connecting to Voicemeeter...
+2026-01-09 19:22:42,479 [INFO] Voicemeeter Potato connected
+2026-01-09 19:22:42,479 [INFO] Loading plugins from plugins...
+2026-01-09 19:22:42,481 [INFO]   + Registered plugin command: Apps
+2026-01-09 19:22:42,481 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-09 19:22:42,481 [INFO] Starting overlay UI...
+2026-01-09 19:22:43,023 [INFO] Starting system tray icon...
+2026-01-09 19:22:43,024 [INFO] Tray icon thread started
+2026-01-09 19:22:43,025 [INFO] Searching for keyboard...
+2026-01-09 19:22:43,025 [INFO] Starting tray icon with setup callback...
+2026-01-09 19:22:43,088 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-09 19:22:43,089 [INFO] LED feedback enabled
+2026-01-09 19:22:43,182 [INFO] HID Reader thread started
+2026-01-09 19:22:43,184 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-09 19:22:43,184 [INFO] Press Ctrl+C to exit.
+2026-01-09 19:22:43,251 [INFO] Tray icon is now visible
+2026-01-09 19:23:59,479 [INFO] Quit requested from tray icon
+2026-01-09 19:23:59,479 [INFO] Tray icon stopped
+2026-01-09 19:23:59,481 [INFO] Goodbye!
+2026-01-09 19:23:59,481 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-09 19:23:59,489 [INFO] Tray icon stopped
+2026-01-09 19:23:59,502 [INFO] HID Reader thread stopped
+2026-01-09 19:24:01,666 [INFO] Initializing Keychron V1 Menu System...
+2026-01-09 19:24:01,666 [INFO] API volume: Available
+2026-01-09 19:24:01,666 [INFO] API media: Available
+2026-01-09 19:24:01,666 [INFO] API windows: Available
+2026-01-09 19:24:01,666 [INFO] Connecting to Voicemeeter...
+2026-01-09 19:24:02,537 [INFO] Voicemeeter Potato connected
+2026-01-09 19:24:02,537 [INFO] Loading plugins from plugins...
+2026-01-09 19:24:02,539 [INFO]   + Registered plugin command: Apps
+2026-01-09 19:24:02,539 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-09 19:24:02,539 [INFO] Starting overlay UI...
+2026-01-09 19:24:03,089 [INFO] Starting system tray icon...
+2026-01-09 19:24:03,090 [INFO] Tray icon thread started
+2026-01-09 19:24:03,090 [INFO] Searching for keyboard...
+2026-01-09 19:24:03,091 [INFO] Starting tray icon with setup callback...
+2026-01-09 19:24:03,153 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-09 19:24:03,155 [INFO] LED feedback enabled
+2026-01-09 19:24:03,155 [INFO] HID Reader thread started
+2026-01-09 19:24:03,167 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-09 19:24:03,167 [INFO] Press Ctrl+C to exit.
+2026-01-09 19:24:03,172 [INFO] Tray icon is now visible
+2026-01-09 19:24:11,524 [INFO] LED toggle requested (not yet fully implemented)
+2026-01-09 19:24:17,432 [INFO] LED toggle requested (not yet fully implemented)

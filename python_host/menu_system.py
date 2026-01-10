@@ -65,6 +65,9 @@ class MenuMode(Enum):
     WINDOW_CYCLE = auto()          # Alt-Tab like window switching
     WINDOW_SNAP = auto()           # Window snapping
 
+    # App launcher menu
+    APP_LAUNCHER_MENU = auto()     # App launcher submenu selector
+
 
 @dataclass
 class AppState:
