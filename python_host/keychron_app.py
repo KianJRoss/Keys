@@ -195,6 +195,8 @@ class KeychronApp:
 
         self.device: Optional[hid.device] = None
         self.running = threading.Event()
+        self.is_pressed = False
+        self.was_rotated_while_pressed = False
 
         # Threads
         self.hid_thread: Optional[threading.Thread] = None
@@ -318,17 +320,34 @@ class KeychronApp:
         """Enter window manager menu"""
         self.state_machine.enter_mode(MenuMode.WINDOW_MENU)
 
+    def save_config(self):
+        """Save current configuration to config.json"""
+        config_path = Path("config.json")
+        try:
+            with open(config_path, 'w') as f:
+                json.dump(self.config, f, indent=4)
+        except Exception as e:
+            logger.error(f"Failed to save config: {e}")
+
     def _on_ui_update(self, display: dict):
         """Callback: Update UI overlay"""
         # Extract special control keys
         icons = display.pop('icons', None)
         progress = display.pop('progress', None)
         theme_name = display.pop('set_theme', None)
+        preview_theme = display.pop('preview_theme', None)
         theme_colors = display.pop('set_theme_color', None)
 
-        # Apply theme change if requested
+        # Apply theme change (SAVE)
         if theme_name and hasattr(self.ui, 'set_theme'):
             self.ui.set_theme(theme_name)
+            # Save to config
+            self.config['ui_theme'] = theme_name
+            self.save_config()
+
+        # Apply theme preview (NO SAVE)
+        if preview_theme and hasattr(self.ui, 'set_theme'):
+            self.ui.set_theme(preview_theme)
             
         # Apply specific color updates
         if theme_colors and hasattr(self.ui, 'update_theme_color'):
@@ -433,32 +452,68 @@ class KeychronApp:
 
     def _handle_encoder_event(self, event_type: int, value: int):
         """Route encoder events to state machine"""
+        
+        # Debug logging
+        # logger.info(f"Event: {event_type}, Pressed: {self.is_pressed}")
 
         # Get dynamic item count from state machine's command registry
         num_items = self.state_machine.commands.count() if hasattr(self.state_machine, 'commands') else 4 
 
         if event_type == EVT_ENCODER_CW:
-            # Clockwise rotation
+            # Check if button is held for quick volume change
+            if self.is_pressed:
+                self.was_rotated_while_pressed = True
+                
+                self.api.volume.adjust_volume(2)
+                vol = self.api.volume.get_volume()
+                self.ui.show_notification(f"Volume: {vol}%", 500)
+                if self.led: self.led.flash_event('rotate_cw')
+                return
+
+            # Clockwise rotation (Normal)
             next_index = (self.last_command_index + 1) % num_items
             self.state_machine.handle_rotation(next_index)
             self.last_command_index = next_index
             if self.led: self.led.flash_event('rotate_cw')
 
         elif event_type == EVT_ENCODER_CCW:
-            # Counter-clockwise rotation
+            # Check if button is held for quick volume change
+            if self.is_pressed:
+                self.was_rotated_while_pressed = True
+
+                self.api.volume.adjust_volume(-2)
+                vol = self.api.volume.get_volume()
+                self.ui.show_notification(f"Volume: {vol}%", 500)
+                if self.led: self.led.flash_event('rotate_ccw')
+                return
+
+            # Counter-clockwise rotation (Normal)
             next_index = (self.last_command_index - 1) % num_items
             self.state_machine.handle_rotation(next_index)
             self.last_command_index = next_index
             if self.led: self.led.flash_event('rotate_ccw')
 
         elif event_type == EVT_ENCODER_PRESS:
-            self.state_machine.handle_press()
+            self.is_pressed = True
+            self.was_rotated_while_pressed = False
             if self.led: self.led.flash_event('press')
 
+        elif event_type == EVT_ENCODER_RELEASE:
+            self.is_pressed = False
+            # Only execute click if we didn't use the press for rotation
+            if not self.was_rotated_while_pressed:
+                self.state_machine.handle_press()
+
         elif event_type == EVT_ENCODER_LONG:
+            self.is_pressed = False
+            self.was_rotated_while_pressed = False
             self.state_machine.handle_long_press()
 
         elif event_type == EVT_ENCODER_DOUBLE:
+            self.is_pressed = False
+            self.was_rotated_while_pressed = False
+            # Ensure we reset click count in state machine to avoid conflict
+            self.state_machine.state.click_count = 0
             self.state_machine.handle_double_tap()
 
     def timeout_check_loop(self):

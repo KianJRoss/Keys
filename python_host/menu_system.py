@@ -48,6 +48,7 @@ class MenuMode(Enum):
 
     # Theme submenus
     THEME_MENU = auto()            # Theme main menu
+    THEME_PRESET = auto()          # Theme presets selector
     THEME_BOX = auto()             # Box color
     THEME_ACCENT = auto()          # Accent color
     THEME_TEXT = auto()            # Text color
@@ -67,6 +68,19 @@ class MenuMode(Enum):
 
     # App launcher menu
     APP_LAUNCHER_MENU = auto()     # App launcher submenu selector
+
+    # Virtual Desktop modes (plugin)
+    VIRTUAL_DESKTOP = auto()       # Virtual desktop switcher
+    VIRTUAL_DESKTOP_MENU = auto()  # Virtual desktop actions menu
+
+    # Display Control modes (plugin)
+    DISPLAY_MENU = auto()          # Display control main menu
+    DISPLAY_BRIGHTNESS = auto()    # Brightness adjustment
+    DISPLAY_MODE = auto()          # Display mode selector
+    DISPLAY_TOGGLE = auto()        # Monitor toggle
+
+    # Context-aware modes (plugin)
+    CONTEXT_MENU = auto()          # Context-specific commands
 
 
 @dataclass

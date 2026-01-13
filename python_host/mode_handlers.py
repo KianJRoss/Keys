@@ -493,6 +493,7 @@ class ThemeMenuHandler(ModeHandler):
     def __init__(self, state_machine):
         self.sm = state_machine
         self.submenus = [
+            {'name': 'Presets', 'mode': MenuMode.THEME_PRESET},
             {'name': 'Box Color', 'mode': MenuMode.THEME_BOX},
             {'name': 'Accent Color', 'mode': MenuMode.THEME_ACCENT},
             {'name': 'Text Color', 'mode': MenuMode.THEME_TEXT},
@@ -526,6 +527,77 @@ class ThemeMenuHandler(ModeHandler):
             'center': f"▶ {self.submenus[state.submenu_index]['name']}",
             'right': self.submenus[next_idx]['name'],
             'title': '🎨 Theme Settings'
+        }
+
+
+class ThemePresetHandler(ModeHandler):
+    """Select from available theme presets"""
+
+    def __init__(self, state_machine):
+        self.sm = state_machine
+        self.themes = []
+        self._load_theme_list()
+
+    def _load_theme_list(self):
+        """Load available themes from themes.json"""
+        import json
+        import os
+        try:
+            theme_file = os.path.join(os.path.dirname(__file__), 'themes.json')
+            if os.path.exists(theme_file):
+                with open(theme_file, 'r') as f:
+                    data = json.load(f)
+                    self.themes = list(data.keys())
+            else:
+                self.themes = ['DARK', 'LIGHT', 'CYBER']
+        except:
+            self.themes = ['DARK', 'LIGHT', 'CYBER']
+
+    def on_enter(self, state: AppState):
+        self._load_theme_list()
+        state.submenu_index = 0
+        # Try to find current theme index
+        # We don't track current theme name in state, so default to 0
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Cycle presets"""
+        if not self.themes: return
+
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.themes)
+        else:
+            state.submenu_index = (state.submenu_index - 1) % len(self.themes)
+
+    def on_press(self, state: AppState):
+        """Apply theme and return"""
+        theme_name = self.themes[state.submenu_index]
+        # set_theme will also trigger save_config via the UI callback
+        self.sm.ui_callback({'set_theme': theme_name})
+        
+        self.sm.show_notification(f"Theme: {theme_name}", 1000)
+        from menu_system import MenuMode
+        self.sm.enter_mode(MenuMode.THEME_MENU)
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        if not self.themes:
+            return {'center': 'No Themes', 'left': '', 'right': '', 'title': 'Error'}
+
+        total = len(self.themes)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+        
+        curr_theme = self.themes[state.submenu_index]
+
+        # Preview the theme instantly (Preview only, no save)
+        return {
+            'left': self.themes[prev_idx],
+            'center': f"▶ {curr_theme}",
+            'right': self.themes[next_idx],
+            'title': '🎨 Select Theme',
+            'preview_theme': curr_theme 
         }
 
 
@@ -626,6 +698,7 @@ def create_handlers(api: SystemAPI, state_machine, vm_controller=None) -> Dict[M
         MenuMode.MEDIA: MediaModeHandler(api, state_machine),
         MenuMode.VOLUME: VolumeModeHandler(api),
         MenuMode.THEME_MENU: ThemeMenuHandler(state_machine),
+        MenuMode.THEME_PRESET: ThemePresetHandler(state_machine),
         MenuMode.THEME_BOX: ThemeColorHandler('box'),
         MenuMode.THEME_ACCENT: ThemeColorHandler('accent'),
         MenuMode.THEME_TEXT: ThemeColorHandler('text'),
