@@ -19,4 +19,5 @@ Pillow>=10.0.0
 # Process and system utilities (for context detection)
 psutil>=5.9.0
 
-# Note: tkinter is used for overlay UI (built-in with Python)
+# Modern Qt-based overlay UI
+PyQt6>=6.6.0

@@ -1,18 +1,19 @@
 {
     "DARK": {
         "bg": "#1a1a1a",
-        "bg_alpha": 0.92,
-        "segment_inactive": "#2d2d2d",
+        "bg_alpha": 0.95,
+        "segment_inactive": "#2a2a2a",
         "segment_active": "#3d8aff",
-        "segment_hover": "#505050",
-        "text_inactive": "#888888",
+        "segment_hover": "#3a3a3a",
+        "text_inactive": "#808080",
         "text_active": "#ffffff",
         "accent": "#3d8aff",
         "accent_glow": "#5ba3ff",
         "border": "#404040",
-        "progress_bg": "#2d2d2d",
+        "progress_bg": "#2a2a2a",
         "progress_fill": "#3d8aff",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "glow": "#3d8aff"
     },
     "LIGHT": {
         "bg": "#f5f5f5",
@@ -27,11 +28,12 @@
         "border": "#cccccc",
         "progress_bg": "#e0e0e0",
         "progress_fill": "#2196F3",
-        "shadow": "#999999"
+        "shadow": "#999999",
+        "glow": "#2196F3"
     },
     "CYBER": {
         "bg": "#0a0a0a",
-        "bg_alpha": 0.90,
+        "bg_alpha": 0.92,
         "segment_inactive": "#1a1a2e",
         "segment_active": "#00ff9f",
         "segment_hover": "#16213e",
@@ -42,7 +44,8 @@
         "border": "#00ff9f",
         "progress_bg": "#1a1a2e",
         "progress_fill": "#00ff9f",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "glow": "#00ff9f"
     },
     "NORD": {
         "bg": "#2e3440",
@@ -57,7 +60,8 @@
         "border": "#4c566a",
         "progress_bg": "#4c566a",
         "progress_fill": "#8fbcbb",
-        "shadow": "#2e3440"
+        "shadow": "#2e3440",
+        "glow": "#88c0d0"
     },
     "GRUVBOX": {
         "bg": "#282828",
@@ -72,11 +76,12 @@
         "border": "#665c54",
         "progress_bg": "#3c3836",
         "progress_fill": "#fe8019",
-        "shadow": "#1d2021"
+        "shadow": "#1d2021",
+        "glow": "#fe8019"
     },
     "NEON": {
         "bg": "#0f0014",
-        "bg_alpha": 0.90,
+        "bg_alpha": 0.92,
         "segment_inactive": "#290038",
         "segment_active": "#ff00ff",
         "segment_hover": "#4a0063",
@@ -87,7 +92,8 @@
         "border": "#ff00ff",
         "progress_bg": "#290038",
         "progress_fill": "#00ffff",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "glow": "#ff00ff"
     },
     "RED_BLACK": {
         "bg": "#110000",
@@ -102,21 +108,23 @@
         "border": "#aa0000",
         "progress_bg": "#330000",
         "progress_fill": "#ff0000",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "glow": "#ff0000"
     },
     "CUSTOM": {
-        "bg": "#000000",
-        "bg_alpha": 0.90,
-        "segment_inactive": "#222222",
-        "segment_active": "#ff0055",
-        "segment_hover": "#444444",
-        "text_inactive": "#aaaaaa",
-        "text_active": "#ffffff",
-        "accent": "#ff0055",
-        "accent_glow": "#ff5588",
-        "border": "#ff0055",
-        "progress_bg": "#330011",
-        "progress_fill": "#ff0055",
-        "shadow": "#000000"
+        "bg": "#1a1a1a",
+        "bg_alpha": 0.95,
+        "segment_inactive": "#000000",
+        "segment_active": "#FFFF00",
+        "segment_hover": "#3a3a3a",
+        "text_inactive": "#808080",
+        "text_active": "#2d2d2d",
+        "accent": "#FFFF00",
+        "accent_glow": "#FFFF00",
+        "border": "#FFFF00",
+        "progress_bg": "#000000",
+        "progress_fill": "#FFFF00",
+        "shadow": "#000000",
+        "glow": "#FFFF00"
     }
 }

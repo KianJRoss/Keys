@@ -5,9 +5,15 @@
     "timeout_ms": 100,
     "reconnect_interval": 2.0,
     "max_reconnect_attempts": 30,
-    "ui_theme": "DARK",
+    "ui_theme": "GRUVBOX",
     "use_enhanced_ui": true,
     "led_feedback": true,
     "log_level": "INFO",
-    "log_file": "keychron_app.log"
+    "log_file": "keychron_app.log",
+    "hid": {
+        "vendor_id": 13364,
+        "product_id": 785,
+        "usage_page": 65376,
+        "usage": 97
+    }
 }

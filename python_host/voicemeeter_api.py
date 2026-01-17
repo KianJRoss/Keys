@@ -130,9 +130,10 @@ class VoicemeeterAPI:
                     self.run_voicemeeter(2)
                     time.sleep(1.0)  # Wait for Voicemeeter to initialize
 
-                # Configure default routing: Mic (Strip 0) → B1
+                # Configure default routing: Mic (Strip 0) -> B1
                 time.sleep(0.5)
-                self.set_parameter("Strip[0].B1", 1.0)
+                self.set_parameter("Strip[0].Mute", 0.0) # Ensure mic is not muted
+                self.set_parameter("Strip[0].A1", 1.0) # Route mic to A1
 
                 print("[OK] Connected to Voicemeeter Potato")
                 return True
@@ -188,17 +189,10 @@ class VoicemeeterAPI:
             return None
 
         try:
-            # Wait for parameters to not be dirty
-            max_retries = 50
-            for _ in range(max_retries):
-                dirty = self.is_parameters_dirty()
-                if dirty == 0:
-                    break
-                elif dirty < 0:
-                    return None
-                time.sleep(0.02)
-
-            # Get parameter
+            # Removed the blocking loop on is_parameters_dirty.
+            # Direct parameter retrieval is usually sufficient and faster.
+            # If sync issues arise, this might be a place to re-evaluate.
+            
             param_bytes = param.encode('ascii')
             value = ctypes.c_float()
             result = self.get_parameter_float(param_bytes, ctypes.byref(value))
@@ -233,9 +227,6 @@ class VoicemeeterConfig:
     OUTPUT_A1 = "A1"        # Speakers
     OUTPUT_A2 = "A2"        # Wired headset
     OUTPUT_A3 = "A3"        # Wireless headset
-
-    # Volume settings
-    GAIN_STEP = 3.0         # dB step for volume adjustments
 
 
 class VoicemeeterController:

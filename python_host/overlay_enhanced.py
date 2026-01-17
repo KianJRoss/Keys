@@ -1,12 +1,12 @@
 """
-Enhanced Overlay UI - Modern Radial Menu Design
+Enhanced Overlay UI - Modern Radial Wheel Design
 
-Creates a beautiful circular/radial menu with:
+Creates a sleek circular menu with:
+- True arc segments forming a wheel
+- Glow and shadow effects
 - Smooth animations
-- Modern styling
-- Icons and progress bars
-- Theme support
-- Transparency effects
+- Modern glassmorphism-inspired styling
+- Theme support with persistence
 """
 
 import tkinter as tk
@@ -20,25 +20,23 @@ import threading
 
 class Theme:
     """Visual theme configuration"""
-
-    # Default themes (fallback)
     DARK = {
         'bg': '#1a1a1a',
-        'bg_alpha': 0.92,
-        'segment_inactive': '#2d2d2d',
+        'bg_alpha': 0.95,
+        'segment_inactive': '#2a2a2a',
         'segment_active': '#3d8aff',
-        'segment_hover': '#505050',
-        'text_inactive': '#888888',
+        'segment_hover': '#3a3a3a',
+        'text_inactive': '#808080',
         'text_active': '#ffffff',
         'accent': '#3d8aff',
         'accent_glow': '#5ba3ff',
         'border': '#404040',
-        'progress_bg': '#2d2d2d',
+        'progress_bg': '#2a2a2a',
         'progress_fill': '#3d8aff',
         'shadow': '#000000',
+        'glow': '#3d8aff',
     }
-    
-    # ... other defaults are kept but can be overwritten by file ...
+
 
 def load_themes():
     """Load themes from themes.json"""
@@ -48,79 +46,103 @@ def load_themes():
             with open(theme_file, 'r') as f:
                 themes = json.load(f)
                 for name, data in themes.items():
+                    # Ensure glow color exists (fallback to accent)
+                    if 'glow' not in data:
+                        data['glow'] = data.get('accent', '#3d8aff')
                     setattr(Theme, name, data)
         except Exception as e:
             print(f"Error loading themes: {e}")
 
+
 class RadialMenu:
-    """Modern circular menu overlay"""
+    """Modern circular wheel menu overlay"""
 
     def __init__(self, theme_name='DARK'):
         self.root: Optional[tk.Tk] = None
         self.canvas: Optional[tk.Canvas] = None
         self.visible = False
+        self.current_theme_name = theme_name
 
         # Load custom themes
         load_themes()
 
         # Theme
         self.theme = getattr(Theme, theme_name, Theme.DARK)
-        if isinstance(self.theme, dict) is False: # Handle if getattr returns something odd or default
-             self.theme = Theme.DARK
+        if not isinstance(self.theme, dict):
+            self.theme = Theme.DARK
 
         # Menu state
         self.options: List[str] = []
-        self.active_index = 1  # Center item
+        self.active_index = 1  # Center/top item
         self.title = ""
         self.subtitle = ""
-        self.progress_value: Optional[float] = None  # 0.0 to 1.0
-        self.icons: Dict[str, str] = {}  # emoji icons for options
+        self.progress_value: Optional[float] = None
+        self.icons: Dict[str, str] = {}
 
-        # Dimensions
-        self.screen_x = 0
-        self.screen_y = 0
-        self.center_x = 300
-        self.center_y = 300
-        self.radius = 60
-        self.segment_width = 140
-        self.center_radius = 10
+        # Wheel geometry
+        self.canvas_size = 400
+        self.center_x = self.canvas_size // 2
+        self.center_y = self.canvas_size // 2
+        self.outer_radius = 140
+        self.inner_radius = 50
+        self.center_dot_radius = 8
+
+        # Segment angles (degrees) - 3 segments
+        # Left: 150-210, Top: 60-120 (center), Right: -30 to 30
+        self.segments = [
+            {'start': 150, 'extent': 60, 'pos': 'left'},    # Left
+            {'start': 60, 'extent': 60, 'pos': 'center'},   # Top (center)
+            {'start': -30, 'extent': 60, 'pos': 'right'},   # Right
+        ]
 
         # Animation
         self.animation_progress = 0.0
         self.target_progress = 1.0
-        self.animation_speed = 0.08
+        self.animation_speed = 0.12
         self.animation_timer = None
-        
-        # Blinking state
-        self.blink_counter = 0.0
+
+        # Pulse animation
+        self.pulse_phase = 0.0
         self.pulsing = False
+
+        # Screen position
+        self.screen_x = 0
+        self.screen_y = 0
 
         # Fonts
         self.font_title = None
         self.font_option = None
         self.font_icon = None
+        self.font_small = None
 
-    def set_theme(self, theme_name):
+    def set_theme(self, theme_name: str):
         """Change theme at runtime"""
         new_theme = getattr(Theme, theme_name, None)
         if isinstance(new_theme, dict):
             self.theme = new_theme
-            # If visible, force redraw to apply new colors
+            self.current_theme_name = theme_name
             if self.visible and self.canvas:
-                self.canvas.window.attributes('-alpha', self.theme['bg_alpha'])
+                self._update_window_alpha()
                 self._draw_menu()
+
+    def _update_window_alpha(self):
+        """Update window transparency"""
+        if self.canvas and hasattr(self.canvas, 'window'):
+            try:
+                self.canvas.window.attributes('-alpha', self.theme.get('bg_alpha', 0.95))
+            except:
+                pass
 
     def update_theme_color(self, settings: Dict[str, str]):
         """Update specific theme colors at runtime"""
         for key, value in settings.items():
             if key in self.theme:
                 self.theme[key] = value
-        
         if self.visible and self.canvas:
             self._draw_menu()
 
-    def save_current_theme(self, theme_name):
-        """Save current theme colors back to themes.json"""
+    def save_current_theme(self, theme_name: str):
+        """Save current theme colors to themes.json"""
         theme_file = os.path.join(os.path.dirname(__file__), 'themes.json')
         themes = {}
         if os.path.exists(theme_file):
@@ -129,9 +151,9 @@ class RadialMenu:
                     themes = json.load(f)
             except:
                 pass
-        
-        themes[theme_name] = self.theme
-        
+
+        themes[theme_name] = dict(self.theme)
+
         try:
             with open(theme_file, 'w') as f:
                 json.dump(themes, f, indent=4)
@@ -141,12 +163,13 @@ class RadialMenu:
     def init_ui(self):
         """Initialize UI (must be called from main thread)"""
         self.root = tk.Tk()
-        self.root.withdraw()  # Hide main window
+        self.root.withdraw()
 
         # Setup fonts
-        self.font_title = tkfont.Font(family="Segoe UI", size=14, weight="bold")
-        self.font_option = tkfont.Font(family="Segoe UI", size=10)
-        self.font_icon = tkfont.Font(family="Segoe UI", size=18)
+        self.font_title = tkfont.Font(family="Segoe UI Semibold", size=13)
+        self.font_option = tkfont.Font(family="Segoe UI", size=11)
+        self.font_icon = tkfont.Font(family="Segoe UI Emoji", size=16)
+        self.font_small = tkfont.Font(family="Segoe UI", size=9)
 
     def cancel_animation(self):
         """Cancel any pending animation"""
@@ -181,8 +204,6 @@ class RadialMenu:
         self.subtitle = display.get('subtitle', 'Double-tap to exit')
         self.progress_value = progress
         self.icons = icons or {}
-        
-        # Set active index (default to center/1 if not provided)
         self.active_index = display.get('active_index', 1)
         self.pulsing = display.get('pulsing', False)
 
@@ -190,19 +211,15 @@ class RadialMenu:
         if not self.canvas or not self.canvas.winfo_exists():
             self._create_canvas()
 
-        # Position window
         self._position_window()
 
         # Start animation
         self.cancel_animation()
-        
-        # Only restart animation if not already visible
         if not self.visible:
             self.animation_progress = 0.0
-        
+
         self.target_progress = 1.0
         self._animate()
-
         self.visible = True
 
     def hide_menu(self):
@@ -216,31 +233,26 @@ class RadialMenu:
 
     def _create_canvas(self):
         """Create the canvas window"""
-        # Create transparent window
         window = tk.Toplevel(self.root)
         window.overrideredirect(True)
         window.attributes('-topmost', True)
-        window.attributes('-alpha', self.theme['bg_alpha'])
+        window.attributes('-alpha', self.theme.get('bg_alpha', 0.95))
 
-        # Make window transparent (Windows specific)
-        transparent_color = '#000001'
+        # Transparent background
+        transparent_color = '#010101'
         try:
             window.wm_attributes('-transparentcolor', transparent_color)
         except:
             pass
 
-        # Create canvas
-        # Increase canvas size to accommodate dynamic widths
-        size = 600
-        self.center_x = size // 2
-        self.center_y = size // 2
-        
-        # Use transparent color for background so the box is invisible
-        self.canvas = tk.Canvas(window, width=size, height=size,
-                               bg=transparent_color, highlightthickness=0)
+        self.canvas = tk.Canvas(
+            window,
+            width=self.canvas_size,
+            height=self.canvas_size,
+            bg=transparent_color,
+            highlightthickness=0
+        )
         self.canvas.pack()
-
-        # Store window reference
         self.canvas.window = window
 
     def _position_window(self):
@@ -248,271 +260,288 @@ class RadialMenu:
         if not self.canvas:
             return
 
-        # Fixed large size for canvas to allow dynamic placement
-        size = 600
-        x = self.screen_x - size // 2
-        y = self.screen_y - size // 2
-
-        self.canvas.window.geometry(f"{size}x{size}+{x}+{y}")
+        x = self.screen_x - self.canvas_size // 2
+        y = self.screen_y - self.canvas_size // 2
+        self.canvas.window.geometry(f"{self.canvas_size}x{self.canvas_size}+{x}+{y}")
 
     def _animate(self, on_complete=None):
         """Smooth animation loop"""
         if not self.canvas or not self.canvas.winfo_exists():
             return
-            
-        # Update cursor position (FOLLOW MOUSE)
+
+        # Follow mouse
         self.screen_x = self.root.winfo_pointerx()
         self.screen_y = self.root.winfo_pointery()
         self._position_window()
-            
-        # Update blink counter (always run this)
-        self.blink_counter += 0.5
+
+        # Update pulse
+        self.pulse_phase += 0.15
 
         # Update progress
         diff = self.target_progress - self.animation_progress
-        
-        # Use faster speed and larger snap threshold when closing (target_progress is 0)
-        current_speed = self.animation_speed
-        finish_threshold = 0.001
-        if self.target_progress < 0.1:
-            current_speed *= 2.0
-            finish_threshold = 0.1 # Snap closed earlier to avoid lingering
-            
-        if abs(diff) > finish_threshold:
-            self.animation_progress += diff * current_speed
+        speed = self.animation_speed * (2.0 if self.target_progress < 0.1 else 1.0)
+        threshold = 0.1 if self.target_progress < 0.1 else 0.005
 
-            # Redraw
+        if abs(diff) > threshold:
+            self.animation_progress += diff * speed
             self._draw_menu()
-
-            # Continue animation
-            self.animation_timer = self.root.after(16, lambda: self._animate(on_complete))  # ~60 FPS
+            self.animation_timer = self.root.after(16, lambda: self._animate(on_complete))
         else:
             self.animation_progress = self.target_progress
             self._draw_menu()
 
-            # For blinking, we need to keep animating if there is an active selection
-            # Only if we are not hiding (target_progress > 0.5)
-            if self.target_progress > 0.5 and self.active_index != -1 and self.visible:
-                 self.animation_timer = self.root.after(16, lambda: self._animate(on_complete))
+            if self.target_progress > 0.5 and self.visible:
+                self.animation_timer = self.root.after(16, lambda: self._animate(on_complete))
             elif on_complete:
                 on_complete()
 
     def _draw_menu(self):
-        """Draw the radial menu"""
+        """Draw the wheel menu"""
         if not self.canvas:
             return
 
         self.canvas.delete('all')
+        scale = self._ease_out_cubic(self.animation_progress)
 
-        # Apply animation scale
-        scale = self._ease_out_back(self.animation_progress)
+        # Draw outer glow
+        self._draw_glow(scale)
 
-        # Draw segments
-        self._draw_segments(scale)
+        # Draw wheel segments
+        self._draw_wheel_segments(scale)
 
-        # Draw center circle
-        self._draw_center(scale)
+        # Draw center hub
+        self._draw_center_hub(scale)
 
-        # Draw progress bar if present
+        # Draw progress bar
         if self.progress_value is not None:
-            self._draw_progress_bar(scale)
+            self._draw_progress_ring(scale)
 
-        # Draw hint text
-        if self.subtitle:
-            self._draw_hint(scale)
+        # Draw title
+        if self.title:
+            self._draw_title(scale)
 
-    def _draw_segments(self, scale: float):
-        """Draw option segments in a wheel layout"""
-        positions = [
-            (-self.radius, 0),      # Left
-            (0, -self.radius),      # Top (center)
-            (self.radius, 0)        # Right
-        ]
-        
-        gap_from_center = 20  # Fixed gap from center dot to inner edge of box
+        # Draw subtitle hint
+        if self.subtitle and scale > 0.5:
+            self._draw_subtitle(scale)
 
-        for i, (dx, dy) in enumerate(positions):
+    def _draw_glow(self, scale: float):
+        """Draw subtle outer glow"""
+        if scale < 0.1:
+            return
+
+        glow_color = self.theme.get('glow', self.theme['accent'])
+        # Multiple expanding circles for glow effect
+        for i in range(3):
+            radius = (self.outer_radius + 10 + i * 8) * scale
+            alpha_hex = format(int(20 - i * 6), '02x')
+            try:
+                # Blend glow with transparency
+                self.canvas.create_oval(
+                    self.center_x - radius, self.center_y - radius,
+                    self.center_x + radius, self.center_y + radius,
+                    outline=glow_color, width=2, fill=''
+                )
+            except:
+                pass
+
+    def _draw_wheel_segments(self, scale: float):
+        """Draw the arc segments of the wheel"""
+        outer_r = self.outer_radius * scale
+        inner_r = self.inner_radius * scale
+
+        for i, seg in enumerate(self.segments):
             if i >= len(self.options) or not self.options[i]:
                 continue
 
-            # Determine colors
             is_active = (i == self.active_index)
-            
-            # Blink logic for active item
+
+            # Determine colors
             if is_active and self.pulsing:
-                # Blink between Active color and Accent Glow
-                is_bright = math.sin(self.blink_counter) > 0
-                bg_color = self.theme['accent_glow'] if is_bright else self.theme['segment_active']
-                text_color = self.theme['text_active']
-                active_font = self.font_title
+                pulse = (math.sin(self.pulse_phase) + 1) / 2
+                bg_color = self._blend_colors(
+                    self.theme['segment_active'],
+                    self.theme['accent_glow'],
+                    pulse * 0.5
+                )
             elif is_active:
                 bg_color = self.theme['segment_active']
-                text_color = self.theme['text_active']
-                active_font = self.font_title
             else:
                 bg_color = self.theme['segment_inactive']
-                text_color = self.theme['text_inactive']
-                active_font = self.font_option
 
-            # Measure content dimensions
-            padding = 15
-            text_width = active_font.measure(self.options[i]) + padding * 2
-            text_height = 40 if is_active else 30
+            text_color = self.theme['text_active'] if is_active else self.theme['text_inactive']
+            border_color = self.theme['accent'] if is_active else self.theme['border']
 
-            # Add icon if present
-            icon = self.icons.get(['left', 'center', 'right'][i], '')
-            icon_width = 0
-            if icon:
-                icon_width = self.font_icon.measure(icon)
-                text_width += icon_width + 5
-
-            # Calculate Position
-            if i == 0: # Left
-                # Right edge should be at (center_x - gap)
-                # Center of box = (center_x - gap) - (width / 2)
-                target_x = self.center_x - gap_from_center - (text_width / 2)
-                target_y = self.center_y
-                
-                # Apply scale (slide out from center)
-                x = self.center_x + (target_x - self.center_x) * scale
-                y = target_y
-
-            elif i == 2: # Right
-                # Left edge should be at (center_x + gap)
-                # Center of box = (center_x + gap) + (width / 2)
-                target_x = self.center_x + gap_from_center + (text_width / 2)
-                target_y = self.center_y
-
-                # Apply scale
-                x = self.center_x + (target_x - self.center_x) * scale
-                y = target_y
-
-            else: # Top (Center item)
-                x = self.center_x
-                y = self.center_y - self.radius * scale # Keep top item using radius
-
-            # Draw rounded rectangle
-            self._draw_rounded_rect(
-                x - text_width // 2, y - text_height // 2,
-                x + text_width // 2, y + text_height // 2,
-                radius=8, fill=bg_color, outline=self.theme['border'], width=1 if not is_active else 2
+            # Draw arc segment
+            self._draw_arc_segment(
+                seg['start'], seg['extent'],
+                inner_r, outer_r,
+                bg_color, border_color,
+                width=2 if is_active else 1
             )
 
-            # Draw icon
+            # Calculate text position (middle of arc)
+            mid_angle = math.radians(seg['start'] + seg['extent'] / 2)
+            text_r = (inner_r + outer_r) / 2
+            text_x = self.center_x + text_r * math.cos(mid_angle)
+            text_y = self.center_y - text_r * math.sin(mid_angle)
+
+            # Draw icon if present
+            icon_key = seg['pos']
+            icon = self.icons.get(icon_key, '')
+
             if icon:
+                # Icon above text
+                icon_offset = -12 if is_active else -10
                 self.canvas.create_text(
-                    x - text_width // 2 + icon_width // 2 + padding,
-                    y,
+                    text_x, text_y + icon_offset,
                     text=icon,
                     fill=text_color,
                     font=self.font_icon,
                     anchor='center'
                 )
-                text_x = x + icon_width // 2
-            else:
-                text_x = x
+                text_y += 10
 
-            # Draw text
+            # Draw label
+            label = self.options[i]
+            # Truncate if too long
+            if len(label) > 15:
+                label = label[:14] + "..."
+
             self.canvas.create_text(
-                text_x,
-                y,
-                text=self.options[i],
+                text_x, text_y,
+                text=label,
                 fill=text_color,
-                font=active_font,
+                font=self.font_option if not is_active else self.font_title,
                 anchor='center'
             )
 
-    def _draw_center(self, scale: float):
-        """Draw center circle with title"""
-        # Draw circle
-        r = self.center_radius * scale
-        self._draw_circle(
-            self.center_x, self.center_y, r,
-            fill=self.theme['segment_active'],
+    def _draw_arc_segment(self, start_angle: float, extent: float,
+                          inner_r: float, outer_r: float,
+                          fill_color: str, outline_color: str, width: int = 1):
+        """Draw a single arc segment (donut slice)"""
+        # Create arc using polygon points
+        points = []
+        steps = 20
+
+        # Outer arc (forward)
+        for i in range(steps + 1):
+            angle = math.radians(start_angle + (extent * i / steps))
+            x = self.center_x + outer_r * math.cos(angle)
+            y = self.center_y - outer_r * math.sin(angle)
+            points.extend([x, y])
+
+        # Inner arc (backward)
+        for i in range(steps, -1, -1):
+            angle = math.radians(start_angle + (extent * i / steps))
+            x = self.center_x + inner_r * math.cos(angle)
+            y = self.center_y - inner_r * math.sin(angle)
+            points.extend([x, y])
+
+        self.canvas.create_polygon(
+            points,
+            fill=fill_color,
+            outline=outline_color,
+            width=width,
+            smooth=False
+        )
+
+    def _draw_center_hub(self, scale: float):
+        """Draw the center hub"""
+        hub_r = self.inner_radius * scale - 5
+
+        # Hub background
+        self.canvas.create_oval(
+            self.center_x - hub_r, self.center_y - hub_r,
+            self.center_x + hub_r, self.center_y + hub_r,
+            fill=self.theme['bg'],
+            outline=self.theme['border'],
+            width=2
+        )
+
+        # Center dot
+        dot_r = self.center_dot_radius * scale
+        self.canvas.create_oval(
+            self.center_x - dot_r, self.center_y - dot_r,
+            self.center_x + dot_r, self.center_y + dot_r,
+            fill=self.theme['accent'],
             outline=self.theme['accent_glow'],
             width=2
         )
 
-        # Draw title
-        if self.title:
-            self.canvas.create_text(
-                self.center_x,
-                self.center_y - 110,  # Moved higher up to avoid overlap
-                text=self.title,
-                fill=self.theme['text_active'],
-                font=self.font_title,
-                anchor='center'
-            )
+    def _draw_progress_ring(self, scale: float):
+        """Draw progress as an arc around center hub"""
+        if self.progress_value is None:
+            return
 
-    def _draw_progress_bar(self, scale: float):
-        """Draw progress bar under center"""
-        bar_width = 100 * scale
-        bar_height = 8 * scale
-        x = self.center_x - bar_width // 2
-        y = self.center_y + self.center_radius + 15
+        ring_r = self.inner_radius * scale - 15
+        ring_width = 6
 
-        # Background
-        self._draw_rounded_rect(
-            x, y, x + bar_width, y + bar_height,
-            radius=4, fill=self.theme['progress_bg'], outline=''
+        # Background ring
+        self.canvas.create_oval(
+            self.center_x - ring_r, self.center_y - ring_r,
+            self.center_x + ring_r, self.center_y + ring_r,
+            outline=self.theme['progress_bg'],
+            width=ring_width,
+            fill=''
         )
 
-        # Fill
-        fill_width = bar_width * self.progress_value
-        if fill_width > 0:
-            self._draw_rounded_rect(
-                x, y, x + fill_width, y + bar_height,
-                radius=4, fill=self.theme['progress_fill'], outline=''
+        # Progress arc (starts from top, goes clockwise)
+        if self.progress_value > 0:
+            extent = -360 * self.progress_value  # Negative for clockwise
+            self.canvas.create_arc(
+                self.center_x - ring_r, self.center_y - ring_r,
+                self.center_x + ring_r, self.center_y + ring_r,
+                start=90, extent=extent,
+                outline=self.theme['progress_fill'],
+                width=ring_width,
+                style='arc'
             )
 
-    def _draw_hint(self, scale: float):
-        """Draw hint text at bottom"""
-        # Position hint closer to center/segments
-        y = self.center_y + self.radius // 2 + 50
+    def _draw_title(self, scale: float):
+        """Draw title above the wheel"""
+        if scale < 0.3:
+            return
 
+        y = self.center_y - self.outer_radius * scale - 25
         self.canvas.create_text(
-            self.center_x,
-            y * scale,
-            text=self.subtitle,
-            fill=self.theme['text_inactive'],
-            font=self.font_option,
+            self.center_x, y,
+            text=self.title,
+            fill=self.theme['text_active'],
+            font=self.font_title,
             anchor='center'
         )
 
-    def _draw_circle(self, x: float, y: float, radius: float, **kwargs):
-        """Draw a circle"""
-        self.canvas.create_oval(
-            x - radius, y - radius,
-            x + radius, y + radius,
-            **kwargs
+    def _draw_subtitle(self, scale: float):
+        """Draw subtitle below the wheel"""
+        y = self.center_y + self.outer_radius * scale + 20
+        alpha = min(1.0, (scale - 0.5) * 2)
+
+        self.canvas.create_text(
+            self.center_x, y,
+            text=self.subtitle,
+            fill=self.theme['text_inactive'],
+            font=self.font_small,
+            anchor='center'
         )
 
-    def _draw_rounded_rect(self, x1: float, y1: float, x2: float, y2: float,
-                          radius: float = 10, **kwargs):
-        """Draw a rounded rectangle"""
-        points = [
-            x1 + radius, y1,
-            x2 - radius, y1,
-            x2, y1,
-            x2, y1 + radius,
-            x2, y2 - radius,
-            x2, y2,
-            x2 - radius, y2,
-            x1 + radius, y2,
-            x1, y2,
-            x1, y2 - radius,
-            x1, y1 + radius,
-            x1, y1
-        ]
+    def _blend_colors(self, color1: str, color2: str, factor: float) -> str:
+        """Blend two hex colors"""
+        try:
+            r1, g1, b1 = int(color1[1:3], 16), int(color1[3:5], 16), int(color1[5:7], 16)
+            r2, g2, b2 = int(color2[1:3], 16), int(color2[3:5], 16), int(color2[5:7], 16)
 
-        return self.canvas.create_polygon(points, smooth=True, **kwargs)
+            r = int(r1 + (r2 - r1) * factor)
+            g = int(g1 + (g2 - g1) * factor)
+            b = int(b1 + (b2 - b1) * factor)
+
+            return f'#{r:02x}{g:02x}{b:02x}'
+        except:
+            return color1
 
     @staticmethod
-    def _ease_out_back(t: float) -> float:
-        """Easing function for smooth animation with slight overshoot"""
-        c1 = 1.70158
-        c3 = c1 + 1
-        return 1 + c3 * pow(t - 1, 3) + c1 * pow(t - 1, 2)
+    def _ease_out_cubic(t: float) -> float:
+        """Smooth easing function"""
+        return 1 - pow(1 - t, 3)
 
     def _destroy_canvas(self):
         """Destroy canvas window"""
@@ -526,19 +555,24 @@ class RadialMenu:
 
 
 class EnhancedUIManager:
-    """Thread-safe UI manager with enhanced visuals"""
+    """Thread-safe UI manager"""
 
     def __init__(self, theme='DARK'):
         self.menu = RadialMenu(theme)
         self.ui_thread: Optional[threading.Thread] = None
         self.hide_timer = None
 
+    def set_theme(self, theme_name: str):
+        """Set theme (thread-safe)"""
+        if self.menu.root:
+            self.menu.root.after(0, lambda: self.menu.set_theme(theme_name))
+
     def update_theme_color(self, settings: Dict[str, str]):
         """Update theme colors (thread-safe)"""
         if self.menu.root:
             self.menu.root.after(0, lambda: self.menu.update_theme_color(settings))
 
-    def save_theme(self, theme_name):
+    def save_theme(self, theme_name: str):
         """Save theme to file (thread-safe)"""
         if self.menu.root:
             self.menu.root.after(0, lambda: self.menu.save_current_theme(theme_name))
@@ -552,7 +586,6 @@ class EnhancedUIManager:
         self.ui_thread = threading.Thread(target=ui_thread_func, daemon=True)
         self.ui_thread.start()
 
-        # Wait for UI to initialize
         import time
         time.sleep(0.5)
 
@@ -579,11 +612,10 @@ class EnhancedUIManager:
             self.menu.root.after(0, self.menu.hide_menu)
 
     def show_notification(self, message: str, duration_ms: int = 1500):
-        """Show notification (simple for now, can be enhanced)"""
-        # For now, show as a simple menu
+        """Show notification as simple centered message"""
         if self.menu.root:
             self._cancel_hide()
-            
+
             display = {
                 'center': message,
                 'left': '',
@@ -591,8 +623,6 @@ class EnhancedUIManager:
                 'subtitle': ''
             }
             self.menu.root.after(0, lambda: self.menu.show_menu(display))
-            
-            # Schedule hide
             self.hide_timer = self.menu.root.after(duration_ms, self.menu.hide_menu)
 
     def quit(self):
@@ -601,61 +631,71 @@ class EnhancedUIManager:
             self.menu.root.after(0, self.menu.root.quit)
 
 
-# ============================================================================ 
+# ============================================================================
 # TESTING
-# ============================================================================ 
+# ============================================================================
 
 if __name__ == "__main__":
     import time
 
-    print("Testing Enhanced Overlay UI...")
+    print("Testing Modern Wheel UI...")
 
-    # Test with different themes
-    for theme_name in ['DARK', 'CYBER']:
-        print(f"\nTesting {theme_name} theme...")
+    ui = EnhancedUIManager(theme='DARK')
+    ui.start()
 
-        ui = EnhancedUIManager(theme=theme_name)
-        ui.start()
+    # Test notification
+    print("  Showing notification...")
+    ui.show_notification("Modern Wheel UI", 2000)
+    time.sleep(2.5)
 
-        # Test notification
-        print("  Showing notification...")
-        ui.show_notification(f"Testing {theme_name} Theme", 2000)
-        time.sleep(2.5)
+    # Test menu with icons
+    print("  Showing media menu...")
+    ui.show_menu({
+        'left': 'Previous',
+        'center': 'Play/Pause',
+        'right': 'Next',
+        'title': 'Media Controls',
+        'subtitle': 'Double-tap to exit'
+    }, icons={
+        'left': '⏮',
+        'center': '⏯',
+        'right': '⏭'
+    })
+    time.sleep(3)
 
-        # Test menu with icons
-        print("  Showing menu...")
+    # Test with progress
+    print("  Showing volume with progress...")
+    for i in range(11):
         ui.show_menu({
-            'left': 'Previous Track',
-            'center': 'Play/Pause',
-            'right': 'Next Track',
-            'title': '♪ Media',
-            'subtitle': 'Double-tap to exit'
-        }, icons={
-            'left': '⏮',
-            'center': '⏯',
-            'right': '⏭'
+            'left': 'Down',
+            'center': f'{i*10}%',
+            'right': 'Up',
+            'title': 'Volume',
+            'active_index': 1
+        }, progress=i/10, icons={
+            'left': '−',
+            'center': '🔊',
+            'right': '+'
         })
-        time.sleep(2)
+        time.sleep(0.15)
 
-        # Test with progress bar
-        print("  Showing menu with progress...")
-        for i in range(11):
-            ui.show_menu({
-                'left': 'Volume Down',
-                'center': f'{i*10}%',
-                'right': 'Volume Up',
-                'title': '🔊 Volume',
-                'subtitle': 'Double-tap to exit'
-            }, progress=i/10)
-            time.sleep(0.2)
+    time.sleep(2)
 
+    # Test active highlight
+    print("  Testing segment highlights...")
+    for active in [0, 1, 2, 1]:
+        ui.show_menu({
+            'left': 'Left Option',
+            'center': 'Center',
+            'right': 'Right Option',
+            'title': 'Selection Test',
+            'active_index': active
+        })
         time.sleep(1)
 
-        print("  Hiding menu...")
-        ui.hide_menu()
-        time.sleep(1)
+    print("  Hiding...")
+    ui.hide_menu()
+    time.sleep(1)
 
-        ui.quit()
-        time.sleep(0.5)
-
-    print("\nDone!")
+    ui.quit()
+    print("Done!")

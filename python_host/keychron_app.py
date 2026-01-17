@@ -27,10 +27,16 @@ from menu_system import MenuStateMachine, MenuMode
 from mode_handlers import create_handlers
 from windows_api import SystemAPI
 from overlay_ui import UIManager
-from overlay_enhanced import EnhancedUIManager
 from voicemeeter_api import VoicemeeterController
 from led_feedback import LEDFeedback
 from tray_icon import TrayIcon
+
+# Use Tkinter overlay (Qt has threading issues on Windows - requires main thread)
+from overlay_enhanced import EnhancedUIManager
+UI_BACKEND = "Tkinter"
+
+# Qt overlay available but disabled - requires app restructuring to run on main thread
+# from overlay_qt import EnhancedUIManager as QtEnhancedUIManager
 
 # Import HID communication
 import hid
@@ -197,6 +203,7 @@ class KeychronApp:
         self.running = threading.Event()
         self.is_pressed = False
         self.was_rotated_while_pressed = False
+        self.ignore_next_release = False  # Prevents release after double-tap from triggering command
 
         # Threads
         self.hid_thread: Optional[threading.Thread] = None
@@ -250,7 +257,7 @@ class KeychronApp:
         self.state_machine.set_notification_callback(self._on_notification)
 
         # Start UI
-        logger.info("Starting overlay UI...")
+        logger.info(f"Starting overlay UI ({UI_BACKEND} backend)...")
         self.ui.start()
 
         # Start tray icon
@@ -500,6 +507,10 @@ class KeychronApp:
 
         elif event_type == EVT_ENCODER_RELEASE:
             self.is_pressed = False
+            # Skip if this release follows a double-tap (which already exited the menu)
+            if self.ignore_next_release:
+                self.ignore_next_release = False
+                return
             # Only execute click if we didn't use the press for rotation
             if not self.was_rotated_while_pressed:
                 self.state_machine.handle_press()
@@ -512,6 +523,7 @@ class KeychronApp:
         elif event_type == EVT_ENCODER_DOUBLE:
             self.is_pressed = False
             self.was_rotated_while_pressed = False
+            self.ignore_next_release = True  # Prevent subsequent release from executing command
             # Ensure we reset click count in state machine to avoid conflict
             self.state_machine.state.click_count = 0
             self.state_machine.handle_double_tap()
@@ -597,18 +609,31 @@ def main():
     config = load_config()
 
     parser = argparse.ArgumentParser(description='Keychron V1 Menu System')
-    parser.add_argument('--theme', choices=['DARK', 'LIGHT', 'CYBER'], default=config.get('ui_theme', 'DARK'),
-                       help='UI theme (default: DARK)')
+    # Load available themes from themes.json
+    available_themes = ['DARK', 'LIGHT', 'CYBER']  # defaults
+    themes_path = Path(__file__).parent / 'themes.json'
+    if themes_path.exists():
+        try:
+            with open(themes_path, 'r') as f:
+                available_themes = list(json.load(f).keys())
+        except:
+            pass
+
+    parser.add_argument('--theme', choices=available_themes, default=None,
+                       help=f'UI theme. Available: {", ".join(available_themes)}')
     parser.add_argument('--classic-ui', action='store_true',
-                       help='Use classic UI instead of enhanced')
+                       help='Use basic UI instead of enhanced')
     parser.add_argument('--test-ui', action='store_true',
                        help='Test UI without connecting to keyboard')
 
     args = parser.parse_args()
-    
-    # Override config with args
-    if args.theme:
+
+    # Override config with args only if explicitly provided
+    if args.theme is not None:
         config['ui_theme'] = args.theme
+    # Ensure ui_theme has a valid value
+    if config.get('ui_theme') not in available_themes:
+        config['ui_theme'] = 'DARK'
     if args.classic_ui:
         config['use_enhanced_ui'] = False
 

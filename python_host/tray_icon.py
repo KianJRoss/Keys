@@ -61,15 +61,23 @@ class TrayIcon:
         """Handle quit action"""
         logger.info("Quit requested from tray icon")
         self.running = False
+        
+        # Explicitly hide icon to prevent ghosting
+        icon.visible = False
         icon.stop()
+        
+        # Small sleep to allow Windows to process the icon removal
+        import time
+        time.sleep(0.2)
 
         # Stop the application
-        if hasattr(self.app, 'stop'):
+        if hasattr(self.app, 'quit'):
+            self.app.quit()
+        elif hasattr(self.app, 'stop'):
             self.app.stop()
 
-        # Force exit if needed
-        sys.exit(0)
-
+        # Force exit if needed - this should ideally not be necessary if app.quit() works
+        # sys.exit(0) # Removed to allow graceful shutdown
     def on_show_status(self, icon, item):
         """Show current status"""
         logger.info("Status requested from tray icon")
@@ -155,6 +163,7 @@ class TrayIcon:
     def stop(self):
         """Stop the tray icon"""
         if self.icon:
+            self.icon.visible = False
             self.icon.stop()
             self.running = False
             logger.info("Tray icon stopped")

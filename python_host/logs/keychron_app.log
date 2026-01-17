@@ -1443,3 +1443,2593 @@ SystemExit: 0
 2026-01-13 13:21:11,997 [INFO] System ready! Rotate or press encoder to interact.
 2026-01-13 13:21:11,997 [INFO] Press Ctrl+C to exit.
 2026-01-13 13:21:12,031 [INFO] Tray icon is now visible
+2026-01-14 15:44:53,097 [INFO] Initializing Keychron V1 Menu System...
+2026-01-14 15:44:53,097 [INFO] API volume: Available
+2026-01-14 15:44:53,097 [INFO] API media: Available
+2026-01-14 15:44:53,097 [INFO] API windows: Available
+2026-01-14 15:44:53,097 [INFO] Connecting to Voicemeeter...
+2026-01-14 15:44:53,950 [INFO] Voicemeeter Potato connected
+2026-01-14 15:44:53,950 [INFO] Loading plugins from plugins...
+2026-01-14 15:44:53,953 [INFO]   + Registered plugin command: Apps
+2026-01-14 15:44:53,953 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-14 15:44:53,962 [INFO]   + Registered plugin command: Context Commands
+2026-01-14 15:44:53,962 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-14 15:44:53,975 [INFO]   + Registered plugin command: Display Control
+2026-01-14 15:44:53,976 [INFO] Initializing Display Manager...
+2026-01-14 15:44:53,976 [INFO] Enumerating display devices...
+2026-01-14 15:44:53,976 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-14 15:44:53,976 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-14 15:44:53,976 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-14 15:44:53,976 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-14 15:44:53,976 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-14 15:44:53,976 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-14 15:44:53,977 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-14 15:44:53,977 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,977 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-14 15:44:53,978 [INFO] Total monitors found: 3
+2026-01-14 15:44:55,359 [WARNING] Could not read brightness, using default 50%
+2026-01-14 15:44:55,359 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-14 15:44:55,359 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-14 15:44:55,359 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-14 15:44:55,359 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-14 15:44:55,359 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-14 15:44:55,361 [INFO]   + Registered plugin command: Game Mode
+2026-01-14 15:44:55,362 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-14 15:44:55,362 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-14 15:44:55,362 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-14 15:44:55,362 [INFO] Starting overlay UI...
+2026-01-14 15:44:55,981 [INFO] Starting system tray icon...
+2026-01-14 15:44:55,982 [INFO] Tray icon thread started
+2026-01-14 15:44:55,983 [INFO] Searching for keyboard...
+2026-01-14 15:44:55,983 [INFO] Starting tray icon with setup callback...
+2026-01-14 15:44:56,044 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-14 15:44:56,045 [INFO] LED feedback enabled
+2026-01-14 15:44:56,909 [INFO] HID Reader thread started
+2026-01-14 15:44:56,914 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-14 15:44:56,914 [INFO] Press Ctrl+C to exit.
+2026-01-14 15:44:58,521 [INFO] Tray icon is now visible
+2026-01-15 16:19:09,643 [INFO] Initializing Keychron V1 Menu System...
+2026-01-15 16:19:09,643 [INFO] API volume: Available
+2026-01-15 16:19:09,643 [INFO] API media: Available
+2026-01-15 16:19:09,643 [INFO] API windows: Available
+2026-01-15 16:19:09,643 [INFO] Connecting to Voicemeeter...
+2026-01-15 16:19:11,531 [INFO] Voicemeeter Potato connected
+2026-01-15 16:19:11,532 [INFO] Loading plugins from plugins...
+2026-01-15 16:19:11,534 [INFO]   + Registered plugin command: Apps
+2026-01-15 16:19:11,535 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-15 16:19:11,542 [INFO]   + Registered plugin command: Context Commands
+2026-01-15 16:19:11,542 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-15 16:19:11,555 [INFO]   + Registered plugin command: Display Control
+2026-01-15 16:19:11,555 [INFO] Initializing Display Manager...
+2026-01-15 16:19:11,555 [INFO] Enumerating display devices...
+2026-01-15 16:19:11,555 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-15 16:19:11,555 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-15 16:19:11,555 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-15 16:19:11,555 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-15 16:19:11,555 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-15 16:19:11,555 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-15 16:19:11,555 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-15 16:19:11,555 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-15 16:19:11,556 [INFO] Total monitors found: 3
+2026-01-15 16:19:13,062 [WARNING] Could not read brightness, using default 50%
+2026-01-15 16:19:13,062 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-15 16:19:13,062 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-15 16:19:13,062 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-15 16:19:13,062 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-15 16:19:13,062 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-15 16:19:13,064 [INFO]   + Registered plugin command: Game Mode
+2026-01-15 16:19:13,065 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-15 16:19:13,066 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-15 16:19:13,066 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-15 16:19:13,066 [INFO] Starting overlay UI...
+2026-01-15 16:19:13,698 [INFO] Starting system tray icon...
+2026-01-15 16:19:13,699 [INFO] Tray icon thread started
+2026-01-15 16:19:13,700 [INFO] Searching for keyboard...
+2026-01-15 16:19:13,700 [INFO] Starting tray icon with setup callback...
+2026-01-15 16:19:13,762 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-15 16:19:13,763 [INFO] LED feedback enabled
+2026-01-15 16:19:13,866 [INFO] HID Reader thread started
+2026-01-15 16:19:13,882 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-15 16:19:13,882 [INFO] Press Ctrl+C to exit.
+2026-01-15 16:19:13,964 [INFO] Tray icon is now visible
+2026-01-16 13:38:20,138 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 13:38:20,138 [INFO] API volume: Available
+2026-01-16 13:38:20,138 [INFO] API media: Available
+2026-01-16 13:38:20,138 [INFO] API windows: Available
+2026-01-16 13:38:20,138 [INFO] Connecting to Voicemeeter...
+2026-01-16 13:38:22,100 [INFO] Voicemeeter Potato connected
+2026-01-16 13:38:22,100 [INFO] Loading plugins from plugins...
+2026-01-16 13:38:22,103 [INFO]   + Registered plugin command: Apps
+2026-01-16 13:38:22,103 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 13:38:22,111 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 13:38:22,111 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 13:38:22,123 [INFO]   + Registered plugin command: Display Control
+2026-01-16 13:38:22,123 [INFO] Initializing Display Manager...
+2026-01-16 13:38:22,124 [INFO] Enumerating display devices...
+2026-01-16 13:38:22,124 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 13:38:22,124 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 13:38:22,124 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 13:38:22,124 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 13:38:22,124 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 13:38:22,124 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 13:38:22,125 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 13:38:22,125 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,125 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,125 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,125 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,125 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,125 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,126 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 13:38:22,126 [INFO] Total monitors found: 3
+2026-01-16 13:38:23,790 [WARNING] Could not read brightness, using default 50%
+2026-01-16 13:38:23,790 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 13:38:23,790 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 13:38:23,790 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 13:38:23,790 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 13:38:23,791 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 13:38:23,792 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 13:38:23,794 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 13:38:23,794 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 13:38:23,794 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 13:38:23,794 [INFO] Starting overlay UI...
+2026-01-16 13:38:24,405 [INFO] Starting system tray icon...
+2026-01-16 13:38:24,405 [INFO] Tray icon thread started
+2026-01-16 13:38:24,406 [INFO] Searching for keyboard...
+2026-01-16 13:38:24,406 [INFO] Starting tray icon with setup callback...
+2026-01-16 13:38:24,469 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 13:38:24,471 [INFO] LED feedback enabled
+2026-01-16 13:38:24,519 [INFO] HID Reader thread started
+2026-01-16 13:38:24,523 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 13:38:24,523 [INFO] Press Ctrl+C to exit.
+2026-01-16 13:38:24,608 [INFO] Tray icon is now visible
+2026-01-16 22:01:35,652 [INFO] Quit requested from tray icon
+2026-01-16 22:01:35,653 [INFO] Tray icon stopped
+2026-01-16 22:01:35,657 [INFO] Goodbye!
+2026-01-16 22:01:35,658 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:01:35,668 [INFO] HID Reader thread stopped
+2026-01-16 22:01:35,670 [INFO] Tray icon stopped
+2026-01-16 22:01:40,003 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:01:40,004 [INFO] API volume: Available
+2026-01-16 22:01:40,004 [INFO] API media: Available
+2026-01-16 22:01:40,004 [INFO] API windows: Available
+2026-01-16 22:01:40,004 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:01:40,852 [INFO] Voicemeeter Potato connected
+2026-01-16 22:01:40,853 [INFO] Loading plugins from plugins...
+2026-01-16 22:01:40,855 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:01:40,855 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:01:40,861 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:01:40,861 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:01:40,872 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:01:40,872 [INFO] Initializing Display Manager...
+2026-01-16 22:01:40,872 [INFO] Enumerating display devices...
+2026-01-16 22:01:40,872 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:01:40,872 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:01:40,873 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:01:40,873 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:01:40,873 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:01:40,873 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:01:40,873 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:01:40,873 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,873 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,873 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,874 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,874 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,874 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,874 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:01:40,874 [INFO] Total monitors found: 3
+2026-01-16 22:01:42,363 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:01:42,363 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:01:42,364 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:01:42,364 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:01:42,364 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:01:42,364 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:01:42,365 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:01:42,366 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:01:42,366 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:01:42,366 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:01:42,366 [INFO] Starting overlay UI...
+2026-01-16 22:01:42,974 [INFO] Starting system tray icon...
+2026-01-16 22:01:42,974 [INFO] Tray icon thread started
+2026-01-16 22:01:42,975 [INFO] Searching for keyboard...
+2026-01-16 22:01:42,976 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:01:43,038 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:01:43,039 [INFO] LED feedback enabled
+2026-01-16 22:01:43,089 [INFO] HID Reader thread started
+2026-01-16 22:01:43,092 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:01:43,092 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:01:43,199 [INFO] Tray icon is now visible
+2026-01-16 22:17:46,671 [INFO] Quit requested from tray icon
+2026-01-16 22:17:46,672 [INFO] Tray icon stopped
+2026-01-16 22:17:46,673 [INFO] HID Reader thread stopped
+2026-01-16 22:17:46,674 [INFO] Goodbye!
+2026-01-16 22:17:46,675 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:17:46,683 [INFO] Tray icon stopped
+2026-01-16 22:17:49,723 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:17:49,724 [INFO] API volume: Available
+2026-01-16 22:17:49,724 [INFO] API media: Available
+2026-01-16 22:17:49,724 [INFO] API windows: Available
+2026-01-16 22:17:49,724 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:17:50,554 [INFO] Voicemeeter Potato connected
+2026-01-16 22:17:50,555 [INFO] Loading plugins from plugins...
+2026-01-16 22:17:50,556 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:17:50,557 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:17:50,563 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:17:50,563 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:17:50,568 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:17:50,568 [INFO] Initializing Display Manager...
+2026-01-16 22:17:50,568 [INFO] Enumerating display devices...
+2026-01-16 22:17:50,569 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:17:50,569 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:17:50,569 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:17:50,569 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:17:50,569 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:17:50,569 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:17:50,569 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:17:50,569 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,569 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,569 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,569 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,570 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,570 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,570 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:17:50,570 [INFO] Total monitors found: 3
+2026-01-16 22:17:51,898 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:17:51,898 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:17:51,898 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:17:51,898 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:17:51,898 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:17:51,898 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:17:51,899 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:17:51,900 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:17:51,900 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:17:51,900 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:17:51,901 [INFO] Starting overlay UI...
+2026-01-16 22:17:52,497 [INFO] Starting system tray icon...
+2026-01-16 22:17:52,497 [INFO] Tray icon thread started
+2026-01-16 22:17:52,498 [INFO] Searching for keyboard...
+2026-01-16 22:17:52,498 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:17:52,561 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:17:52,562 [INFO] LED feedback enabled
+2026-01-16 22:17:52,562 [INFO] HID Reader thread started
+2026-01-16 22:17:52,567 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:17:52,567 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:17:52,583 [INFO] Tray icon is now visible
+2026-01-16 22:25:07,846 [INFO] Quit requested from tray icon
+2026-01-16 22:25:07,846 [INFO] Tray icon stopped
+2026-01-16 22:25:07,850 [INFO] Goodbye!
+2026-01-16 22:25:07,850 [INFO] HID Reader thread stopped
+2026-01-16 22:25:07,850 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:25:07,857 [INFO] Tray icon stopped
+2026-01-16 22:25:11,168 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:25:11,168 [INFO] API volume: Available
+2026-01-16 22:25:11,169 [INFO] API media: Available
+2026-01-16 22:25:11,169 [INFO] API windows: Available
+2026-01-16 22:25:11,169 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:25:12,019 [INFO] Voicemeeter Potato connected
+2026-01-16 22:25:12,019 [INFO] Loading plugins from plugins...
+2026-01-16 22:25:12,024 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:25:12,024 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:25:12,036 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:25:12,036 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:25:12,043 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:25:12,043 [INFO] Initializing Display Manager...
+2026-01-16 22:25:12,043 [INFO] Enumerating display devices...
+2026-01-16 22:25:12,043 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:25:12,043 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:25:12,044 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:25:12,044 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:25:12,044 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:25:12,044 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:25:12,044 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:25:12,044 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:25:12,045 [INFO] Total monitors found: 3
+2026-01-16 22:25:13,276 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:25:13,276 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:25:13,276 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:25:13,276 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:25:13,277 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:25:13,277 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:25:13,278 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:25:13,279 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:25:13,279 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:25:13,279 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:25:13,279 [INFO] Starting overlay UI (Tkinter backend)...
+2026-01-16 22:25:13,866 [INFO] Starting system tray icon...
+2026-01-16 22:25:13,867 [INFO] Tray icon thread started
+2026-01-16 22:25:13,867 [INFO] Searching for keyboard...
+2026-01-16 22:25:13,868 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:25:13,929 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:25:13,931 [INFO] LED feedback enabled
+2026-01-16 22:25:13,931 [INFO] HID Reader thread started
+2026-01-16 22:25:13,932 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:25:13,932 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:25:13,948 [INFO] Tray icon is now visible
+2026-01-16 22:30:19,123 [INFO] Quit requested from tray icon
+2026-01-16 22:30:19,123 [INFO] Tray icon stopped
+2026-01-16 22:30:19,126 [INFO] Goodbye!
+2026-01-16 22:30:19,126 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:30:19,133 [INFO] Tray icon stopped
+2026-01-16 22:30:19,144 [INFO] HID Reader thread stopped
+2026-01-16 22:30:34,757 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:30:34,758 [INFO] API volume: Available
+2026-01-16 22:30:34,758 [INFO] API media: Available
+2026-01-16 22:30:34,758 [INFO] API windows: Available
+2026-01-16 22:30:34,758 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:30:35,600 [INFO] Voicemeeter Potato connected
+2026-01-16 22:30:35,600 [INFO] Loading plugins from plugins...
+2026-01-16 22:30:35,602 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:30:35,602 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:30:35,607 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:30:35,607 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:30:35,613 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:30:35,613 [INFO] Initializing Display Manager...
+2026-01-16 22:30:35,613 [INFO] Enumerating display devices...
+2026-01-16 22:30:35,613 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:30:35,614 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:30:35,614 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:30:35,614 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:30:35,614 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:30:35,614 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:30:35,614 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:30:35,614 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,614 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,614 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,615 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,615 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,615 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,615 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:30:35,615 [INFO] Total monitors found: 3
+2026-01-16 22:30:36,799 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:30:36,799 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:30:36,799 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:30:36,799 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:30:36,799 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:30:36,799 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:30:36,801 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:30:36,802 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:30:36,802 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:30:36,802 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:30:36,802 [INFO] Starting overlay UI (Qt backend)...
+2026-01-16 22:30:36,876 [INFO] Starting system tray icon...
+2026-01-16 22:30:36,876 [INFO] Tray icon thread started
+2026-01-16 22:30:36,877 [INFO] Searching for keyboard...
+2026-01-16 22:30:36,877 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:30:36,940 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:30:36,941 [INFO] LED feedback enabled
+2026-01-16 22:30:36,941 [INFO] HID Reader thread started
+2026-01-16 22:30:36,958 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:30:36,958 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:30:36,998 [INFO] Tray icon is now visible
+2026-01-16 22:30:50,489 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:30:50,489 [INFO] API volume: Available
+2026-01-16 22:30:50,489 [INFO] API media: Available
+2026-01-16 22:30:50,489 [INFO] API windows: Available
+2026-01-16 22:30:50,489 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:30:51,328 [INFO] Voicemeeter Potato connected
+2026-01-16 22:30:51,329 [INFO] Loading plugins from plugins...
+2026-01-16 22:30:51,330 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:30:51,330 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:30:51,335 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:30:51,335 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:30:51,341 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:30:51,341 [INFO] Initializing Display Manager...
+2026-01-16 22:30:51,341 [INFO] Enumerating display devices...
+2026-01-16 22:30:51,341 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:30:51,341 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:30:51,341 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:30:51,341 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:30:51,341 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:30:51,341 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:30:51,341 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:30:51,341 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,341 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,341 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,342 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,342 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,342 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,342 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:30:51,342 [INFO] Total monitors found: 3
+2026-01-16 22:30:52,505 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:30:52,505 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:30:52,505 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:30:52,505 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:30:52,505 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:30:52,505 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:30:52,506 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:30:52,507 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:30:52,508 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:30:52,508 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:30:52,508 [INFO] Starting overlay UI (Qt backend)...
+2026-01-16 22:30:52,579 [INFO] Starting system tray icon...
+2026-01-16 22:30:52,580 [INFO] Tray icon thread started
+2026-01-16 22:30:52,580 [INFO] Searching for keyboard...
+2026-01-16 22:30:52,622 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:30:52,642 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:30:52,644 [INFO] LED feedback enabled
+2026-01-16 22:30:52,644 [INFO] HID Reader thread started
+2026-01-16 22:30:52,658 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:30:52,658 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:30:52,721 [INFO] Tray icon is now visible
+2026-01-16 22:35:25,431 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:35:25,431 [INFO] API volume: Available
+2026-01-16 22:35:25,431 [INFO] API media: Available
+2026-01-16 22:35:25,431 [INFO] API windows: Available
+2026-01-16 22:35:25,431 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:35:26,276 [INFO] Voicemeeter Potato connected
+2026-01-16 22:35:26,277 [INFO] Loading plugins from plugins...
+2026-01-16 22:35:26,278 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:35:26,278 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:35:26,283 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:35:26,283 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:35:26,288 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:35:26,288 [INFO] Initializing Display Manager...
+2026-01-16 22:35:26,288 [INFO] Enumerating display devices...
+2026-01-16 22:35:26,289 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:35:26,289 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:35:26,289 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:35:26,289 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:35:26,289 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:35:26,289 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:35:26,289 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:35:26,289 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,289 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:35:26,290 [INFO] Total monitors found: 3
+2026-01-16 22:35:27,655 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:35:27,655 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:35:27,655 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:35:27,655 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:35:27,655 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:35:27,655 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:35:27,656 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:35:27,657 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:35:27,657 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:35:27,657 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:35:27,657 [INFO] Starting overlay UI (Qt backend)...
+2026-01-16 22:35:29,070 [INFO] Starting system tray icon...
+2026-01-16 22:35:29,071 [INFO] Tray icon thread started
+2026-01-16 22:35:29,073 [INFO] Searching for keyboard...
+2026-01-16 22:35:29,073 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:35:47,271 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:35:47,271 [INFO] API volume: Available
+2026-01-16 22:35:47,271 [INFO] API media: Available
+2026-01-16 22:35:47,271 [INFO] API windows: Available
+2026-01-16 22:35:47,271 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:35:48,097 [INFO] Voicemeeter Potato connected
+2026-01-16 22:35:48,097 [INFO] Loading plugins from plugins...
+2026-01-16 22:35:48,099 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:35:48,099 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:35:48,104 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:35:48,105 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:35:48,110 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:35:48,110 [INFO] Initializing Display Manager...
+2026-01-16 22:35:48,110 [INFO] Enumerating display devices...
+2026-01-16 22:35:48,110 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:35:48,110 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:35:48,110 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:35:48,110 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:35:48,111 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:35:48,111 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:35:48,111 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:35:48,111 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:35:48,111 [INFO] Total monitors found: 3
+2026-01-16 22:35:49,300 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:35:49,301 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:35:49,301 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:35:49,301 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:35:49,301 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:35:49,301 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:35:49,302 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:35:49,303 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:35:49,303 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:35:49,303 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:35:49,303 [INFO] Starting overlay UI (Qt backend)...
+2026-01-16 22:35:50,509 [INFO] Starting system tray icon...
+2026-01-16 22:35:50,511 [INFO] Tray icon thread started
+2026-01-16 22:35:50,512 [INFO] Searching for keyboard...
+2026-01-16 22:35:50,512 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:36:03,521 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:36:03,521 [INFO] API volume: Available
+2026-01-16 22:36:03,521 [INFO] API media: Available
+2026-01-16 22:36:03,521 [INFO] API windows: Available
+2026-01-16 22:36:03,521 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:36:04,364 [INFO] Voicemeeter Potato connected
+2026-01-16 22:36:04,364 [INFO] Loading plugins from plugins...
+2026-01-16 22:36:04,366 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:36:04,366 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:36:04,371 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:36:04,371 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:36:04,377 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:36:04,377 [INFO] Initializing Display Manager...
+2026-01-16 22:36:04,377 [INFO] Enumerating display devices...
+2026-01-16 22:36:04,377 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:36:04,377 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:36:04,378 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:36:04,378 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:36:04,378 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:36:04,378 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:36:04,378 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:36:04,378 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,378 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,378 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,379 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,379 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,379 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,379 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:36:04,379 [INFO] Total monitors found: 3
+2026-01-16 22:36:05,522 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:36:05,522 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:36:05,522 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:36:05,522 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:36:05,522 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:36:05,522 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:36:05,524 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:36:05,525 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:36:05,525 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:36:05,525 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:36:05,525 [INFO] Starting overlay UI (Qt backend)...
+2026-01-16 22:36:06,856 [INFO] Starting system tray icon...
+2026-01-16 22:36:06,857 [INFO] Tray icon thread started
+2026-01-16 22:36:06,859 [INFO] Searching for keyboard...
+2026-01-16 22:36:06,859 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:46:03,629 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 22:46:03,629 - INFO - API volume: Available
+2026-01-16 22:46:03,629 - INFO - API media: Available
+2026-01-16 22:46:03,629 - INFO - API windows: Available
+2026-01-16 22:46:03,629 - INFO - Connecting to Voicemeeter...
+2026-01-16 22:46:04,530 - INFO - Voicemeeter Potato connected
+2026-01-16 22:46:04,531 - ERROR - Fatal error: 'MenuStateMachine' object has no attribute 'add_command'
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 409, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 397, in main
+    if not keychron_app.setup():
+           ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 158, in setup
+    self._register_commands()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 282, in _register_commands
+    self.state_machine.add_command(name, desc, callback)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MenuStateMachine' object has no attribute 'add_command'
+2026-01-16 22:47:26,019 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 22:47:26,020 - INFO - API volume: Available
+2026-01-16 22:47:26,020 - INFO - API media: Available
+2026-01-16 22:47:26,020 - INFO - API windows: Available
+2026-01-16 22:47:26,020 - INFO - Connecting to Voicemeeter...
+2026-01-16 22:47:26,860 - INFO - Voicemeeter Potato connected
+2026-01-16 22:47:26,861 - INFO - Registered 5 main commands
+2026-01-16 22:47:26,861 - INFO - Loading plugin: app_launcher
+2026-01-16 22:47:26,862 - INFO -   + Registered command: Apps
+2026-01-16 22:47:26,863 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:47:26,863 - INFO - Loading plugin: context_commands
+2026-01-16 22:47:26,870 - INFO -   + Registered command: Context Commands
+2026-01-16 22:47:26,870 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:47:26,870 - INFO - Loading plugin: display_control
+2026-01-16 22:47:26,884 - INFO -   + Registered command: Display Control
+2026-01-16 22:47:26,884 - INFO - Initializing Display Manager...
+2026-01-16 22:47:26,884 - INFO - Enumerating display devices...
+2026-01-16 22:47:26,884 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:47:26,884 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:47:26,884 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:47:26,884 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:47:26,885 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:47:26,885 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:47:26,885 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:47:26,885 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,885 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,885 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,886 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,886 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,886 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,886 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:47:26,886 - INFO - Total monitors found: 3
+2026-01-16 22:47:27,571 - WARNING - Could not read brightness, using default 50%
+2026-01-16 22:47:27,572 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 22:47:27,572 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:47:27,572 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:47:27,572 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:47:27,572 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:47:27,572 - INFO - Loading plugin: game_mode
+2026-01-16 22:47:27,573 - INFO -   + Registered command: Game Mode
+2026-01-16 22:47:27,573 - INFO - Loading plugin: virtual_desktops
+2026-01-16 22:47:27,574 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 22:47:27,574 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:47:27,574 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:47:27,574 - ERROR - Fatal error: 'MenuStateMachine' object has no attribute 'set_ui'
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 409, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 397, in main
+    if not keychron_app.setup():
+           ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Keyboard\Keys\python_host\keychron_app_qt.py", line 173, in setup
+    self.state_machine.set_ui(self.ui)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MenuStateMachine' object has no attribute 'set_ui'
+2026-01-16 22:48:19,122 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 22:48:19,122 - INFO - API volume: Available
+2026-01-16 22:48:19,123 - INFO - API media: Available
+2026-01-16 22:48:19,123 - INFO - API windows: Available
+2026-01-16 22:48:19,123 - INFO - Connecting to Voicemeeter...
+2026-01-16 22:48:19,966 - INFO - Voicemeeter Potato connected
+2026-01-16 22:48:19,966 - INFO - Registered 5 main commands
+2026-01-16 22:48:19,967 - INFO - Loading plugin: app_launcher
+2026-01-16 22:48:19,968 - INFO -   + Registered command: Apps
+2026-01-16 22:48:19,968 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:48:19,968 - INFO - Loading plugin: context_commands
+2026-01-16 22:48:19,974 - INFO -   + Registered command: Context Commands
+2026-01-16 22:48:19,974 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:48:19,974 - INFO - Loading plugin: display_control
+2026-01-16 22:48:19,981 - INFO -   + Registered command: Display Control
+2026-01-16 22:48:19,981 - INFO - Initializing Display Manager...
+2026-01-16 22:48:19,981 - INFO - Enumerating display devices...
+2026-01-16 22:48:19,981 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:48:19,981 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:48:19,981 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:48:19,981 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:48:19,982 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:48:19,982 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:48:19,982 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:48:19,982 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:48:19,982 - INFO - Total monitors found: 3
+2026-01-16 22:48:21,476 - WARNING - Could not read brightness, using default 50%
+2026-01-16 22:48:21,476 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 22:48:21,476 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:48:21,476 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:48:21,476 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:48:21,476 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:48:21,477 - INFO - Loading plugin: game_mode
+2026-01-16 22:48:21,477 - INFO -   + Registered command: Game Mode
+2026-01-16 22:48:21,477 - INFO - Loading plugin: virtual_desktops
+2026-01-16 22:48:21,479 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 22:48:21,479 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:48:21,479 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:48:21,479 - INFO - Starting UI...
+2026-01-16 22:48:21,989 - INFO - Starting tray icon with setup callback...
+2026-01-16 22:48:22,160 - INFO - Tray icon is now visible
+2026-01-16 22:55:19,046 - INFO - Quit requested from tray icon
+2026-01-16 22:55:19,047 - ERROR - An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:55:19,053 - INFO - Tray icon stopped
+2026-01-16 22:55:19,053 - INFO - Connecting to HID device...
+2026-01-16 22:55:19,054 - INFO - HID reader thread started
+2026-01-16 22:55:19,054 - INFO - Application started. Running Qt event loop...
+2026-01-16 22:55:19,056 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:55:19,119 - INFO - HID device connected successfully
+2026-01-16 22:55:19,119 - INFO - HID device connected
+2026-01-16 22:55:21,426 [INFO] Initializing Keychron V1 Menu System...
+2026-01-16 22:55:21,426 [INFO] API volume: Available
+2026-01-16 22:55:21,426 [INFO] API media: Available
+2026-01-16 22:55:21,426 [INFO] API windows: Available
+2026-01-16 22:55:21,426 [INFO] Connecting to Voicemeeter...
+2026-01-16 22:55:22,275 [INFO] Voicemeeter Potato connected
+2026-01-16 22:55:22,275 [INFO] Loading plugins from plugins...
+2026-01-16 22:55:22,277 [INFO]   + Registered plugin command: Apps
+2026-01-16 22:55:22,277 [INFO]   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:55:22,283 [INFO]   + Registered plugin command: Context Commands
+2026-01-16 22:55:22,283 [INFO]   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:55:22,289 [INFO]   + Registered plugin command: Display Control
+2026-01-16 22:55:22,289 [INFO] Initializing Display Manager...
+2026-01-16 22:55:22,289 [INFO] Enumerating display devices...
+2026-01-16 22:55:22,289 [INFO] Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:55:22,289 [INFO]   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:55:22,289 [INFO] Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:55:22,289 [INFO]   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:55:22,290 [INFO] Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:55:22,290 [INFO]   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:55:22,290 [INFO] Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:55:22,290 [INFO] Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,290 [INFO] Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,290 [INFO] Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,290 [INFO] Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,290 [INFO] Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,290 [INFO] Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,291 [INFO] Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:55:22,291 [INFO] Total monitors found: 3
+2026-01-16 22:55:23,682 [WARNING] Could not read brightness, using default 50%
+2026-01-16 22:55:23,682 [INFO] Display Manager initialized with 3 monitor(s)
+2026-01-16 22:55:23,682 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:55:23,682 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:55:23,682 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:55:23,682 [INFO]   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:55:23,684 [INFO]   + Registered plugin command: Game Mode
+2026-01-16 22:55:23,685 [INFO]   + Registered plugin command: Virtual Desktops
+2026-01-16 22:55:23,685 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:55:23,685 [INFO]   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:55:23,685 [INFO] Starting overlay UI (Tkinter backend)...
+2026-01-16 22:55:24,290 [INFO] Starting system tray icon...
+2026-01-16 22:55:24,291 [INFO] Tray icon thread started
+2026-01-16 22:55:24,292 [INFO] Searching for keyboard...
+2026-01-16 22:55:24,292 [INFO] Starting tray icon with setup callback...
+2026-01-16 22:55:24,355 [INFO] Connected to: Keychron Keychron V1 (VID: 0x3434, PID: 0x0311)
+2026-01-16 22:55:24,357 [INFO] LED feedback enabled
+2026-01-16 22:55:24,358 [INFO] HID Reader thread started
+2026-01-16 22:55:24,370 [INFO] System ready! Rotate or press encoder to interact.
+2026-01-16 22:55:24,370 [INFO] Press Ctrl+C to exit.
+2026-01-16 22:55:24,386 [INFO] Tray icon is now visible
+2026-01-16 22:58:10,908 [INFO] Quit requested from tray icon
+2026-01-16 22:58:10,908 [INFO] Tray icon stopped
+2026-01-16 22:58:10,908 [INFO] HID Reader thread stopped
+2026-01-16 22:58:10,910 [INFO] Goodbye!
+2026-01-16 22:58:10,910 [ERROR] An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 22:58:10,920 [INFO] Tray icon stopped
+2026-01-16 22:59:30,490 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 22:59:30,490 - INFO - API volume: Available
+2026-01-16 22:59:30,490 - INFO - API media: Available
+2026-01-16 22:59:30,490 - INFO - API windows: Available
+2026-01-16 22:59:30,491 - INFO - Connecting to Voicemeeter...
+2026-01-16 22:59:31,322 - INFO - Voicemeeter Potato connected
+2026-01-16 22:59:31,322 - INFO - Registered 5 main commands
+2026-01-16 22:59:31,323 - INFO - Loading plugin: app_launcher
+2026-01-16 22:59:31,324 - INFO -   + Registered command: Apps
+2026-01-16 22:59:31,324 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 22:59:31,324 - INFO - Loading plugin: context_commands
+2026-01-16 22:59:31,329 - INFO -   + Registered command: Context Commands
+2026-01-16 22:59:31,330 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 22:59:31,330 - INFO - Loading plugin: display_control
+2026-01-16 22:59:31,335 - INFO -   + Registered command: Display Control
+2026-01-16 22:59:31,336 - INFO - Initializing Display Manager...
+2026-01-16 22:59:31,336 - INFO - Enumerating display devices...
+2026-01-16 22:59:31,336 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 22:59:31,336 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 22:59:31,336 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 22:59:31,336 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 22:59:31,336 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 22:59:31,337 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 22:59:31,337 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 22:59:31,337 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,337 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,337 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,337 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,338 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,338 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,338 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 22:59:31,338 - INFO - Total monitors found: 3
+2026-01-16 22:59:32,188 - WARNING - Could not read brightness, using default 50%
+2026-01-16 22:59:32,188 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 22:59:32,188 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 22:59:32,188 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 22:59:32,189 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 22:59:32,189 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 22:59:32,189 - INFO - Loading plugin: game_mode
+2026-01-16 22:59:32,190 - INFO -   + Registered command: Game Mode
+2026-01-16 22:59:32,190 - INFO - Loading plugin: virtual_desktops
+2026-01-16 22:59:32,190 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 22:59:32,191 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 22:59:32,191 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 22:59:32,191 - INFO - Starting UI...
+2026-01-16 22:59:32,701 - INFO - Starting tray icon with setup callback...
+2026-01-16 22:59:32,770 - INFO - Tray icon is now visible
+2026-01-16 23:08:00,848 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:08:00,850 - INFO - API volume: Available
+2026-01-16 23:08:00,851 - INFO - API media: Available
+2026-01-16 23:08:00,852 - INFO - API windows: Available
+2026-01-16 23:08:00,852 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:08:01,700 - INFO - Voicemeeter Potato connected
+2026-01-16 23:08:01,701 - INFO - Registered 5 main commands
+2026-01-16 23:08:01,702 - INFO - Loading plugin: app_launcher
+2026-01-16 23:08:01,704 - INFO -   + Registered command: Apps
+2026-01-16 23:08:01,705 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:08:01,706 - INFO - Loading plugin: context_commands
+2026-01-16 23:08:01,713 - INFO -   + Registered command: Context Commands
+2026-01-16 23:08:01,714 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:08:01,715 - INFO - Loading plugin: display_control
+2026-01-16 23:08:01,722 - INFO -   + Registered command: Display Control
+2026-01-16 23:08:01,722 - INFO - Initializing Display Manager...
+2026-01-16 23:08:01,722 - INFO - Enumerating display devices...
+2026-01-16 23:08:01,723 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:08:01,723 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:08:01,723 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:08:01,724 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:08:01,724 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:08:01,724 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:08:01,724 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:08:01,725 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,725 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,725 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,725 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,725 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,726 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,726 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:08:01,726 - INFO - Total monitors found: 3
+2026-01-16 23:08:02,345 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:08:02,346 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:08:02,346 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:08:02,346 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:08:02,346 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:08:02,346 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:08:02,347 - INFO - Loading plugin: game_mode
+2026-01-16 23:08:02,347 - INFO -   + Registered command: Game Mode
+2026-01-16 23:08:02,348 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:08:02,348 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:08:02,349 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:08:02,349 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:08:02,350 - INFO - Starting UI...
+2026-01-16 23:08:02,365 - INFO - Tray icon thread started
+2026-01-16 23:08:02,366 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:08:02,366 - INFO - Connecting to HID device...
+2026-01-16 23:08:02,367 - INFO - HID reader thread started
+2026-01-16 23:08:02,367 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:08:02,369 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:08:02,434 - INFO - HID device connected successfully
+2026-01-16 23:08:02,435 - INFO - HID device connected
+2026-01-16 23:08:02,488 - INFO - Tray icon is now visible
+2026-01-16 23:11:02,242 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:11:02,242 - INFO - API volume: Available
+2026-01-16 23:11:02,242 - INFO - API media: Available
+2026-01-16 23:11:02,242 - INFO - API windows: Available
+2026-01-16 23:11:02,243 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:11:03,082 - INFO - Voicemeeter Potato connected
+2026-01-16 23:11:03,082 - INFO - Registered 5 main commands
+2026-01-16 23:11:03,083 - INFO - Loading plugin: app_launcher
+2026-01-16 23:11:03,084 - INFO -   + Registered command: Apps
+2026-01-16 23:11:03,084 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:11:03,084 - INFO - Loading plugin: context_commands
+2026-01-16 23:11:03,090 - INFO -   + Registered command: Context Commands
+2026-01-16 23:11:03,090 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:11:03,090 - INFO - Loading plugin: display_control
+2026-01-16 23:11:03,096 - INFO -   + Registered command: Display Control
+2026-01-16 23:11:03,096 - INFO - Initializing Display Manager...
+2026-01-16 23:11:03,096 - INFO - Enumerating display devices...
+2026-01-16 23:11:03,097 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:11:03,097 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:11:03,097 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:11:03,097 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:11:03,097 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:11:03,097 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:11:03,098 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:11:03,098 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,098 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,098 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,098 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,098 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,099 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,099 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:11:03,099 - INFO - Total monitors found: 3
+2026-01-16 23:11:03,739 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:11:03,739 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:11:03,739 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:11:03,739 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:11:03,739 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:11:03,739 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:11:03,740 - INFO - Loading plugin: game_mode
+2026-01-16 23:11:03,740 - INFO -   + Registered command: Game Mode
+2026-01-16 23:11:03,741 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:11:03,741 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:11:03,741 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:11:03,742 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:11:03,742 - INFO - Starting UI...
+2026-01-16 23:11:03,757 - INFO - Tray icon thread started
+2026-01-16 23:11:03,758 - INFO - Connecting to HID device...
+2026-01-16 23:11:03,758 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:11:03,759 - INFO - HID reader thread started
+2026-01-16 23:11:03,759 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:11:03,761 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:11:03,824 - INFO - HID device connected successfully
+2026-01-16 23:11:03,824 - INFO - HID device connected
+2026-01-16 23:11:03,849 - INFO - Tray icon is now visible
+2026-01-16 23:13:47,825 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:13:47,827 - INFO - API volume: Available
+2026-01-16 23:13:47,828 - INFO - API media: Available
+2026-01-16 23:13:47,828 - INFO - API windows: Available
+2026-01-16 23:13:47,829 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:13:48,672 - INFO - Voicemeeter Potato connected
+2026-01-16 23:13:48,673 - INFO - Registered 5 main commands
+2026-01-16 23:13:48,675 - INFO - Loading plugin: app_launcher
+2026-01-16 23:13:48,676 - INFO -   + Registered command: Apps
+2026-01-16 23:13:48,677 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:13:48,678 - INFO - Loading plugin: context_commands
+2026-01-16 23:13:48,685 - INFO -   + Registered command: Context Commands
+2026-01-16 23:13:48,686 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:13:48,687 - INFO - Loading plugin: display_control
+2026-01-16 23:13:48,694 - INFO -   + Registered command: Display Control
+2026-01-16 23:13:48,694 - INFO - Initializing Display Manager...
+2026-01-16 23:13:48,694 - INFO - Enumerating display devices...
+2026-01-16 23:13:48,711 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:13:48,712 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:13:48,712 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:13:48,713 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:13:48,713 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:13:48,713 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:13:48,714 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:13:48,714 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,715 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,715 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,715 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,716 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,716 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,717 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:13:48,717 - INFO - Total monitors found: 3
+2026-01-16 23:13:49,389 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:13:49,390 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:13:49,390 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:13:49,390 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:13:49,391 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:13:49,391 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:13:49,391 - INFO - Loading plugin: game_mode
+2026-01-16 23:13:49,392 - INFO -   + Registered command: Game Mode
+2026-01-16 23:13:49,392 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:13:49,393 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:13:49,393 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:13:49,393 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:13:49,394 - INFO - Starting UI...
+2026-01-16 23:13:49,409 - INFO - Tray icon thread started
+2026-01-16 23:13:49,410 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:13:49,410 - INFO - Connecting to HID device...
+2026-01-16 23:13:49,411 - INFO - HID reader thread started
+2026-01-16 23:13:49,412 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:13:49,414 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:13:49,476 - INFO - HID device connected successfully
+2026-01-16 23:13:49,477 - INFO - HID device connected
+2026-01-16 23:13:49,501 - INFO - Tray icon is now visible
+2026-01-16 23:15:54,463 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:15:54,463 - INFO - API volume: Available
+2026-01-16 23:15:54,463 - INFO - API media: Available
+2026-01-16 23:15:54,463 - INFO - API windows: Available
+2026-01-16 23:15:54,463 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:15:55,286 - INFO - Voicemeeter Potato connected
+2026-01-16 23:15:55,287 - INFO - Registered 5 main commands
+2026-01-16 23:15:55,287 - INFO - Loading plugin: app_launcher
+2026-01-16 23:15:55,288 - INFO -   + Registered command: Apps
+2026-01-16 23:15:55,288 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:15:55,289 - INFO - Loading plugin: context_commands
+2026-01-16 23:15:55,295 - INFO -   + Registered command: Context Commands
+2026-01-16 23:15:55,295 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:15:55,296 - INFO - Loading plugin: display_control
+2026-01-16 23:15:55,301 - INFO -   + Registered command: Display Control
+2026-01-16 23:15:55,301 - INFO - Initializing Display Manager...
+2026-01-16 23:15:55,301 - INFO - Enumerating display devices...
+2026-01-16 23:15:55,302 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:15:55,302 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:15:55,302 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:15:55,302 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:15:55,302 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:15:55,302 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:15:55,302 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:15:55,303 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,303 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,303 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,303 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,303 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,304 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,304 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:15:55,304 - INFO - Total monitors found: 3
+2026-01-16 23:15:55,903 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:15:55,903 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:15:55,903 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:15:55,904 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:15:55,904 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:15:55,904 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:15:55,904 - INFO - Loading plugin: game_mode
+2026-01-16 23:15:55,905 - INFO -   + Registered command: Game Mode
+2026-01-16 23:15:55,905 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:15:55,906 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:15:55,906 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:15:55,906 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:15:55,906 - INFO - Starting UI...
+2026-01-16 23:15:55,921 - INFO - Tray icon thread started
+2026-01-16 23:15:55,922 - INFO - Connecting to HID device...
+2026-01-16 23:15:55,922 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:15:55,923 - INFO - HID reader thread started
+2026-01-16 23:15:55,923 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:15:55,925 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:15:55,987 - INFO - HID device connected successfully
+2026-01-16 23:15:55,988 - INFO - HID device connected
+2026-01-16 23:15:56,017 - INFO - Tray icon is now visible
+2026-01-16 23:16:30,418 - INFO - Showing 4 context commands for Cursor
+2026-01-16 23:17:53,178 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:17:53,179 - INFO - API volume: Available
+2026-01-16 23:17:53,180 - INFO - API media: Available
+2026-01-16 23:17:53,181 - INFO - API windows: Available
+2026-01-16 23:17:53,182 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:17:54,023 - INFO - Voicemeeter Potato connected
+2026-01-16 23:17:54,025 - INFO - Registered 5 main commands
+2026-01-16 23:17:54,026 - INFO - Loading plugin: app_launcher
+2026-01-16 23:17:54,028 - INFO -   + Registered command: Apps
+2026-01-16 23:17:54,029 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:17:54,030 - INFO - Loading plugin: context_commands
+2026-01-16 23:17:54,037 - INFO -   + Registered command: Context Commands
+2026-01-16 23:17:54,038 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:17:54,039 - INFO - Loading plugin: display_control
+2026-01-16 23:17:54,045 - INFO -   + Registered command: Display Control
+2026-01-16 23:17:54,046 - INFO - Initializing Display Manager...
+2026-01-16 23:17:54,046 - INFO - Enumerating display devices...
+2026-01-16 23:17:54,069 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:17:54,069 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:17:54,070 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:17:54,070 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:17:54,071 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:17:54,071 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:17:54,071 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:17:54,072 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,072 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,073 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,073 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,073 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,074 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,074 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:17:54,074 - INFO - Total monitors found: 3
+2026-01-16 23:17:54,663 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:17:54,664 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:17:54,664 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:17:54,665 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:17:54,665 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:17:54,665 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:17:54,665 - INFO - Loading plugin: game_mode
+2026-01-16 23:17:54,666 - INFO -   + Registered command: Game Mode
+2026-01-16 23:17:54,666 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:17:54,667 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:17:54,668 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:17:54,668 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:17:54,668 - INFO - Starting UI...
+2026-01-16 23:17:54,683 - INFO - Tray icon thread started
+2026-01-16 23:17:54,684 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:17:54,684 - INFO - Connecting to HID device...
+2026-01-16 23:17:54,685 - INFO - HID reader thread started
+2026-01-16 23:17:54,685 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:17:54,687 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:17:54,750 - INFO - HID device connected successfully
+2026-01-16 23:17:54,750 - INFO - HID device connected
+2026-01-16 23:17:54,775 - INFO - Tray icon is now visible
+2026-01-16 23:18:28,391 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:18:28,391 - INFO - API volume: Available
+2026-01-16 23:18:28,391 - INFO - API media: Available
+2026-01-16 23:18:28,392 - INFO - API windows: Available
+2026-01-16 23:18:28,392 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:18:29,222 - INFO - Voicemeeter Potato connected
+2026-01-16 23:18:29,222 - INFO - Registered 5 main commands
+2026-01-16 23:18:29,223 - INFO - Loading plugin: app_launcher
+2026-01-16 23:18:29,224 - INFO -   + Registered command: Apps
+2026-01-16 23:18:29,224 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:18:29,224 - INFO - Loading plugin: context_commands
+2026-01-16 23:18:29,231 - INFO -   + Registered command: Context Commands
+2026-01-16 23:18:29,231 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:18:29,231 - INFO - Loading plugin: display_control
+2026-01-16 23:18:29,239 - INFO -   + Registered command: Display Control
+2026-01-16 23:18:29,239 - INFO - Initializing Display Manager...
+2026-01-16 23:18:29,240 - INFO - Enumerating display devices...
+2026-01-16 23:18:29,240 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:18:29,240 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:18:29,240 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:18:29,241 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:18:29,241 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:18:29,241 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:18:29,241 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:18:29,241 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,242 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,242 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,242 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,242 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,242 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,243 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:18:29,243 - INFO - Total monitors found: 3
+2026-01-16 23:18:30,089 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:18:30,089 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:18:30,089 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:18:30,090 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:18:30,090 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:18:30,090 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:18:30,090 - INFO - Loading plugin: game_mode
+2026-01-16 23:18:30,091 - INFO -   + Registered command: Game Mode
+2026-01-16 23:18:30,091 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:18:30,092 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:18:30,092 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:18:30,092 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:18:30,092 - INFO - Starting UI...
+2026-01-16 23:18:30,107 - INFO - Tray icon thread started
+2026-01-16 23:18:30,108 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:18:30,108 - INFO - Connecting to HID device...
+2026-01-16 23:18:30,108 - INFO - HID reader thread started
+2026-01-16 23:18:30,109 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:18:30,111 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:18:30,174 - INFO - HID device connected successfully
+2026-01-16 23:18:30,174 - INFO - HID device connected
+2026-01-16 23:18:30,201 - INFO - Tray icon is now visible
+2026-01-16 23:18:48,617 - INFO - Switched to previous desktop
+2026-01-16 23:18:48,757 - INFO - Switched to next desktop
+2026-01-16 23:18:50,486 - INFO - Switched to previous desktop
+2026-01-16 23:18:59,186 - INFO - Switched to previous desktop
+2026-01-16 23:19:09,261 - INFO - Switched to previous desktop
+2026-01-16 23:19:33,742 - INFO - Switched to previous desktop
+2026-01-16 23:20:05,012 - INFO - Showing 4 context commands for Cursor
+2026-01-16 23:21:22,538 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:21:22,540 - INFO - API volume: Available
+2026-01-16 23:21:22,541 - INFO - API media: Available
+2026-01-16 23:21:22,542 - INFO - API windows: Available
+2026-01-16 23:21:22,543 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:21:23,379 - INFO - Voicemeeter Potato connected
+2026-01-16 23:21:23,381 - INFO - Registered 5 main commands
+2026-01-16 23:21:23,383 - INFO - Loading plugin: app_launcher
+2026-01-16 23:21:23,385 - INFO -   + Registered command: Apps
+2026-01-16 23:21:23,386 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:21:23,387 - INFO - Loading plugin: context_commands
+2026-01-16 23:21:23,395 - INFO -   + Registered command: Context Commands
+2026-01-16 23:21:23,396 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:21:23,396 - INFO - Loading plugin: display_control
+2026-01-16 23:21:23,404 - INFO -   + Registered command: Display Control
+2026-01-16 23:21:23,405 - INFO - Initializing Display Manager...
+2026-01-16 23:21:23,405 - INFO - Enumerating display devices...
+2026-01-16 23:21:23,405 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:21:23,406 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:21:23,406 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:21:23,406 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:21:23,406 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:21:23,407 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:21:23,407 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:21:23,407 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,408 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,408 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,408 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,408 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,409 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,409 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:21:23,409 - INFO - Total monitors found: 3
+2026-01-16 23:21:24,435 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:21:24,436 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:21:24,436 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:21:24,436 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:21:24,436 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:21:24,437 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:21:24,437 - INFO - Loading plugin: game_mode
+2026-01-16 23:21:24,437 - INFO -   + Registered command: Game Mode
+2026-01-16 23:21:24,438 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:21:24,438 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:21:24,439 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:21:24,439 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:21:24,439 - INFO - Starting UI...
+2026-01-16 23:21:24,454 - INFO - Tray icon thread started
+2026-01-16 23:21:24,455 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:21:24,455 - INFO - Connecting to HID device...
+2026-01-16 23:21:24,456 - INFO - HID reader thread started
+2026-01-16 23:21:24,457 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:21:24,459 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:21:24,522 - INFO - HID device connected successfully
+2026-01-16 23:21:24,522 - INFO - HID device connected
+2026-01-16 23:21:24,570 - INFO - Tray icon is now visible
+2026-01-16 23:23:05,831 - INFO - Quit requested from tray icon
+2026-01-16 23:23:05,831 - ERROR - An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 23:23:05,839 - INFO - Tray icon stopped
+2026-01-16 23:23:07,185 - INFO - Quit requested from tray icon
+2026-01-16 23:23:07,186 - ERROR - An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 23:23:07,195 - INFO - Tray icon stopped
+2026-01-16 23:23:22,405 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:23:22,405 - INFO - API volume: Available
+2026-01-16 23:23:22,405 - INFO - API media: Available
+2026-01-16 23:23:22,405 - INFO - API windows: Available
+2026-01-16 23:23:22,405 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:23:23,238 - INFO - Voicemeeter Potato connected
+2026-01-16 23:23:23,239 - INFO - Registered 5 main commands
+2026-01-16 23:23:23,239 - INFO - Loading plugin: app_launcher
+2026-01-16 23:23:23,240 - INFO -   + Registered command: Apps
+2026-01-16 23:23:23,240 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:23:23,240 - INFO - Loading plugin: context_commands
+2026-01-16 23:23:23,246 - INFO -   + Registered command: Context Commands
+2026-01-16 23:23:23,246 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:23:23,246 - INFO - Loading plugin: display_control
+2026-01-16 23:23:23,251 - INFO -   + Registered command: Display Control
+2026-01-16 23:23:23,251 - INFO - Initializing Display Manager...
+2026-01-16 23:23:23,251 - INFO - Enumerating display devices...
+2026-01-16 23:23:23,252 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:23:23,252 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:23:23,252 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:23:23,252 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:23:23,252 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:23:23,252 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:23:23,253 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:23:23,253 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,253 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,253 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,253 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,253 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,254 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,254 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:23:23,254 - INFO - Total monitors found: 3
+2026-01-16 23:23:23,846 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:23:23,846 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:23:23,846 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:23:23,846 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:23:23,846 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:23:23,846 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:23:23,846 - INFO - Loading plugin: game_mode
+2026-01-16 23:23:23,847 - INFO -   + Registered command: Game Mode
+2026-01-16 23:23:23,847 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:23:23,848 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:23:23,848 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:23:23,849 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:23:23,849 - INFO - Starting UI...
+2026-01-16 23:23:23,863 - INFO - Tray icon thread started
+2026-01-16 23:23:23,864 - INFO - Connecting to HID device...
+2026-01-16 23:23:23,864 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:23:23,865 - INFO - HID reader thread started
+2026-01-16 23:23:23,865 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:23:23,867 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:23:23,930 - INFO - HID device connected successfully
+2026-01-16 23:23:23,930 - INFO - HID device connected
+2026-01-16 23:23:23,955 - INFO - Tray icon is now visible
+2026-01-16 23:26:07,720 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:26:07,722 - INFO - API volume: Available
+2026-01-16 23:26:07,723 - INFO - API media: Available
+2026-01-16 23:26:07,723 - INFO - API windows: Available
+2026-01-16 23:26:07,724 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:26:08,566 - INFO - Voicemeeter Potato connected
+2026-01-16 23:26:08,567 - INFO - Registered 5 main commands
+2026-01-16 23:26:08,569 - INFO - Loading plugin: app_launcher
+2026-01-16 23:26:08,570 - INFO -   + Registered command: Apps
+2026-01-16 23:26:08,571 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:26:08,572 - INFO - Loading plugin: context_commands
+2026-01-16 23:26:08,579 - INFO -   + Registered command: Context Commands
+2026-01-16 23:26:08,580 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:26:08,581 - INFO - Loading plugin: display_control
+2026-01-16 23:26:08,589 - INFO -   + Registered command: Display Control
+2026-01-16 23:26:08,590 - INFO - Initializing Display Manager...
+2026-01-16 23:26:08,590 - INFO - Enumerating display devices...
+2026-01-16 23:26:08,590 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:26:08,590 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:26:08,591 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:26:08,591 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:26:08,591 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:26:08,591 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:26:08,591 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:26:08,592 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,592 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,592 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,592 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,593 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,593 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,593 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:26:08,593 - INFO - Total monitors found: 3
+2026-01-16 23:26:09,416 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:26:09,416 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:26:09,417 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:26:09,417 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:26:09,417 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:26:09,417 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:26:09,417 - INFO - Loading plugin: game_mode
+2026-01-16 23:26:09,418 - INFO -   + Registered command: Game Mode
+2026-01-16 23:26:09,418 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:26:09,419 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:26:09,420 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:26:09,420 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:26:09,420 - INFO - Starting UI...
+2026-01-16 23:26:09,434 - INFO - Tray icon thread started
+2026-01-16 23:26:09,435 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:26:09,435 - INFO - Connecting to HID device...
+2026-01-16 23:26:09,436 - INFO - HID reader thread started
+2026-01-16 23:26:09,436 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:26:09,439 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:26:09,501 - INFO - HID device connected successfully
+2026-01-16 23:26:09,502 - INFO - HID device connected
+2026-01-16 23:26:09,526 - INFO - Tray icon is now visible
+2026-01-16 23:26:36,570 - INFO - Quit requested from tray icon
+2026-01-16 23:26:36,570 - ERROR - An error occurred when calling message handler
+Traceback (most recent call last):
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 412, in _dispatcher
+    return int(icon._message_handlers.get(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        uMsg, lambda w, l: 0)(wParam, lParam) or 0)
+        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_win32.py", line 224, in _on_notify
+    descriptors[index - 1](self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 328, in inner
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "C:\Keyboard\Keys\python_host\venv\Lib\site-packages\pystray\_base.py", line 453, in __call__
+    return self._action(icon, self)
+           ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Keyboard\Keys\python_host\tray_icon.py", line 71, in on_quit
+    sys.exit(0)
+    ~~~~~~~~^^^
+SystemExit: 0
+2026-01-16 23:26:36,579 - INFO - Tray icon stopped
+2026-01-16 23:30:17,646 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:30:17,646 - INFO - API volume: Available
+2026-01-16 23:30:17,647 - INFO - API media: Available
+2026-01-16 23:30:17,647 - INFO - API windows: Available
+2026-01-16 23:30:17,647 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:30:18,494 - INFO - Voicemeeter Potato connected
+2026-01-16 23:30:18,494 - INFO - Registered 5 main commands
+2026-01-16 23:30:18,495 - INFO - Loading plugin: app_launcher
+2026-01-16 23:30:18,496 - INFO -   + Registered command: Apps
+2026-01-16 23:30:18,496 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:30:18,496 - INFO - Loading plugin: context_commands
+2026-01-16 23:30:18,501 - INFO -   + Registered command: Context Commands
+2026-01-16 23:30:18,501 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:30:18,501 - INFO - Loading plugin: display_control
+2026-01-16 23:30:18,506 - INFO -   + Registered command: Display Control
+2026-01-16 23:30:18,507 - INFO - Initializing Display Manager...
+2026-01-16 23:30:18,507 - INFO - Enumerating display devices...
+2026-01-16 23:30:18,507 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:30:18,507 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:30:18,507 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:30:18,507 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:30:18,507 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:30:18,507 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:30:18,508 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:30:18,508 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,508 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,508 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,508 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,508 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,509 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,509 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:30:18,509 - INFO - Total monitors found: 3
+2026-01-16 23:30:19,093 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:30:19,093 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:30:19,093 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:30:19,093 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:30:19,093 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:30:19,093 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:30:19,093 - INFO - Loading plugin: game_mode
+2026-01-16 23:30:19,094 - INFO -   + Registered command: Game Mode
+2026-01-16 23:30:19,094 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:30:19,095 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:30:19,096 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:30:19,096 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:30:19,096 - INFO - Starting UI...
+2026-01-16 23:30:19,112 - INFO - Tray icon thread started
+2026-01-16 23:30:19,112 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:30:19,112 - INFO - Connecting to HID device...
+2026-01-16 23:30:19,113 - INFO - HID reader thread started
+2026-01-16 23:30:19,113 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:30:19,116 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:30:19,178 - INFO - HID device connected successfully
+2026-01-16 23:30:19,178 - INFO - HID device connected
+2026-01-16 23:30:19,205 - INFO - Tray icon is now visible
+2026-01-16 23:34:02,815 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:34:02,816 - INFO - API volume: Available
+2026-01-16 23:34:02,817 - INFO - API media: Available
+2026-01-16 23:34:02,818 - INFO - API windows: Available
+2026-01-16 23:34:02,819 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:34:03,656 - INFO - Voicemeeter Potato connected
+2026-01-16 23:34:03,657 - INFO - Registered 5 main commands
+2026-01-16 23:34:03,658 - INFO - Loading plugin: app_launcher
+2026-01-16 23:34:03,660 - INFO -   + Registered command: Apps
+2026-01-16 23:34:03,661 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:34:03,662 - INFO - Loading plugin: context_commands
+2026-01-16 23:34:03,668 - INFO -   + Registered command: Context Commands
+2026-01-16 23:34:03,669 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:34:03,670 - INFO - Loading plugin: display_control
+2026-01-16 23:34:03,677 - INFO -   + Registered command: Display Control
+2026-01-16 23:34:03,677 - INFO - Initializing Display Manager...
+2026-01-16 23:34:03,678 - INFO - Enumerating display devices...
+2026-01-16 23:34:03,678 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:34:03,678 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:34:03,678 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:34:03,679 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:34:03,679 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:34:03,679 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:34:03,679 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:34:03,679 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,680 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,680 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,680 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,680 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,681 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,681 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:34:03,681 - INFO - Total monitors found: 3
+2026-01-16 23:34:04,323 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:34:04,324 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:34:04,324 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:34:04,324 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:34:04,324 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:34:04,324 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:34:04,324 - INFO - Loading plugin: game_mode
+2026-01-16 23:34:04,325 - INFO -   + Registered command: Game Mode
+2026-01-16 23:34:04,325 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:34:04,326 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:34:04,326 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:34:04,326 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:34:04,327 - INFO - Starting UI...
+2026-01-16 23:34:04,342 - INFO - Tray icon thread started
+2026-01-16 23:34:04,343 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:34:04,343 - INFO - Connecting to HID device...
+2026-01-16 23:34:04,344 - INFO - HID reader thread started
+2026-01-16 23:34:04,345 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:34:04,346 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:34:04,409 - INFO - HID device connected successfully
+2026-01-16 23:34:04,410 - INFO - HID device connected
+2026-01-16 23:34:04,434 - INFO - Tray icon is now visible
+2026-01-16 23:42:09,151 - INFO - Showing 0 context commands for Python
+2026-01-16 23:42:11,563 - INFO - Quit requested from tray icon
+2026-01-16 23:42:11,563 - INFO - Shutting down...
+2026-01-16 23:42:11,588 - INFO - HID device disconnected
+2026-01-16 23:42:16,654 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:42:16,654 - INFO - API volume: Available
+2026-01-16 23:42:16,654 - INFO - API media: Available
+2026-01-16 23:42:16,654 - INFO - API windows: Available
+2026-01-16 23:42:16,654 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:42:17,502 - INFO - Voicemeeter Potato connected
+2026-01-16 23:42:17,502 - INFO - Registered 5 main commands
+2026-01-16 23:42:17,503 - INFO - Loading plugin: app_launcher
+2026-01-16 23:42:17,504 - INFO -   + Registered command: Apps
+2026-01-16 23:42:17,504 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:42:17,504 - INFO - Loading plugin: context_commands
+2026-01-16 23:42:17,509 - INFO -   + Registered command: Context Commands
+2026-01-16 23:42:17,509 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:42:17,509 - INFO - Loading plugin: display_control
+2026-01-16 23:42:17,517 - INFO -   + Registered command: Display Control
+2026-01-16 23:42:17,517 - INFO - Initializing Display Manager...
+2026-01-16 23:42:17,517 - INFO - Enumerating display devices...
+2026-01-16 23:42:17,517 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:42:17,517 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:42:17,517 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:42:17,518 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:42:17,518 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:42:17,518 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:42:17,518 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:42:17,518 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,518 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:42:17,519 - INFO - Total monitors found: 3
+2026-01-16 23:42:18,217 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:42:18,218 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:42:18,218 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:42:18,218 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:42:18,218 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:42:18,218 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:42:18,218 - INFO - Loading plugin: game_mode
+2026-01-16 23:42:18,219 - INFO -   + Registered command: Game Mode
+2026-01-16 23:42:18,219 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:42:18,220 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:42:18,220 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:42:18,220 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:42:18,221 - INFO - Starting UI...
+2026-01-16 23:42:18,236 - INFO - Tray icon thread started
+2026-01-16 23:42:18,237 - INFO - Connecting to HID device...
+2026-01-16 23:42:18,237 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:42:18,237 - INFO - HID reader thread started
+2026-01-16 23:42:18,238 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:42:18,239 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:42:18,301 - INFO - HID device connected successfully
+2026-01-16 23:42:18,302 - INFO - HID device connected
+2026-01-16 23:42:18,333 - INFO - Tray icon is now visible
+2026-01-16 23:50:47,870 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:50:47,872 - INFO - API volume: Available
+2026-01-16 23:50:47,873 - INFO - API media: Available
+2026-01-16 23:50:47,874 - INFO - API windows: Available
+2026-01-16 23:50:47,875 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:50:48,730 - INFO - Voicemeeter Potato connected
+2026-01-16 23:50:48,731 - INFO - Registered 5 main commands
+2026-01-16 23:50:48,732 - INFO - Loading plugin: app_launcher
+2026-01-16 23:50:48,734 - INFO -   + Registered command: Apps
+2026-01-16 23:50:48,735 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:50:48,736 - INFO - Loading plugin: context_commands
+2026-01-16 23:50:48,743 - INFO -   + Registered command: Context Commands
+2026-01-16 23:50:48,744 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:50:48,745 - INFO - Loading plugin: display_control
+2026-01-16 23:50:48,752 - INFO -   + Registered command: Display Control
+2026-01-16 23:50:48,752 - INFO - Initializing Display Manager...
+2026-01-16 23:50:48,752 - INFO - Enumerating display devices...
+2026-01-16 23:50:48,753 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:50:48,753 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:50:48,753 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:50:48,754 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:50:48,754 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:50:48,754 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:50:48,754 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:50:48,754 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,755 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,755 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,755 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,756 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,756 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,756 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:50:48,756 - INFO - Total monitors found: 3
+2026-01-16 23:50:49,586 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:50:49,587 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:50:49,587 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:50:49,587 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:50:49,588 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:50:49,588 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:50:49,588 - INFO - Loading plugin: game_mode
+2026-01-16 23:50:49,589 - INFO -   + Registered command: Game Mode
+2026-01-16 23:50:49,589 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:50:49,590 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:50:49,590 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:50:49,590 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:50:49,591 - INFO - Starting UI...
+2026-01-16 23:50:49,606 - INFO - Tray icon thread started
+2026-01-16 23:50:49,607 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:50:49,607 - INFO - Connecting to HID device...
+2026-01-16 23:50:49,608 - INFO - HID reader thread started
+2026-01-16 23:50:49,608 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:50:49,611 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:50:49,674 - INFO - HID device connected successfully
+2026-01-16 23:50:49,675 - INFO - HID device connected
+2026-01-16 23:50:49,702 - INFO - Tray icon is now visible
+2026-01-16 23:51:51,293 - INFO - Quit requested from tray icon
+2026-01-16 23:51:51,293 - INFO - Shutting down...
+2026-01-16 23:51:51,303 - INFO - HID device disconnected
+2026-01-16 23:54:17,868 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:54:17,868 - INFO - API volume: Available
+2026-01-16 23:54:17,869 - INFO - API media: Available
+2026-01-16 23:54:17,869 - INFO - API windows: Available
+2026-01-16 23:54:17,869 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:54:18,704 - INFO - Voicemeeter Potato connected
+2026-01-16 23:54:18,704 - INFO - Registered 5 main commands
+2026-01-16 23:54:18,705 - INFO - Loading plugin: app_launcher
+2026-01-16 23:54:18,706 - INFO -   + Registered command: Apps
+2026-01-16 23:54:18,706 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:54:18,706 - INFO - Loading plugin: context_commands
+2026-01-16 23:54:18,711 - INFO -   + Registered command: Context Commands
+2026-01-16 23:54:18,711 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:54:18,711 - INFO - Loading plugin: display_control
+2026-01-16 23:54:18,717 - INFO -   + Registered command: Display Control
+2026-01-16 23:54:18,717 - INFO - Initializing Display Manager...
+2026-01-16 23:54:18,717 - INFO - Enumerating display devices...
+2026-01-16 23:54:18,717 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:54:18,718 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:54:18,718 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:54:18,718 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:54:18,718 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:54:18,718 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:54:18,718 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:54:18,719 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,719 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,719 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,719 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,719 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,720 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,720 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:54:18,720 - INFO - Total monitors found: 3
+2026-01-16 23:54:19,414 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:54:19,414 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:54:19,414 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:54:19,415 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:54:19,415 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:54:19,415 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:54:19,415 - INFO - Loading plugin: game_mode
+2026-01-16 23:54:19,416 - INFO -   + Registered command: Game Mode
+2026-01-16 23:54:19,416 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:54:19,417 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:54:19,417 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:54:19,417 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:54:19,417 - INFO - Starting UI...
+2026-01-16 23:54:19,432 - INFO - Tray icon thread started
+2026-01-16 23:54:19,433 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:54:19,433 - INFO - Connecting to HID device...
+2026-01-16 23:54:19,434 - INFO - HID reader thread started
+2026-01-16 23:54:19,435 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:54:19,436 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:54:19,499 - INFO - HID device connected successfully
+2026-01-16 23:54:19,499 - INFO - HID device connected
+2026-01-16 23:54:19,521 - INFO - Tray icon is now visible
+2026-01-16 23:54:46,326 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:54:46,326 - INFO - API volume: Available
+2026-01-16 23:54:46,326 - INFO - API media: Available
+2026-01-16 23:54:46,326 - INFO - API windows: Available
+2026-01-16 23:54:46,326 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:54:47,167 - INFO - Voicemeeter Potato connected
+2026-01-16 23:54:47,167 - INFO - Registered 5 main commands
+2026-01-16 23:54:47,168 - INFO - Loading plugin: app_launcher
+2026-01-16 23:54:47,169 - INFO -   + Registered command: Apps
+2026-01-16 23:54:47,169 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:54:47,169 - INFO - Loading plugin: context_commands
+2026-01-16 23:54:47,174 - INFO -   + Registered command: Context Commands
+2026-01-16 23:54:47,174 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:54:47,174 - INFO - Loading plugin: display_control
+2026-01-16 23:54:47,180 - INFO -   + Registered command: Display Control
+2026-01-16 23:54:47,180 - INFO - Initializing Display Manager...
+2026-01-16 23:54:47,180 - INFO - Enumerating display devices...
+2026-01-16 23:54:47,180 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:54:47,180 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:54:47,180 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:54:47,180 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:54:47,181 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:54:47,181 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:54:47,181 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:54:47,181 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,181 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,181 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,181 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,182 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,182 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,182 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:54:47,182 - INFO - Total monitors found: 3
+2026-01-16 23:54:47,864 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:54:47,864 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:54:47,864 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:54:47,864 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:54:47,864 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:54:47,864 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:54:47,865 - INFO - Loading plugin: game_mode
+2026-01-16 23:54:47,865 - INFO -   + Registered command: Game Mode
+2026-01-16 23:54:47,866 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:54:47,866 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:54:47,867 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:54:47,867 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:54:47,867 - INFO - Starting UI...
+2026-01-16 23:54:47,882 - INFO - Tray icon thread started
+2026-01-16 23:54:47,883 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:54:47,883 - INFO - Connecting to HID device...
+2026-01-16 23:54:47,883 - INFO - HID reader thread started
+2026-01-16 23:54:47,884 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:54:47,886 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:54:47,948 - INFO - HID device connected successfully
+2026-01-16 23:54:47,948 - INFO - HID device connected
+2026-01-16 23:54:47,973 - INFO - Tray icon is now visible
+2026-01-16 23:55:25,747 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:55:25,747 - INFO - API volume: Available
+2026-01-16 23:55:25,748 - INFO - API media: Available
+2026-01-16 23:55:25,748 - INFO - API windows: Available
+2026-01-16 23:55:25,748 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:55:26,582 - INFO - Voicemeeter Potato connected
+2026-01-16 23:55:26,582 - INFO - Registered 5 main commands
+2026-01-16 23:55:26,583 - INFO - Loading plugin: app_launcher
+2026-01-16 23:55:26,583 - INFO -   + Registered command: Apps
+2026-01-16 23:55:26,583 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:55:26,583 - INFO - Loading plugin: context_commands
+2026-01-16 23:55:26,589 - INFO -   + Registered command: Context Commands
+2026-01-16 23:55:26,589 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:55:26,590 - INFO - Loading plugin: display_control
+2026-01-16 23:55:26,596 - INFO -   + Registered command: Display Control
+2026-01-16 23:55:26,597 - INFO - Initializing Display Manager...
+2026-01-16 23:55:26,597 - INFO - Enumerating display devices...
+2026-01-16 23:55:26,597 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:55:26,597 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:55:26,597 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:55:26,597 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:55:26,597 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:55:26,597 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:55:26,597 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:55:26,598 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:55:26,598 - INFO - Total monitors found: 3
+2026-01-16 23:55:27,290 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:55:27,290 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:55:27,290 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:55:27,290 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:55:27,290 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:55:27,290 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:55:27,290 - INFO - Loading plugin: game_mode
+2026-01-16 23:55:27,291 - INFO -   + Registered command: Game Mode
+2026-01-16 23:55:27,291 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:55:27,292 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:55:27,292 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:55:27,292 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:55:27,293 - INFO - Starting UI...
+2026-01-16 23:55:27,315 - INFO - Tray icon thread started
+2026-01-16 23:55:27,316 - INFO - Connecting to HID device...
+2026-01-16 23:55:27,316 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:55:27,316 - INFO - HID reader thread started
+2026-01-16 23:55:27,318 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:55:27,319 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:55:27,381 - INFO - HID device connected successfully
+2026-01-16 23:55:27,381 - INFO - HID device connected
+2026-01-16 23:55:27,413 - INFO - Tray icon is now visible
+2026-01-16 23:57:16,630 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-16 23:57:16,631 - INFO - API volume: Available
+2026-01-16 23:57:16,631 - INFO - API media: Available
+2026-01-16 23:57:16,631 - INFO - API windows: Available
+2026-01-16 23:57:16,631 - INFO - Connecting to Voicemeeter...
+2026-01-16 23:57:17,482 - INFO - Voicemeeter Potato connected
+2026-01-16 23:57:17,482 - INFO - Registered 5 main commands
+2026-01-16 23:57:17,483 - INFO - Loading plugin: app_launcher
+2026-01-16 23:57:17,484 - INFO -   + Registered command: Apps
+2026-01-16 23:57:17,484 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-16 23:57:17,484 - INFO - Loading plugin: context_commands
+2026-01-16 23:57:17,489 - INFO -   + Registered command: Context Commands
+2026-01-16 23:57:17,490 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-16 23:57:17,490 - INFO - Loading plugin: display_control
+2026-01-16 23:57:17,495 - INFO -   + Registered command: Display Control
+2026-01-16 23:57:17,495 - INFO - Initializing Display Manager...
+2026-01-16 23:57:17,495 - INFO - Enumerating display devices...
+2026-01-16 23:57:17,495 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-16 23:57:17,495 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-16 23:57:17,496 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-16 23:57:17,496 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-16 23:57:17,496 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-16 23:57:17,496 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-16 23:57:17,496 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-16 23:57:17,496 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,496 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,497 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,497 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,497 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,498 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,498 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-16 23:57:17,499 - INFO - Total monitors found: 3
+2026-01-16 23:57:18,086 - WARNING - Could not read brightness, using default 50%
+2026-01-16 23:57:18,086 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-16 23:57:18,086 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-16 23:57:18,086 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-16 23:57:18,087 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-16 23:57:18,087 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-16 23:57:18,087 - INFO - Loading plugin: game_mode
+2026-01-16 23:57:18,088 - INFO -   + Registered command: Game Mode
+2026-01-16 23:57:18,088 - INFO - Loading plugin: virtual_desktops
+2026-01-16 23:57:18,088 - INFO -   + Registered command: Virtual Desktops
+2026-01-16 23:57:18,088 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-16 23:57:18,089 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-16 23:57:18,089 - INFO - Starting UI...
+2026-01-16 23:57:18,104 - INFO - Tray icon thread started
+2026-01-16 23:57:18,105 - INFO - Starting tray icon with setup callback...
+2026-01-16 23:57:18,105 - INFO - Connecting to HID device...
+2026-01-16 23:57:18,105 - INFO - HID reader thread started
+2026-01-16 23:57:18,106 - INFO - Application started. Running Qt event loop...
+2026-01-16 23:57:18,108 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-16 23:57:18,170 - INFO - HID device connected successfully
+2026-01-16 23:57:18,171 - INFO - HID device connected
+2026-01-16 23:57:18,195 - INFO - Tray icon is now visible
+2026-01-16 23:58:42,081 - INFO - Entering game mode - disabling bottom two monitors...
+2026-01-16 23:58:42,081 - ERROR - Error enumerating monitors: module 'win32con' has no attribute 'DISPLAY_DEVICE_ACTIVE'
+2026-01-16 23:58:42,082 - WARNING - Not enough monitors to enable game mode (need at least 3)
+2026-01-16 23:58:42,484 - INFO - Entering game mode - disabling bottom two monitors...
+2026-01-16 23:58:42,484 - ERROR - Error enumerating monitors: module 'win32con' has no attribute 'DISPLAY_DEVICE_ACTIVE'
+2026-01-16 23:58:42,484 - WARNING - Not enough monitors to enable game mode (need at least 3)
+2026-01-17 00:11:00,580 - INFO - Quit requested from tray icon
+2026-01-17 00:11:00,580 - INFO - Shutting down...
+2026-01-17 00:11:00,580 - INFO - HID device disconnected
+2026-01-17 00:12:10,869 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:12:10,869 - INFO - API volume: Available
+2026-01-17 00:12:10,869 - INFO - API media: Available
+2026-01-17 00:12:10,869 - INFO - API windows: Available
+2026-01-17 00:12:10,869 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:12:11,698 - INFO - Voicemeeter Potato connected
+2026-01-17 00:12:11,699 - INFO - Registered 5 main commands
+2026-01-17 00:12:11,699 - INFO - Loading plugin: app_launcher
+2026-01-17 00:12:11,700 - INFO -   + Registered command: Apps
+2026-01-17 00:12:11,700 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:12:11,700 - INFO - Loading plugin: context_commands
+2026-01-17 00:12:11,705 - INFO -   + Registered command: Context Commands
+2026-01-17 00:12:11,706 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:12:11,706 - INFO - Loading plugin: display_control
+2026-01-17 00:12:11,711 - INFO -   + Registered command: Display Control
+2026-01-17 00:12:11,711 - INFO - Initializing Display Manager...
+2026-01-17 00:12:11,711 - INFO - Enumerating display devices...
+2026-01-17 00:12:11,711 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:12:11,711 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:12:11,711 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:12:11,711 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:12:11,712 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:12:11,712 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:12:11,712 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:12:11,712 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,712 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,712 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,712 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,713 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,713 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,713 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:12:11,713 - INFO - Total monitors found: 3
+2026-01-17 00:12:12,352 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:12:12,352 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:12:12,352 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:12:12,352 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:12:12,352 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:12:12,352 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:12:12,352 - INFO - Loading plugin: game_mode
+2026-01-17 00:12:12,353 - INFO -   + Registered command: Game Mode
+2026-01-17 00:12:12,353 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:12:12,354 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:12:12,354 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:12:12,354 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:12:12,355 - INFO - Starting UI...
+2026-01-17 00:12:12,368 - INFO - Tray icon thread started
+2026-01-17 00:12:12,369 - INFO - Connecting to HID device...
+2026-01-17 00:12:12,369 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:12:12,370 - INFO - HID reader thread started
+2026-01-17 00:12:12,370 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:12:12,371 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:12:12,434 - INFO - HID device connected successfully
+2026-01-17 00:12:12,434 - INFO - HID device connected
+2026-01-17 00:12:12,457 - INFO - Tray icon is now visible
+2026-01-17 00:12:46,185 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:12:47,224 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:47,224 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:48,034 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:48,034 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:49,829 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:49,829 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:50,467 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:50,468 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:51,284 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:51,284 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:51,924 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:51,924 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:52,970 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:52,971 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:53,780 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:53,780 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:55,051 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:55,051 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:55,645 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:55,645 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:56,262 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:56,262 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:56,895 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:56,895 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:57,518 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:57,518 - WARNING - Brightness control not supported on this system
+2026-01-17 00:12:58,163 - ERROR - Failed to set brightness: Get-WmiObject : Not supported 
+At line:1 char:2
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], ManagementException
+    + FullyQualifiedErrorId : GetWMIManagementException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+You cannot call a method on a null-valued expression.
+At line:1 char:1
++ (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+
+2026-01-17 00:12:58,163 - WARNING - Brightness control not supported on this system
+2026-01-17 00:21:56,818 - INFO - Quit requested from tray icon
+2026-01-17 00:21:56,818 - INFO - Shutting down...
+2026-01-17 00:21:56,819 - INFO - HID device disconnected
+2026-01-17 00:26:18,703 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:26:18,704 - INFO - API volume: Available
+2026-01-17 00:26:18,704 - INFO - API media: Available
+2026-01-17 00:26:18,704 - INFO - API windows: Available
+2026-01-17 00:26:18,704 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:26:19,537 - INFO - Voicemeeter Potato connected
+2026-01-17 00:26:19,537 - INFO - Registered 5 main commands
+2026-01-17 00:26:19,538 - INFO - Loading plugin: app_launcher
+2026-01-17 00:26:19,539 - INFO -   + Registered command: Apps
+2026-01-17 00:26:19,539 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:26:19,539 - INFO - Loading plugin: context_commands
+2026-01-17 00:26:19,544 - INFO -   + Registered command: Context Commands
+2026-01-17 00:26:19,544 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:26:19,544 - INFO - Loading plugin: display_control
+2026-01-17 00:26:19,551 - INFO -   + Registered command: Display Control
+2026-01-17 00:26:19,551 - INFO - Initializing Display Manager...
+2026-01-17 00:26:19,551 - INFO - Enumerating display devices...
+2026-01-17 00:26:19,551 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:26:19,551 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:26:19,551 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:26:19,552 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:26:19,552 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:26:19,552 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:26:19,552 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:26:19,552 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,552 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:26:19,553 - INFO - Total monitors found: 3
+2026-01-17 00:26:20,135 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:26:20,135 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:26:20,135 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:26:20,136 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:26:20,136 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:26:20,136 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:26:20,136 - INFO - Loading plugin: game_mode
+2026-01-17 00:26:20,137 - INFO -   + Registered command: Game Mode
+2026-01-17 00:26:20,137 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:26:20,137 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:26:20,137 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:26:20,138 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:26:20,138 - INFO - Starting UI...
+2026-01-17 00:26:20,152 - INFO - Tray icon thread started
+2026-01-17 00:26:20,153 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:26:20,153 - INFO - Connecting to HID device...
+2026-01-17 00:26:20,154 - INFO - HID reader thread started
+2026-01-17 00:26:20,155 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:26:20,157 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:26:20,219 - INFO - HID device connected successfully
+2026-01-17 00:26:20,219 - INFO - HID device connected
+2026-01-17 00:26:20,246 - INFO - Tray icon is now visible
+2026-01-17 00:26:44,995 - INFO - Entering game mode - disabling bottom two monitors...
+2026-01-17 00:26:44,996 - ERROR - Error enumerating monitors: module 'win32con' has no attribute 'DISPLAY_DEVICE_ACTIVE'
+2026-01-17 00:26:44,996 - WARNING - Not enough monitors to enable game mode (need at least 3)
+2026-01-17 00:26:49,822 - INFO - Entering game mode - disabling bottom two monitors...
+2026-01-17 00:26:49,823 - ERROR - Error enumerating monitors: module 'win32con' has no attribute 'DISPLAY_DEVICE_ACTIVE'
+2026-01-17 00:26:49,823 - WARNING - Not enough monitors to enable game mode (need at least 3)
+2026-01-17 00:32:03,154 - INFO - Quit requested from tray icon
+2026-01-17 00:32:03,355 - INFO - Shutting down...
+2026-01-17 00:32:03,356 - INFO - HID device disconnected
+2026-01-17 00:32:28,672 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:32:28,672 - INFO - API volume: Available
+2026-01-17 00:32:28,672 - INFO - API media: Available
+2026-01-17 00:32:28,672 - INFO - API windows: Available
+2026-01-17 00:32:28,673 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:32:29,508 - INFO - Voicemeeter Potato connected
+2026-01-17 00:32:29,508 - INFO - Registered 5 main commands
+2026-01-17 00:32:29,509 - INFO - Loading plugin: app_launcher
+2026-01-17 00:32:29,510 - INFO -   + Registered command: Apps
+2026-01-17 00:32:29,510 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:32:29,510 - INFO - Loading plugin: context_commands
+2026-01-17 00:32:29,515 - INFO -   + Registered command: Context Commands
+2026-01-17 00:32:29,515 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:32:29,515 - INFO - Loading plugin: display_control
+2026-01-17 00:32:29,521 - INFO -   + Registered command: Display Control
+2026-01-17 00:32:29,521 - INFO - Initializing Display Manager...
+2026-01-17 00:32:29,521 - INFO - Enumerating display devices...
+2026-01-17 00:32:29,522 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:32:29,522 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:32:29,522 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:32:29,522 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:32:29,522 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:32:29,522 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:32:29,523 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:32:29,523 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,523 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,523 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,523 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,523 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,524 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,524 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:32:29,524 - INFO - Total monitors found: 3
+2026-01-17 00:32:30,162 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:32:30,162 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:32:30,162 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:32:30,162 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:32:30,162 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:32:30,163 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:32:30,163 - INFO - Loading plugin: game_mode
+2026-01-17 00:32:30,164 - INFO -   + Registered command: Game Mode
+2026-01-17 00:32:30,164 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:32:30,165 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:32:30,165 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:32:30,165 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:32:30,165 - INFO - Starting UI...
+2026-01-17 00:32:30,181 - INFO - Tray icon thread started
+2026-01-17 00:32:30,182 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:32:30,182 - INFO - Connecting to HID device...
+2026-01-17 00:32:30,182 - INFO - HID reader thread started
+2026-01-17 00:32:30,183 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:32:30,185 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:32:30,247 - INFO - HID device connected successfully
+2026-01-17 00:32:30,248 - INFO - HID device connected
+2026-01-17 00:32:30,281 - INFO - Tray icon is now visible
+2026-01-17 00:33:43,581 - INFO - Showing 4 context commands for Cursor
+2026-01-17 00:34:18,963 - INFO - Quit requested from tray icon
+2026-01-17 00:34:19,165 - INFO - Shutting down...
+2026-01-17 00:34:19,175 - INFO - HID device disconnected
+2026-01-17 00:34:21,987 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:34:21,987 - INFO - API volume: Available
+2026-01-17 00:34:21,987 - INFO - API media: Available
+2026-01-17 00:34:21,988 - INFO - API windows: Available
+2026-01-17 00:34:21,988 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:34:22,828 - INFO - Voicemeeter Potato connected
+2026-01-17 00:34:22,828 - INFO - Registered 5 main commands
+2026-01-17 00:34:22,829 - INFO - Loading plugin: app_launcher
+2026-01-17 00:34:22,830 - INFO -   + Registered command: Apps
+2026-01-17 00:34:22,830 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:34:22,830 - INFO - Loading plugin: context_commands
+2026-01-17 00:34:22,836 - INFO -   + Registered command: Context Commands
+2026-01-17 00:34:22,836 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:34:22,836 - INFO - Loading plugin: display_control
+2026-01-17 00:34:22,842 - INFO -   + Registered command: Display Control
+2026-01-17 00:34:22,842 - INFO - Initializing Display Manager...
+2026-01-17 00:34:22,842 - INFO - Enumerating display devices...
+2026-01-17 00:34:22,842 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:34:22,842 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:34:22,842 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:34:22,843 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:34:22,843 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:34:22,843 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:34:22,843 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:34:22,843 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,844 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:34:22,845 - INFO - Total monitors found: 3
+2026-01-17 00:34:23,629 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:34:23,629 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:34:23,630 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:34:23,630 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:34:23,630 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:34:23,630 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:34:23,630 - INFO - Loading plugin: game_mode
+2026-01-17 00:34:23,631 - INFO -   + Registered command: Game Mode
+2026-01-17 00:34:23,631 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:34:23,632 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:34:23,632 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:34:23,632 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:34:23,632 - INFO - Starting UI...
+2026-01-17 00:34:23,649 - INFO - Tray icon thread started
+2026-01-17 00:34:23,650 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:34:23,650 - INFO - Connecting to HID device...
+2026-01-17 00:34:23,650 - INFO - HID reader thread started
+2026-01-17 00:34:23,651 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:34:23,653 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:34:23,716 - INFO - HID device connected successfully
+2026-01-17 00:34:23,716 - INFO - HID device connected
+2026-01-17 00:34:23,739 - INFO - Tray icon is now visible
+2026-01-17 00:35:16,254 - INFO - Quit requested from tray icon
+2026-01-17 00:35:16,455 - INFO - Shutting down...
+2026-01-17 00:35:16,456 - INFO - HID device disconnected
+2026-01-17 00:35:38,385 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:35:38,385 - INFO - API volume: Available
+2026-01-17 00:35:38,385 - INFO - API media: Available
+2026-01-17 00:35:38,385 - INFO - API windows: Available
+2026-01-17 00:35:38,385 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:35:39,227 - INFO - Voicemeeter Potato connected
+2026-01-17 00:35:39,227 - INFO - Registered 5 main commands
+2026-01-17 00:35:39,228 - INFO - Loading plugin: app_launcher
+2026-01-17 00:35:39,229 - INFO -   + Registered command: Apps
+2026-01-17 00:35:39,229 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:35:39,229 - INFO - Loading plugin: context_commands
+2026-01-17 00:35:39,235 - INFO -   + Registered command: Context Commands
+2026-01-17 00:35:39,235 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:35:39,236 - INFO - Loading plugin: display_control
+2026-01-17 00:35:39,243 - INFO -   + Registered command: Display Control
+2026-01-17 00:35:39,243 - INFO - Initializing Display Manager...
+2026-01-17 00:35:39,243 - INFO - Enumerating display devices...
+2026-01-17 00:35:39,244 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:35:39,244 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:35:39,244 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:35:39,244 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:35:39,244 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:35:39,244 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:35:39,245 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:35:39,245 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,245 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,245 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,245 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,245 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,246 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,246 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:35:39,246 - INFO - Total monitors found: 3
+2026-01-17 00:35:40,072 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:35:40,072 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:35:40,072 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:35:40,072 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:35:40,072 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:35:40,072 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:35:40,072 - INFO - Loading plugin: game_mode
+2026-01-17 00:35:40,073 - INFO -   + Registered command: Game Mode
+2026-01-17 00:35:40,073 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:35:40,074 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:35:40,074 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:35:40,074 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:35:40,075 - INFO - Starting UI...
+2026-01-17 00:35:40,093 - INFO - Tray icon thread started
+2026-01-17 00:35:40,093 - INFO - Connecting to HID device...
+2026-01-17 00:35:40,093 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:35:40,094 - INFO - HID reader thread started
+2026-01-17 00:35:40,094 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:35:40,097 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:35:40,159 - INFO - HID device connected successfully
+2026-01-17 00:35:40,159 - INFO - HID device connected
+2026-01-17 00:35:40,205 - INFO - Tray icon is now visible
+2026-01-17 00:39:15,378 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:39:15,378 - INFO - API volume: Available
+2026-01-17 00:39:15,378 - INFO - API media: Available
+2026-01-17 00:39:15,378 - INFO - API windows: Available
+2026-01-17 00:39:15,378 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:39:16,213 - INFO - Voicemeeter Potato connected
+2026-01-17 00:39:16,213 - INFO - Registered 5 main commands
+2026-01-17 00:39:16,214 - INFO - Loading plugin: app_launcher
+2026-01-17 00:39:16,218 - INFO -   + Registered command: Apps
+2026-01-17 00:39:16,218 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:39:16,218 - INFO - Loading plugin: context_commands
+2026-01-17 00:39:16,230 - INFO -   + Registered command: Context Commands
+2026-01-17 00:39:16,231 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:39:16,231 - INFO - Loading plugin: display_control
+2026-01-17 00:39:16,244 - INFO -   + Registered command: Display Control
+2026-01-17 00:39:16,244 - INFO - Initializing Display Manager...
+2026-01-17 00:39:16,244 - INFO - Enumerating display devices...
+2026-01-17 00:39:16,244 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:39:16,245 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:39:16,245 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:39:16,245 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:39:16,245 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:39:16,245 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:39:16,245 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:39:16,245 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,245 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,245 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,245 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,246 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,246 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,246 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:39:16,246 - INFO - Total monitors found: 3
+2026-01-17 00:39:17,107 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:39:17,107 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:39:17,107 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:39:17,107 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:39:17,107 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:39:17,107 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:39:17,108 - INFO - Loading plugin: game_mode
+2026-01-17 00:39:17,113 - INFO -   + Registered command: Game Mode
+2026-01-17 00:39:17,113 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:39:17,117 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:39:17,117 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:39:17,117 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:39:17,117 - INFO - Starting UI...
+2026-01-17 00:39:17,133 - INFO - Tray icon thread started
+2026-01-17 00:39:17,133 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:39:17,133 - INFO - Connecting to HID device...
+2026-01-17 00:39:17,134 - INFO - HID reader thread started
+2026-01-17 00:39:17,135 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:39:17,137 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:39:17,200 - INFO - HID device connected successfully
+2026-01-17 00:39:17,200 - INFO - HID device connected
+2026-01-17 00:39:17,468 - INFO - Tray icon is now visible
+2026-01-17 00:44:17,576 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:44:17,577 - INFO - API volume: Available
+2026-01-17 00:44:17,577 - INFO - API media: Available
+2026-01-17 00:44:17,577 - INFO - API windows: Available
+2026-01-17 00:44:17,577 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:44:18,424 - INFO - Voicemeeter Potato connected
+2026-01-17 00:44:18,425 - INFO - Registered 5 main commands
+2026-01-17 00:44:18,425 - INFO - Loading plugin: app_launcher
+2026-01-17 00:44:18,428 - INFO -   + Registered command: Apps
+2026-01-17 00:44:18,429 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:44:18,429 - INFO - Loading plugin: context_commands
+2026-01-17 00:44:18,440 - INFO -   + Registered command: Context Commands
+2026-01-17 00:44:18,440 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:44:18,441 - INFO - Loading plugin: display_control
+2026-01-17 00:44:18,455 - INFO -   + Registered command: Display Control
+2026-01-17 00:44:18,455 - INFO - Initializing Display Manager...
+2026-01-17 00:44:18,455 - INFO - Enumerating display devices...
+2026-01-17 00:44:18,456 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:44:18,456 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:44:18,456 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:44:18,456 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:44:18,456 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:44:18,456 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:44:18,457 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:44:18,457 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,457 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,457 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,457 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,457 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,457 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,458 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:44:18,458 - INFO - Total monitors found: 3
+2026-01-17 00:44:19,068 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:44:19,068 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:44:19,068 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:44:19,068 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:44:19,069 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:44:19,069 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:44:19,069 - INFO - Loading plugin: game_mode
+2026-01-17 00:44:19,072 - INFO -   + Registered command: Game Mode
+2026-01-17 00:44:19,072 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:44:19,076 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:44:19,077 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:44:19,077 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:44:19,077 - INFO - Starting UI...
+2026-01-17 00:44:19,093 - INFO - Tray icon thread started
+2026-01-17 00:44:19,093 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:44:19,093 - INFO - Connecting to HID device...
+2026-01-17 00:44:19,094 - INFO - HID reader thread started
+2026-01-17 00:44:19,094 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:44:19,096 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:44:19,160 - INFO - HID device connected successfully
+2026-01-17 00:44:19,160 - INFO - HID device connected
+2026-01-17 00:44:19,417 - INFO - Tray icon is now visible
+2026-01-17 00:54:19,908 - INFO - Initializing Keychron V1 Menu System (Qt)...
+2026-01-17 00:54:19,908 - INFO - API volume: Available
+2026-01-17 00:54:19,908 - INFO - API media: Available
+2026-01-17 00:54:19,908 - INFO - API windows: Available
+2026-01-17 00:54:19,909 - INFO - Connecting to Voicemeeter...
+2026-01-17 00:54:20,746 - INFO - Voicemeeter Potato connected
+2026-01-17 00:54:20,746 - INFO - Registered 5 main commands
+2026-01-17 00:54:20,747 - INFO - Loading plugin: app_launcher
+2026-01-17 00:54:20,750 - INFO -   + Registered command: Apps
+2026-01-17 00:54:20,750 - INFO -   + Registered plugin mode handler: MenuMode.APP_LAUNCHER_MENU
+2026-01-17 00:54:20,750 - INFO - Loading plugin: context_commands
+2026-01-17 00:54:20,762 - INFO -   + Registered command: Context Commands
+2026-01-17 00:54:20,762 - INFO -   + Registered plugin mode handler: MenuMode.CONTEXT_MENU
+2026-01-17 00:54:20,762 - INFO - Loading plugin: display_control
+2026-01-17 00:54:20,776 - INFO -   + Registered command: Display Control
+2026-01-17 00:54:20,776 - INFO - Initializing Display Manager...
+2026-01-17 00:54:20,776 - INFO - Enumerating display devices...
+2026-01-17 00:54:20,776 - INFO - Device 0: \\.\DISPLAY1, Flags: 524293 (0x00080005)
+2026-01-17 00:54:20,776 - INFO -   -> Found monitor [ACTIVE]: Display 1 (1920x1080) [PRIMARY]
+2026-01-17 00:54:20,776 - INFO - Device 1: \\.\DISPLAY2, Flags: 524289 (0x00080001)
+2026-01-17 00:54:20,776 - INFO -   -> Found monitor [ACTIVE]: Display 2 (1080x1920)
+2026-01-17 00:54:20,776 - INFO - Device 2: \\.\DISPLAY3, Flags: 524289 (0x00080001)
+2026-01-17 00:54:20,776 - INFO -   -> Found monitor [ACTIVE]: Display 3 (1080x1920)
+2026-01-17 00:54:20,776 - INFO - Device 3: \\.\DISPLAY4, Flags: 524288 (0x00080000)
+2026-01-17 00:54:20,777 - INFO - Device 4: \\.\DISPLAY5, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 5: \\.\DISPLAY6, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 6: \\.\DISPLAY7, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 7: \\.\DISPLAY8, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 8: \\.\DISPLAY9, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 9: \\.\DISPLAY10, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Device 10: \\.\DISPLAY11, Flags: 0 (0x00000000)
+2026-01-17 00:54:20,777 - INFO - Total monitors found: 3
+2026-01-17 00:54:21,400 - WARNING - Could not read brightness, using default 50%
+2026-01-17 00:54:21,400 - INFO - Display Manager initialized with 3 monitor(s)
+2026-01-17 00:54:21,400 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MENU
+2026-01-17 00:54:21,400 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_BRIGHTNESS
+2026-01-17 00:54:21,400 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_MODE
+2026-01-17 00:54:21,400 - INFO -   + Registered plugin mode handler: MenuMode.DISPLAY_TOGGLE
+2026-01-17 00:54:21,401 - INFO - Loading plugin: game_mode
+2026-01-17 00:54:21,405 - INFO -   + Registered command: Game Mode
+2026-01-17 00:54:21,405 - INFO - Loading plugin: virtual_desktops
+2026-01-17 00:54:21,409 - INFO -   + Registered command: Virtual Desktops
+2026-01-17 00:54:21,409 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP
+2026-01-17 00:54:21,409 - INFO -   + Registered plugin mode handler: MenuMode.VIRTUAL_DESKTOP_MENU
+2026-01-17 00:54:21,409 - INFO - Starting UI...
+2026-01-17 00:54:21,428 - INFO - Tray icon thread started
+2026-01-17 00:54:21,429 - INFO - Connecting to HID device...
+2026-01-17 00:54:21,429 - INFO - Starting tray icon with setup callback...
+2026-01-17 00:54:21,429 - INFO - HID reader thread started
+2026-01-17 00:54:21,429 - INFO - Application started. Running Qt event loop...
+2026-01-17 00:54:21,432 - INFO - Connecting to HID device (VID: 0x3434, PID: 0x0311)
+2026-01-17 00:54:21,494 - INFO - HID device connected successfully
+2026-01-17 00:54:21,494 - INFO - HID device connected
+2026-01-17 00:54:21,760 - INFO - Tray icon is now visible

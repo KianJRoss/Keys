@@ -209,10 +209,34 @@ class MenuStateMachine:
     def update_display(self):
         """Update UI display based on current state"""
         if self.state.menu_mode == MenuMode.NORMAL:
-            # Show current command selection
-            cmd = self.commands.get(self.state.current_command)
-            if cmd and self.notification_callback:
-                self.notification_callback(cmd.name, Config.NOTIFICATION_DURATION)
+            # Show current command selection using the wheel
+            if self.ui_callback:
+                count = self.commands.count()
+                if count > 0:
+                    current = self.state.current_command
+                    
+                    # Calculate indices with wrapping
+                    prev_idx = (current - 1) % count
+                    next_idx = (current + 1) % count
+                    
+                    cmd_curr = self.commands.get(current)
+                    cmd_prev = self.commands.get(prev_idx)
+                    cmd_next = self.commands.get(next_idx)
+                    
+                    display = {
+                        'title': 'Main Menu',
+                        'center': cmd_curr.name if cmd_curr else '',
+                        'left': cmd_prev.name if cmd_prev else '',
+                        'right': cmd_next.name if cmd_next else '',
+                        'subtitle': cmd_curr.description if cmd_curr else '',
+                        'active_index': 1 # Center is active
+                    }
+                    self.ui_callback(display)
+            
+            # Legacy notification (optional, might be redundant if wheel is shown)
+            # cmd = self.commands.get(self.state.current_command)
+            # if cmd and self.notification_callback:
+            #     self.notification_callback(cmd.name, Config.NOTIFICATION_DURATION)
         else:
             # Show menu overlay
             handler = self.mode_handlers.get(self.state.menu_mode)
@@ -226,9 +250,7 @@ class MenuStateMachine:
 
     def check_menu_timeout(self) -> bool:
         """Check if menu should auto-exit"""
-        if self.state.menu_mode == MenuMode.NORMAL:
-            return False
-
+        # Allow timeout in all modes
         if self.state.menu_timer is None:
             return False
 
@@ -311,8 +333,18 @@ class MenuStateMachine:
             cmd = self.commands.get(self.state.current_command)
             if cmd:
                 try:
+                    # Capture mode before execution
+                    previous_mode = self.state.menu_mode
+                    
                     cmd.action()
-                    self.show_notification(f"Executed: {cmd.name}", Config.COMMAND_EXECUTE_DURATION)
+                    
+                    # Only show notification if we stayed in NORMAL mode
+                    # (i.e., it was a simple action, not a menu transition)
+                    if self.state.menu_mode == previous_mode:
+                        self.show_notification(f"Executed: {cmd.name}", Config.COMMAND_EXECUTE_DURATION)
+                    
+                    # If we changed mode, enter_mode() already called update_display()
+                    
                 except Exception as e:
                     self.show_notification(f"Error: {e}", Config.ERROR_DURATION)
         else:
@@ -355,6 +387,10 @@ class MenuStateMachine:
 
     def handle_double_tap(self):
         """Handle double tap event (from firmware)"""
+        # Cancel any pending single click timer to prevent it from firing
+        if self.single_click_timer:
+            self.single_click_timer.cancel()
+            self.single_click_timer = None
         if self.state.menu_mode != MenuMode.NORMAL:
             self.exit_menu_mode()
 
