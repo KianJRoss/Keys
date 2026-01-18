@@ -55,12 +55,13 @@ class MediaModeHandler(ModeHandler):
 
     def on_rotation(self, state: AppState, clockwise: bool):
         """Rotate: Next/Previous track"""
+        # Clockwise brings left (Previous) to center, CCW brings right (Next) to center
         if clockwise:
-            self.api.media.next_track()
-            self._trigger_highlight(2)
-        else:
             self.api.media.prev_track()
             self._trigger_highlight(0)
+        else:
+            self.api.media.next_track()
+            self._trigger_highlight(2)
 
     def on_press(self, state: AppState):
         """Press: Play/Pause"""
@@ -98,10 +99,11 @@ class VolumeModeHandler(ModeHandler):
 
     def on_rotation(self, state: AppState, clockwise: bool):
         """Rotate: Adjust volume"""
+        # Clockwise brings left (Volume Down) to center, CCW brings right (Volume Up) to center
         if clockwise:
-            self.api.volume.adjust_volume(self.volume_step)
-        else:
             self.api.volume.adjust_volume(-self.volume_step)
+        else:
+            self.api.volume.adjust_volume(self.volume_step)
 
     def on_press(self, state: AppState):
         """Press: Toggle mute"""
@@ -456,10 +458,11 @@ class VMGainHandler(ModeHandler):
 
     def on_rotation(self, state: AppState, clockwise: bool):
         """Rotate: Adjust gain"""
+        # Clockwise brings left (Gain Down) to center, CCW brings right (Gain Up) to center
         if clockwise:
-            self.vm.adjust_strip_gain(self.strip, self.gain_step)
-        else:
             self.vm.adjust_strip_gain(self.strip, -self.gain_step)
+        else:
+            self.vm.adjust_strip_gain(self.strip, self.gain_step)
 
     def on_press(self, state: AppState):
         """Press: Reset gain to 0 dB"""

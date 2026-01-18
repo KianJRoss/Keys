@@ -24,7 +24,7 @@ from abc import ABC, abstractmethod
 class Config:
     """Global configuration constants"""
     DOUBLE_CLICK_MS = 300           # Double-click detection threshold
-    MENU_TIMEOUT_MS = 5000          # Auto-exit menu after inactivity
+    MENU_TIMEOUT_MS = 1500          # Auto-exit menu after inactivity
     VOLUME_STEP = 2                 # Volume change percentage
     WINDOW_TITLE_MAX_LEN = 22       # Max chars for window titles
     NOTIFICATION_DURATION = 1500    # Default notification time (ms)
@@ -198,6 +198,10 @@ class MenuStateMachine:
         """Set callback for UI updates"""
         self.ui_callback = callback
 
+    def set_ui_hide_callback(self, callback: Callable[[], None]):
+        """Set callback for hiding UI"""
+        self._hide_ui = callback
+
     def set_notification_callback(self, callback: Callable[[str, int], None]):
         """Set callback for notifications"""
         self.notification_callback = callback
@@ -287,6 +291,11 @@ class MenuStateMachine:
         if self.state.menu_mode != MenuMode.NORMAL:
             self.enter_mode(MenuMode.NORMAL)
             self.show_notification("Returned to Normal Mode", Config.NOTIFICATION_DURATION)
+        else:
+            # Already in NORMAL mode - just hide the UI
+            self.state.menu_timer = None
+            if self.ui_callback and hasattr(self, '_hide_ui'):
+                self._hide_ui()
     
     def _execute_single_click(self):
         """Execute single click action after delay"""

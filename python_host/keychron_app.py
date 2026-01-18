@@ -255,6 +255,7 @@ class KeychronApp:
         # Set callbacks
         self.state_machine.set_ui_callback(self._on_ui_update)
         self.state_machine.set_notification_callback(self._on_notification)
+        self.state_machine.set_ui_hide_callback(self._on_ui_hide)
 
         # Start UI
         logger.info(f"Starting overlay UI ({UI_BACKEND} backend)...")
@@ -377,6 +378,11 @@ class KeychronApp:
         """Callback: Show notification"""
         self.ui.show_notification(message, duration)
 
+    def _on_ui_hide(self):
+        """Callback: Hide UI overlay"""
+        if hasattr(self.ui, 'hide_menu'):
+            self.ui.hide_menu()
+
     def connect_hid(self) -> bool:
         """Connect to keyboard HID device with retries"""
         logger.info("Searching for keyboard...")
@@ -459,18 +465,22 @@ class KeychronApp:
 
     def _handle_encoder_event(self, event_type: int, value: int):
         """Route encoder events to state machine"""
-        
+
         # Debug logging
         # logger.info(f"Event: {event_type}, Pressed: {self.is_pressed}")
 
         # Get dynamic item count from state machine's command registry
-        num_items = self.state_machine.commands.count() if hasattr(self.state_machine, 'commands') else 4 
+        num_items = self.state_machine.commands.count() if hasattr(self.state_machine, 'commands') else 4
 
         if event_type == EVT_ENCODER_CW:
-            # Check if button is held for quick volume change
+            # Quick volume control: Press + Rotate = Instant volume adjustment
             if self.is_pressed:
                 self.was_rotated_while_pressed = True
-                
+
+                # Hide any open menu UI (from previous browsing)
+                if self.state_machine.state.menu_mode == MenuMode.NORMAL:
+                    self._on_ui_hide()
+
                 self.api.volume.adjust_volume(2)
                 vol = self.api.volume.get_volume()
                 self.ui.show_notification(f"Volume: {vol}%", 500)
@@ -484,9 +494,13 @@ class KeychronApp:
             if self.led: self.led.flash_event('rotate_cw')
 
         elif event_type == EVT_ENCODER_CCW:
-            # Check if button is held for quick volume change
+            # Quick volume control: Press + Rotate = Instant volume adjustment
             if self.is_pressed:
                 self.was_rotated_while_pressed = True
+
+                # Hide any open menu UI (from previous browsing)
+                if self.state_machine.state.menu_mode == MenuMode.NORMAL:
+                    self._on_ui_hide()
 
                 self.api.volume.adjust_volume(-2)
                 vol = self.api.volume.get_volume()
@@ -511,8 +525,11 @@ class KeychronApp:
             if self.ignore_next_release:
                 self.ignore_next_release = False
                 return
+            # If we were doing quick volume adjustment, hide the notification immediately
+            if self.was_rotated_while_pressed and self.state_machine.state.menu_mode == MenuMode.NORMAL:
+                self._on_ui_hide()
             # Only execute click if we didn't use the press for rotation
-            if not self.was_rotated_while_pressed:
+            elif not self.was_rotated_while_pressed:
                 self.state_machine.handle_press()
 
         elif event_type == EVT_ENCODER_LONG:

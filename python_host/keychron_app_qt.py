@@ -133,6 +133,8 @@ class KeychronApp(QObject):
         self.ignore_next_release = False
         self.last_command_index = 0
         self.timeout_timer = None # Added for timeout check
+        self.volume_hide_timer = None # Auto-hide timer for quick volume
+        self.last_activity_time = 0  # Track last activity for stuck press detection
 
     def setup(self) -> bool:
         """Initialize all components"""
@@ -197,6 +199,8 @@ class KeychronApp(QObject):
         """Check for menu timeout"""
         if self.state_machine.check_menu_timeout():
             if self.state_machine.state.menu_mode == MenuMode.NORMAL:
+                # Clear timer and hide menu
+                self.state_machine.state.menu_timer = None
                 self.ui.hide_menu()
             else:
                 self.state_machine.exit_menu_mode()
@@ -252,14 +256,21 @@ class KeychronApp(QObject):
 
     def _handle_rotation(self, clockwise: bool):
         """Handle encoder rotation"""
-        # Safety: If we think we are pressed but haven't seen a rotation or press in 5s,
-        # we might have missed a release event.
-        if self.is_pressed and self.state_machine.check_menu_timeout():
-             self.is_pressed = False
-             self.was_rotated_while_pressed = False
+        import time
+        current_time = time.time()
+
+        # Safety: If we think we are pressed but haven't seen activity in 1.5s, we missed a release
+        if self.is_pressed and (current_time - self.last_activity_time) > 1.5:
+            logger.warning("Detected stuck press state - forcing release")
+            self.is_pressed = False
+            self.was_rotated_while_pressed = False
+            self._hide_volume_wheel()
+
+        self.last_activity_time = current_time
 
         # Check if button is held for quick volume change
         if self.is_pressed:
+            logger.debug("Quick volume: rotation while pressed")
             self.was_rotated_while_pressed = True
 
             # Direct volume adjustment when button is held
@@ -278,7 +289,20 @@ class KeychronApp(QObject):
             }
             progress = vol / 100.0
             icons = {'left': '−', 'center': '🔊', 'right': '+'}
+
+            # Reset timer to prevent old menu from showing
+            self.state_machine.state.menu_timer = None
+
             self.ui.show_menu(display, progress=progress, icons=icons)
+
+            # Set auto-hide timer (hide after 800ms of no activity)
+            if self.volume_hide_timer:
+                self.volume_hide_timer.stop()
+            self.volume_hide_timer = QTimer(self)
+            self.volume_hide_timer.setSingleShot(True)
+            self.volume_hide_timer.timeout.connect(self._hide_volume_wheel)
+            self.volume_hide_timer.start(800)  # 800ms
+
             return  # Early return - don't cycle commands
 
         # Calculate new simulated index
@@ -287,7 +311,7 @@ class KeychronApp(QObject):
         count = self.state_machine.commands.count()
         if count == 0: count = 4
 
-        # Reversed: clockwise on physical knob should go forward in menu
+        # Clockwise: left→center, Counter-clockwise: right→center
         direction = -1 if clockwise else 1
         new_index = (self.last_command_index + direction) % count
 
@@ -298,23 +322,54 @@ class KeychronApp(QObject):
 
     def _handle_press(self):
         """Handle encoder press"""
+        import time
+        logger.info("Press detected")
         self.is_pressed = True
         self.was_rotated_while_pressed = False
+        self.last_activity_time = time.time()
+
+    def _hide_volume_wheel(self):
+        """Hide the volume wheel (called by timer or release)"""
+        logger.debug(f"_hide_volume_wheel called: mode={self.state_machine.state.menu_mode}, is_pressed={self.is_pressed}")
+        if self.state_machine.state.menu_mode == MenuMode.NORMAL:
+            # If timer fired during quick volume, firmware didn't send release - force it
+            if self.is_pressed and self.was_rotated_while_pressed:
+                logger.info("Quick volume finished - forcing release state")
+                self.is_pressed = False
+                self.was_rotated_while_pressed = False
+
+            logger.info("Hiding volume wheel now")
+            self.ui.hide_menu()
+            self.state_machine.state.menu_timer = None
+            if self.volume_hide_timer:
+                self.volume_hide_timer.stop()
+                self.volume_hide_timer = None
 
     def _handle_release(self):
         """Handle encoder release"""
+        import time
+        logger.info(f"Release detected: was_rotated={self.was_rotated_while_pressed}, mode={self.state_machine.state.menu_mode}")
+        self.last_activity_time = time.time()
+
         if self.ignore_next_release:
             self.ignore_next_release = False
             self.is_pressed = False
+            self.was_rotated_while_pressed = False
             return
 
         if not self.was_rotated_while_pressed:
+            # Regular press without rotation - execute command
             self.state_machine.handle_press()
         else:
-            # If we rotated while pressed (volume adjustment), immediately refresh 
-            # the display to show the current menu state instead of the volume wheel.
-            self.state_machine.reset_menu_timer()
-            self.state_machine.update_display()
+            # We rotated while pressed - this was quick volume
+            if self.state_machine.state.menu_mode == MenuMode.NORMAL:
+                # Quick volume mode - trigger immediate hide (timer will also fire as backup)
+                logger.debug("Hiding volume wheel after quick volume")
+                self._hide_volume_wheel()
+            else:
+                # In menu mode, refresh display
+                self.state_machine.reset_menu_timer()
+                self.state_machine.update_display()
 
         self.is_pressed = False
         self.was_rotated_while_pressed = False
