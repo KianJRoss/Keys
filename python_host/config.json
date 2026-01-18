@@ -5,7 +5,7 @@
     "timeout_ms": 100,
     "reconnect_interval": 2.0,
     "max_reconnect_attempts": 30,
-    "ui_theme": "GRUVBOX",
+    "ui_theme": "VIOLET",
     "use_enhanced_ui": true,
     "led_feedback": true,
     "log_level": "INFO",

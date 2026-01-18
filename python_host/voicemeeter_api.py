@@ -275,13 +275,18 @@ class VoicemeeterController:
         return value if value is not None else 0.0
 
     def set_strip_gain(self, strip: int, gain_db: float):
-        """Set strip gain in dB"""
-        self.api.set_parameter(f"Strip[{strip}].Gain", gain_db)
+        """Set strip gain in dB (clamped to -60 to +12 dB)"""
+        # Clamp to valid range
+        clamped = max(-60.0, min(12.0, gain_db))
+        self.api.set_parameter(f"Strip[{strip}].Gain", clamped)
 
     def adjust_strip_gain(self, strip: int, delta_db: float):
-        """Adjust strip gain by delta"""
+        """Adjust strip gain by delta (clamped to -60 to +12 dB)"""
         current = self.get_strip_gain(strip)
-        self.set_strip_gain(strip, current + delta_db)
+        new_gain = current + delta_db
+        # Clamp to valid range
+        clamped = max(-60.0, min(12.0, new_gain))
+        self.set_strip_gain(strip, clamped)
 
     # ========================================================================
     # ROUTING CONTROL
@@ -290,7 +295,10 @@ class VoicemeeterController:
     def get_routing(self, strip: int, output: str) -> bool:
         """Get strip routing to output (A1/A2/A3)"""
         value = self.api.get_parameter(f"Strip[{strip}].{output}")
-        return bool(value) if value is not None else False
+        if value is None:
+            return False
+        # Voicemeeter returns 0.0 or 1.0
+        return value > 0.5
 
     def set_routing(self, strip: int, output: str, enabled: bool):
         """Set strip routing to output"""
@@ -298,7 +306,9 @@ class VoicemeeterController:
 
     def toggle_routing(self, strip: int, output: str):
         """Toggle strip routing to output"""
-        self.set_routing(strip, output, not self.get_routing(strip, output))
+        current = self.get_routing(strip, output)
+        self.set_routing(strip, output, not current)
+        time.sleep(0.02)  # Small delay for parameter to propagate
 
 
 # ============================================================================

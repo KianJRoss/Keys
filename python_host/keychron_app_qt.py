@@ -252,20 +252,47 @@ class KeychronApp(QObject):
 
     def _handle_rotation(self, clockwise: bool):
         """Handle encoder rotation"""
+        # Safety: If we think we are pressed but haven't seen a rotation or press in 5s,
+        # we might have missed a release event.
+        if self.is_pressed and self.state_machine.check_menu_timeout():
+             self.is_pressed = False
+             self.was_rotated_while_pressed = False
+
+        # Check if button is held for quick volume change
         if self.is_pressed:
             self.was_rotated_while_pressed = True
+
+            # Direct volume adjustment when button is held
+            delta = 2 if clockwise else -2
+            self.api.volume.adjust_volume(delta)
+            vol = self.api.volume.get_volume()
+
+            # Show volume wheel with progress
+            display = {
+                'left': '−',
+                'center': f'{vol}%',
+                'right': '+',
+                'title': '🔊 System Volume',
+                'subtitle': 'Hold & Turn',
+                'active_index': 1
+            }
+            progress = vol / 100.0
+            icons = {'left': '−', 'center': '🔊', 'right': '+'}
+            self.ui.show_menu(display, progress=progress, icons=icons)
+            return  # Early return - don't cycle commands
 
         # Calculate new simulated index
         # We need to simulate an absolute 0-3 rotation for the state machine
         # which expects absolute values to detect direction or set command
         count = self.state_machine.commands.count()
         if count == 0: count = 4
-        
-        direction = 1 if clockwise else -1
+
+        # Reversed: clockwise on physical knob should go forward in menu
+        direction = -1 if clockwise else 1
         new_index = (self.last_command_index + direction) % count
-        
+
         self.state_machine.handle_rotation(new_index)
-        
+
         # Update our local tracking
         self.last_command_index = new_index
 
@@ -283,6 +310,11 @@ class KeychronApp(QObject):
 
         if not self.was_rotated_while_pressed:
             self.state_machine.handle_press()
+        else:
+            # If we rotated while pressed (volume adjustment), immediately refresh 
+            # the display to show the current menu state instead of the volume wheel.
+            self.state_machine.reset_menu_timer()
+            self.state_machine.update_display()
 
         self.is_pressed = False
         self.was_rotated_while_pressed = False
@@ -327,7 +359,10 @@ class KeychronApp(QObject):
             self.ui.save_theme(data['save_theme'])
         else:
             # Standard menu display update
-            self.ui.show_menu(data)
+            # Extract progress and icons as separate parameters
+            progress = data.get('progress')
+            icons = data.get('icons')
+            self.ui.show_menu(data, progress=progress, icons=icons)
 
     def _save_config(self):
         """Save configuration to file"""

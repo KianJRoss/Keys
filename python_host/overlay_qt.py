@@ -13,6 +13,7 @@ import sys
 import math
 import json
 import os
+import ctypes
 from typing import Dict, Optional, List
 from dataclasses import dataclass
 
@@ -28,6 +29,22 @@ from PyQt6.QtGui import (
     QRadialGradient, QLinearGradient, QFont, QFontDatabase,
     QCursor, QTextOption
 )
+
+
+# Cursor hiding using Windows API
+def set_cursor_visibility(visible: bool):
+    """Hide/show cursor using Windows ShowCursor API"""
+    try:
+        if not visible:
+            # Decrement until hidden (count < 0)
+            while ctypes.windll.user32.ShowCursor(0) >= 0:
+                pass
+        else:
+            # Increment until visible (count >= 0)
+            while ctypes.windll.user32.ShowCursor(1) < 0:
+                pass
+    except Exception as e:
+        print(f"Error setting cursor visibility: {e}")
 
 
 @dataclass
@@ -105,8 +122,7 @@ class RadialWheelWidget(QWidget):
         self.setWindowFlags(
             Qt.WindowType.FramelessWindowHint |
             Qt.WindowType.WindowStaysOnTopHint |
-            Qt.WindowType.Tool |
-            Qt.WindowType.WindowTransparentForInput
+            Qt.WindowType.Tool
         )
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
@@ -156,7 +172,7 @@ class RadialWheelWidget(QWidget):
 
         self.follow_timer = QTimer()
         self.follow_timer.timeout.connect(self._follow_cursor)
-        self.follow_timer.setInterval(16)
+        self.follow_timer.setInterval(5) # Higher frequency to reduce lag (200fps)
 
         # Fonts
         self.font_title = QFont("Segoe UI", 12, QFont.Weight.DemiBold)
@@ -225,7 +241,8 @@ class RadialWheelWidget(QWidget):
 
         self.show()
         # Hide cursor when menu is shown
-        self.setCursor(Qt.CursorShape.BlankCursor)
+        QApplication.setOverrideCursor(Qt.CursorShape.BlankCursor)
+        set_cursor_visibility(False)
 
     def hide_menu(self):
         """Hide with animation"""
@@ -242,7 +259,8 @@ class RadialWheelWidget(QWidget):
         self.pulse_timer.stop()
         self.hide()
         # Restore cursor when menu is hidden
-        self.setCursor(Qt.CursorShape.ArrowCursor)
+        QApplication.restoreOverrideCursor()
+        set_cursor_visibility(True)
 
     def _follow_cursor(self):
         """Keep centered on cursor"""
@@ -277,13 +295,14 @@ class RadialWheelWidget(QWidget):
         self._draw_segments(painter)
         self._draw_hub(painter)
         if self.progress is not None:
-            self._draw_progress(painter)
+            self._draw_progress_hub(painter)
         self._draw_title(painter)
         if self.subtitle and self._scale > 0.5:
             self._draw_subtitle(painter)
 
     def _draw_glow(self, painter: QPainter):
         """Draw outer glow"""
+        # Use glow color for the outer rings
         glow_color = QColor(self.theme.glow)
 
         for i in range(3):
@@ -338,14 +357,14 @@ class RadialWheelWidget(QWidget):
 
             # Calculate text position
             mid_angle = math.radians(start_angle + span / 2)
-            
+
             # Dynamic positioning based on text length
             label_full = self.options[i]
             is_long_text = len(label_full) > 12
-            
+
             base_radius = (self.inner_radius + self.outer_radius) / 2
             text_radius = base_radius + 12 if is_long_text else base_radius
-            
+
             text_x = self.center.x() + text_radius * math.cos(mid_angle)
             text_y = self.center.y() - text_radius * math.sin(mid_angle)
 
@@ -369,9 +388,9 @@ class RadialWheelWidget(QWidget):
                 icon_y_offset = -22 if not is_long_text else -18
                 icon_rect = QRectF(text_x - 20, text_y + icon_y_offset, 40, 24)
                 painter.drawText(icon_rect, Qt.AlignmentFlag.AlignCenter, icon)
-                
+
                 painter.restore()
-                
+
                 text_y += 8 if not is_long_text else 12
 
             # Draw label
@@ -388,15 +407,15 @@ class RadialWheelWidget(QWidget):
                      font.setWeight(QFont.Weight.Medium)
             else:
                 font = self.font_option_active if is_active else self.font_option
-                
+
             painter.setFont(font)
             painter.setPen(text_color)
-            
+
             # Wider rect for longer text
             rect_width = 130 if is_long_text else 100
             text_rect = QRectF(text_x - (rect_width/2), text_y - 10, rect_width, 20)
             painter.drawText(text_rect, Qt.AlignmentFlag.AlignCenter, label)
-            
+
             # Restore painter state (removes clip)
             painter.restore()
 
@@ -476,7 +495,7 @@ class RadialWheelWidget(QWidget):
         painter.setPen(QPen(accent_glow, 2))
         painter.drawEllipse(self.center, dot_radius, dot_radius)
 
-    def _draw_progress(self, painter: QPainter):
+    def _draw_progress_hub(self, painter: QPainter):
         """Draw progress ring in hub (around center dot)"""
         if self.progress is None:
             return
@@ -495,7 +514,7 @@ class RadialWheelWidget(QWidget):
             # Determine color based on context (Title)
             title_lower = self.title.lower() if self.title else ""
             is_audio = any(x in title_lower for x in ['volume', 'gain', 'mic'])
-            
+
             if is_audio:
                 # Audio Gradient: Green -> Yellow -> Red
                 # 0.0 -> 0.8 (0dB for VM) -> 1.0
@@ -516,7 +535,7 @@ class RadialWheelWidget(QWidget):
             else:
                 # Use accent color for non-audio progress rings
                 progress_color = QColor(self.theme.accent)
-                
+
             painter.setPen(QPen(progress_color, ring_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
 
             rect = QRectF(
@@ -526,6 +545,45 @@ class RadialWheelWidget(QWidget):
                 ring_radius * 2
             )
             # Start from top (90°), go clockwise (negative span)
+            span = -360 * self.progress
+            painter.drawArc(rect, 90 * 16, int(span * 16))
+
+    def _draw_volume_indicator(self, painter: QPainter):
+        """Draw volume indicator arc around inner circle (cursor position)
+
+        Fills clockwise from top (pi/2) based on progress value:
+        - 0%: starts at top (90°)
+        - 100%: full circle back to top
+        """
+        if self.progress is None:
+            return
+
+        # Volume indicator around inner circle where cursor is
+        indicator_radius = self.inner_radius + 8  # Just outside inner circle
+        indicator_width = 4
+
+        # Background arc (full circle)
+        bg_color = QColor(self.theme.progress_bg)
+        bg_color.setAlpha(80)
+        painter.setBrush(Qt.BrushStyle.NoBrush)
+        painter.setPen(QPen(bg_color, indicator_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
+        painter.drawEllipse(self.center, indicator_radius, indicator_radius)
+
+        # Progress arc - starts at top (90°) and fills clockwise
+        if self.progress > 0:
+            accent_color = QColor(self.theme.accent)
+            accent_color.setAlpha(220)
+            painter.setPen(QPen(accent_color, indicator_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
+
+            rect = QRectF(
+                self.center.x() - indicator_radius,
+                self.center.y() - indicator_radius,
+                indicator_radius * 2,
+                indicator_radius * 2
+            )
+
+            # Start from top (90°), go clockwise (negative span)
+            # Full circle = -360°
             span = -360 * self.progress
             painter.drawArc(rect, 90 * 16, int(span * 16))
 
@@ -549,7 +607,7 @@ class RadialWheelWidget(QWidget):
         font = QFont(self.font_small)
         font.setPointSize(9)
         painter.setFont(font)
-        
+
         hint_color = QColor(self.theme.text_inactive)
         hint_color.setAlpha(int(255 * min(1.0, (self._scale - 0.5) * 2)))
         painter.setPen(hint_color)
@@ -559,971 +617,133 @@ class RadialWheelWidget(QWidget):
         # Hub is 45, Outer is 130
         # We target the area around y + 85
         subtitle_rect = QRectF(
-            self.center.x() - 60, 
+            self.center.x() - 60,
             self.center.y() + 75,  # Moved down from previous y+15
-            120, 
+            120,
             40
         )
-        
+
         # Word wrap if needed
         option = QTextOption()
         option.setAlignment(Qt.AlignmentFlag.AlignCenter)
         option.setWrapMode(QTextOption.WrapMode.WordWrap)
-        
+
         painter.drawText(subtitle_rect, self.subtitle, option)
 
-# RadialWheelWidget class continues below...
-class RadialWheelWidget(QWidget):
-    """Modern radial wheel menu widget"""
+    def _blend_colors(self, color1: str, color2: str, factor: float) -> QColor:
+        """Blend two hex colors"""
+        try:
+            c1 = QColor(color1)
+            c2 = QColor(color2)
 
-    def __init__(self, theme_name: str = 'DARK'):
-        super().__init__()
+            r = int(c1.red() + (c2.red() - c1.red()) * factor)
+            g = int(c1.green() + (c2.green() - c1.green()) * factor)
+            b = int(c1.blue() + (c2.blue() - c1.blue()) * factor)
 
-        # Window setup - frameless, transparent, always on top
-        self.setWindowFlags(
-            Qt.WindowType.FramelessWindowHint |
-            Qt.WindowType.WindowStaysOnTopHint |
-            Qt.WindowType.Tool |
-            Qt.WindowType.WindowTransparentForInput
-        )
-        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
+            return QColor(r, g, b)
+        except:
+            return QColor(color1)
 
-        # Size
-        self.wheel_size = 340
-        self.setFixedSize(self.wheel_size, self.wheel_size)
 
-        # Theme
-        self.theme_name = theme_name
-        self.theme = load_theme(theme_name)
+class QtOverlayManager:
+    """Thread-safe manager for Qt overlay"""
 
-        # Menu state
-        self.options: List[str] = ['', '', '']
-        self.icons: Dict[str, str] = {}
-        self.active_index = 1
-        self.title = ""
-        self.subtitle = "Double-tap to exit"
-        self.progress: Optional[float] = None
-        self.pulsing = False
+    def __init__(self, theme: str = 'DARK'):
+        self.widget: Optional[RadialWheelWidget] = None
+        self.theme = theme
+        self.hide_timer: Optional[QTimer] = None
 
-        # Geometry
-        self.center = QPointF(self.wheel_size / 2, self.wheel_size / 2)
-        self.outer_radius = 130
-        self.inner_radius = 55
-        self.hub_radius = 45
-
-        # Segment angles (degrees): Left, Top, Right
-        self.segments = [
-            (135, 70),   # Left: start at 135°, span 70°
-            (55, 70),    # Top: start at 55°, span 70°
-            (-25, 70),   # Right: start at -25°, span 70°
-        ]
-
-        # Animation
-        self._scale = 0.0
-        self._pulse_phase = 0.0
-        self._target_scale = 1.0
-
-        self.animation = QPropertyAnimation(self, b"scale")
-        self.animation.setEasingCurve(QEasingCurve.Type.OutCubic)
-        self.animation.setDuration(200)
-
-        self.pulse_timer = QTimer()
-        self.pulse_timer.timeout.connect(self._update_pulse)
-        self.pulse_timer.setInterval(16)  # ~60fps
-
-        self.follow_timer = QTimer()
-        self.follow_timer.timeout.connect(self._follow_cursor)
-        self.follow_timer.setInterval(16)
-
-        # Fonts
-        self.font_title = QFont("Segoe UI", 12, QFont.Weight.DemiBold)
-        self.font_option = QFont("Segoe UI", 10)
-        self.font_option_active = QFont("Segoe UI", 11, QFont.Weight.Medium)
-        self.font_icon = QFont("Segoe UI Emoji", 14)
-        self.font_small = QFont("Segoe UI", 9)
-
-    def _get_scale(self) -> float:
-        return self._scale
-
-    def _set_scale(self, value: float):
-        self._scale = value
-        self.update()
-
-    scale = pyqtProperty(float, _get_scale, _set_scale)
+    def start(self):
+        """Initialize widget"""
+        self.widget = RadialWheelWidget(self.theme)
+        self.hide_timer = QTimer()
+        self.hide_timer.setSingleShot(True)
+        self.hide_timer.timeout.connect(self._do_hide)
 
     def set_theme(self, theme_name: str):
-        """Change theme"""
-        self.theme_name = theme_name
-        self.theme = load_theme(theme_name)
-        self.update()
+        """Change theme (thread-safe)"""
+        if self.widget:
+            QTimer.singleShot(0, lambda: self.widget.set_theme(theme_name))
 
-    def update_theme_colors(self, settings: Dict[str, str]):
-        """Update specific theme colors"""
-        for key, value in settings.items():
-            if hasattr(self.theme, key):
-                setattr(self.theme, key, value)
-        self.update()
+    def update_theme_color(self, settings: Dict[str, str]):
+        """Update theme colors (thread-safe)"""
+        if self.widget:
+            QTimer.singleShot(0, lambda: self.widget.update_theme_colors(settings))
 
-    def save_current_theme(self, name: str):
-        """Save current theme"""
-        save_theme(name, self.theme)
+    def save_theme(self, name: str):
+        """Save theme to file (thread-safe)"""
+        if self.widget:
+            QTimer.singleShot(0, lambda: self.widget.save_current_theme(name))
 
     def show_menu(self, display: Dict, progress: float = None, icons: Dict = None):
-        """Show the wheel menu"""
-        self.options = [
-            display.get('left', ''),
-            display.get('center', ''),
-            display.get('right', '')
-        ]
-        self.title = display.get('title', '')
-        self.subtitle = display.get('subtitle', 'Double-tap to exit')
-        self.active_index = display.get('active_index', 1)
-        self.pulsing = display.get('pulsing', False)
-        self.progress = progress
-        self.icons = icons or {}
+        """Show menu (thread-safe)"""
+        if not self.widget:
+            return
 
-        # Position at cursor
-        cursor_pos = QCursor.pos()
-        self.move(
-            cursor_pos.x() - self.wheel_size // 2,
-            cursor_pos.y() - self.wheel_size // 2
-        )
+        def _show():
+            self.hide_timer.stop()
+            self.widget.show_menu(display, progress, icons)
 
-        # Animate in
-        self._target_scale = 1.0
-        self.animation.stop()
-        self.animation.setStartValue(self._scale)
-        self.animation.setEndValue(1.0)
-        self.animation.start()
-
-        self.follow_timer.start()
-        if self.pulsing:
-            self.pulse_timer.start()
-
-        self.show()
-        # Hide cursor when menu is shown
-        self.setCursor(Qt.CursorShape.BlankCursor)
+        QTimer.singleShot(0, _show)
 
     def hide_menu(self):
-        """Hide with animation"""
-        self._target_scale = 0.0
-        self.animation.stop()
-        self.animation.setStartValue(self._scale)
-        self.animation.setEndValue(0.0)
-        self.animation.finished.connect(self._on_hide_complete)
-        self.animation.start()
+        """Hide menu (thread-safe)"""
+        if self.widget:
+            QTimer.singleShot(0, self._do_hide)
 
-    def _on_hide_complete(self):
-        self.animation.finished.disconnect(self._on_hide_complete)
-        self.follow_timer.stop()
-        self.pulse_timer.stop()
-        self.hide()
-        # Restore cursor when menu is hidden
-        self.setCursor(Qt.CursorShape.ArrowCursor)
+    def _do_hide(self):
+        if self.widget and self.widget.isVisible():
+            self.widget.hide_menu()
 
-    def _follow_cursor(self):
-        """Keep centered on cursor"""
-        cursor_pos = QCursor.pos()
-        self.move(
-            cursor_pos.x() - self.wheel_size // 2,
-            cursor_pos.y() - self.wheel_size // 2
-        )
-
-    def _update_pulse(self):
-        """Update pulse animation"""
-        self._pulse_phase += 0.12
-        self.update()
-
-    def paintEvent(self, event):
-        """Render the wheel"""
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
-        painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
-        painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform, True)
-
-        if self._scale <= 0.01:
+    def show_notification(self, message: str, duration_ms: int = 1500):
+        """Show notification (thread-safe)"""
+        if not self.widget:
             return
 
-        # Apply scale transform from center
-        painter.translate(self.center)
-        painter.scale(self._scale, self._scale)
-        painter.translate(-self.center)
+        def _show_notif():
+            self.hide_timer.stop()
+            display = {
+                'center': message,
+                'left': '',
+                'right': '',
+                'subtitle': ''
+            }
+            self.widget.show_menu(display)
+            self.hide_timer.start(duration_ms)
 
-        # Draw layers
-        self._draw_glow(painter)
-        self._draw_segments(painter)
-        self._draw_hub(painter)
-        if self.progress is not None:
-            self._draw_progress(painter)
-        self._draw_title(painter)
-        if self.subtitle and self._scale > 0.5:
-            self._draw_subtitle(painter)
+        QTimer.singleShot(0, _show_notif)
 
-    def _draw_glow(self, painter: QPainter):
-        """Draw outer glow"""
-        glow_color = QColor(self.theme.glow)
 
-        for i in range(3):
-            glow_color.setAlpha(40 - i * 12)
-            pen = QPen(glow_color, 3 - i * 0.5)
-            painter.setPen(pen)
-            painter.setBrush(Qt.BrushStyle.NoBrush)
+# Wrapper class matching the Tkinter interface
+class EnhancedUIManager:
+    """Drop-in replacement for Tkinter EnhancedUIManager"""
 
-            radius = self.outer_radius + 8 + i * 6
-            painter.drawEllipse(self.center, radius, radius)
+    def __init__(self, theme: str = 'DARK'):
+        self.qt_manager = QtOverlayManager(theme)
+        self.menu = self  # Compatibility
+        self.current_theme_name = theme  # For theme preset handler
 
-    def _draw_segments(self, painter: QPainter):
-        """Draw wheel segments"""
-        for i, (start_angle, span) in enumerate(self.segments):
-            if i >= len(self.options) or not self.options[i]:
-                continue
-
-            is_active = (i == self.active_index)
-
-            # Determine colors
-            if is_active and self.pulsing:
-                pulse = (math.sin(self._pulse_phase) + 1) / 2
-                bg_color = self._blend_colors(
-                    self.theme.segment_active,
-                    self.theme.accent_glow,
-                    pulse * 0.4
-                )
-            elif is_active:
-                bg_color = QColor(self.theme.segment_active)
-            else:
-                bg_color = QColor(self.theme.segment_inactive)
-
-            border_color = QColor(self.theme.accent if is_active else self.theme.border)
-            text_color = QColor(self.theme.text_active if is_active else self.theme.text_inactive)
-
-            # Create arc path
-            path = self._create_arc_path(start_angle, span)
-
-            # Draw segment with gradient
-            gradient = QRadialGradient(self.center, self.outer_radius)
-            gradient.setColorAt(0.3, bg_color.lighter(115))
-            gradient.setColorAt(1.0, bg_color)
-
-            painter.setBrush(QBrush(gradient))
-            painter.setPen(QPen(border_color, 2 if is_active else 1.5))
-            painter.drawPath(path)
-
-            # TEXT CLIPPING
-            # Save state before setting clip path
-            painter.save()
-            painter.setClipPath(path)
-
-            # Calculate text position
-            mid_angle = math.radians(start_angle + span / 2)
-            
-            # Dynamic positioning based on text length
-            label_full = self.options[i]
-            is_long_text = len(label_full) > 12
-            
-            base_radius = (self.inner_radius + self.outer_radius) / 2
-            text_radius = base_radius + 12 if is_long_text else base_radius
-            
-            text_x = self.center.x() + text_radius * math.cos(mid_angle)
-            text_y = self.center.y() - text_radius * math.sin(mid_angle)
-
-            # Draw icon if present
-            icon_key = ['left', 'center', 'right'][i]
-            icon = self.icons.get(icon_key, '')
-
-            if icon:
-                painter.save()
-                if is_active:
-                     # Scale up active icon
-                     icon_cy = text_y + (-22 if not is_long_text else -18) + 12 # approx center
-                     painter.translate(text_x, icon_cy)
-                     scale_factor = 1.1 + (0.05 * math.sin(self._pulse_phase)) # Breathing effect
-                     painter.scale(scale_factor, scale_factor)
-                     painter.translate(-text_x, -icon_cy)
-
-                painter.setFont(self.font_icon)
-                painter.setPen(text_color)
-                # If text is moved out, move icon out a bit too but keep separation
-                icon_y_offset = -22 if not is_long_text else -18
-                icon_rect = QRectF(text_x - 20, text_y + icon_y_offset, 40, 24)
-                painter.drawText(icon_rect, Qt.AlignmentFlag.AlignCenter, icon)
-                
-                painter.restore()
-                
-                text_y += 8 if not is_long_text else 12
-
-            # Draw label
-            label = label_full
-            if len(label) > 18:
-                label = label[:17] + "…"
-
-            # Choose font based on length and state
-            if is_long_text:
-                font = self.font_small
-                if is_active:
-                     # Create a bold version of small font
-                     font = QFont(self.font_small)
-                     font.setWeight(QFont.Weight.Medium)
-            else:
-                font = self.font_option_active if is_active else self.font_option
-                
-            painter.setFont(font)
-            painter.setPen(text_color)
-            
-            # Wider rect for longer text
-            rect_width = 130 if is_long_text else 100
-            text_rect = QRectF(text_x - (rect_width/2), text_y - 10, rect_width, 20)
-            painter.drawText(text_rect, Qt.AlignmentFlag.AlignCenter, label)
-            
-            # Restore painter state (removes clip)
-            painter.restore()
-
-    def _create_arc_path(self, start_angle: float, span: float) -> QPainterPath:
-        """Create a donut arc segment path"""
-        path = QPainterPath()
-
-        # Convert to radians
-        start_rad = math.radians(start_angle)
-        end_rad = math.radians(start_angle + span)
-
-        # Outer arc points
-        outer_start = QPointF(
-            self.center.x() + self.outer_radius * math.cos(start_rad),
-            self.center.y() - self.outer_radius * math.sin(start_rad)
-        )
-
-        # Start at outer arc start
-        path.moveTo(outer_start)
-
-        # Draw outer arc
-        outer_rect = QRectF(
-            self.center.x() - self.outer_radius,
-            self.center.y() - self.outer_radius,
-            self.outer_radius * 2,
-            self.outer_radius * 2
-        )
-        path.arcTo(outer_rect, start_angle, span)
-
-        # Line to inner arc
-        inner_end = QPointF(
-            self.center.x() + self.inner_radius * math.cos(end_rad),
-            self.center.y() - self.inner_radius * math.sin(end_rad)
-        )
-        path.lineTo(inner_end)
-
-        # Draw inner arc (reverse direction)
-        inner_rect = QRectF(
-            self.center.x() - self.inner_radius,
-            self.center.y() - self.inner_radius,
-            self.inner_radius * 2,
-            self.inner_radius * 2
-        )
-        path.arcTo(inner_rect, start_angle + span, -span)
-
-        path.closeSubpath()
-        return path
-
-    def _draw_hub(self, painter: QPainter):
-        """Draw center hub"""
-        # Hub background with gradient
-        hub_gradient = QRadialGradient(self.center, self.hub_radius)
-        bg_color = QColor(self.theme.bg)
-        hub_gradient.setColorAt(0, bg_color.lighter(130))
-        hub_gradient.setColorAt(1, bg_color)
-
-        painter.setBrush(QBrush(hub_gradient))
-        painter.setPen(QPen(QColor(self.theme.border), 2))
-        painter.drawEllipse(self.center, self.hub_radius, self.hub_radius)
-
-        # Center dot with glow
-        dot_radius = 6
-        accent = QColor(self.theme.accent)
-        accent_glow = QColor(self.theme.accent_glow)
-
-        # Glow
-        glow_gradient = QRadialGradient(self.center, self.hub_radius*0.7) # Larger glow area
-        accent_glow.setAlpha(100)
-        glow_gradient.setColorAt(0, accent_glow)
-        glow_gradient.setColorAt(1, QColor(0, 0, 0, 0))
-        painter.setBrush(QBrush(glow_gradient))
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawEllipse(self.center, self.hub_radius*0.7, self.hub_radius*0.7)
-
-        # Dot
-        painter.setBrush(QBrush(accent))
-        painter.setPen(QPen(accent_glow, 2))
-        painter.drawEllipse(self.center, dot_radius, dot_radius)
-
-    def _draw_progress(self, painter: QPainter):
-        """Draw progress ring in hub (around center dot)"""
-        if self.progress is None:
-            return
-
-        # Tighter ring around the center dot (dot is r=6)
-        ring_radius = 22
-        ring_width = 6
-
-        # Background ring
-        painter.setBrush(Qt.BrushStyle.NoBrush)
-        painter.setPen(QPen(QColor(self.theme.progress_bg), ring_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
-        painter.drawEllipse(self.center, ring_radius, ring_radius)
-
-        # Progress arc
-        if self.progress > 0:
-            # Determine color based on context (Title)
-            title_lower = self.title.lower() if self.title else ""
-            is_audio = any(x in title_lower for x in ['volume', 'gain', 'mic'])
-            
-            if is_audio:
-                # Audio Gradient: Green -> Yellow -> Red
-                # 0.0 -> 0.8 (0dB for VM) -> 1.0
-                if self.progress < 0.8:
-                    # Green to Yellow
-                    ratio = self.progress / 0.8
-                    r = int(255 * ratio)
-                    g = 255
-                    b = 0
-                    progress_color = QColor(r, g, b)
-                else:
-                    # Yellow to Red
-                    ratio = (self.progress - 0.8) / 0.2
-                    r = 255
-                    g = int(255 * (1 - ratio))
-                    b = 0
-                    progress_color = QColor(r, g, b)
-            else:
-                # Use accent color for non-audio progress rings
-                progress_color = QColor(self.theme.accent)
-                
-            painter.setPen(QPen(progress_color, ring_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
-
-            rect = QRectF(
-                self.center.x() - ring_radius,
-                self.center.y() - ring_radius,
-                ring_radius * 2,
-                ring_radius * 2
-            )
-            # Start from top (90°), go clockwise (negative span)
-            span = -360 * self.progress
-            painter.drawArc(rect, 90 * 16, int(span * 16))
-
-    def _draw_title(self, painter: QPainter):
-        """Draw title above wheel"""
-        if not self.title:
-            return
-
-        painter.setFont(self.font_title)
-        painter.setPen(QColor(self.theme.text_active))
-
-        title_rect = QRectF(0, self.center.y() - self.outer_radius - 35, self.wheel_size, 25)
-        painter.drawText(title_rect, Qt.AlignmentFlag.AlignCenter, self.title)
-
-    def _draw_subtitle(self, painter: QPainter):
-        """Draw subtitle in the bottom free space of the wheel"""
-        if not self.subtitle:
-            return
-
-        # Use slightly larger font than before since we have more space
-        font = QFont(self.font_small)
-        font.setPointSize(9)
-        painter.setFont(font)
-        
-        hint_color = QColor(self.theme.text_inactive)
-        hint_color.setAlpha(int(255 * min(1.0, (self._scale - 0.5) * 2)))
-        painter.setPen(hint_color)
-
-        # Position in the bottom gap between Left and Right wedges
-        # Center Y is self.center.y()
-        # Hub is 45, Outer is 130
-        # We target the area around y + 85
-        subtitle_rect = QRectF(
-            self.center.x() - 60, 
-            self.center.y() + 75,  # Moved down from previous y+15
-            120, 
-            40
-        )
-        
-        # Word wrap if needed
-        option = QTextOption()
-        option.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        option.setWrapMode(QTextOption.WrapMode.WordWrap)
-        
-        painter.drawText(subtitle_rect, self.subtitle, option)
-
-# RadialWheelWidget class continues below...
-class RadialWheelWidget(QWidget):
-    """Modern radial wheel menu widget"""
-
-    def __init__(self, theme_name: str = 'DARK'):
-        super().__init__()
-
-        # Window setup - frameless, transparent, always on top
-        self.setWindowFlags(
-            Qt.WindowType.FramelessWindowHint |
-            Qt.WindowType.WindowStaysOnTopHint |
-            Qt.WindowType.Tool |
-            Qt.WindowType.WindowTransparentForInput
-        )
-        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
-
-        # Size
-        self.wheel_size = 340
-        self.setFixedSize(self.wheel_size, self.wheel_size)
-
-        # Theme
-        self.theme_name = theme_name
-        self.theme = load_theme(theme_name)
-
-        # Menu state
-        self.options: List[str] = ['', '', '']
-        self.icons: Dict[str, str] = {}
-        self.active_index = 1
-        self.title = ""
-        self.subtitle = "Double-tap to exit"
-        self.progress: Optional[float] = None
-        self.pulsing = False
-
-        # Geometry
-        self.center = QPointF(self.wheel_size / 2, self.wheel_size / 2)
-        self.outer_radius = 130
-        self.inner_radius = 55
-        self.hub_radius = 45
-
-        # Segment angles (degrees): Left, Top, Right
-        self.segments = [
-            (135, 70),   # Left: start at 135°, span 70°
-            (55, 70),    # Top: start at 55°, span 70°
-            (-25, 70),   # Right: start at -25°, span 70°
-        ]
-
-        # Animation
-        self._scale = 0.0
-        self._pulse_phase = 0.0
-        self._target_scale = 1.0
-
-        self.animation = QPropertyAnimation(self, b"scale")
-        self.animation.setEasingCurve(QEasingCurve.Type.OutCubic)
-        self.animation.setDuration(200)
-
-        self.pulse_timer = QTimer()
-        self.pulse_timer.timeout.connect(self._update_pulse)
-        self.pulse_timer.setInterval(16)  # ~60fps
-
-        self.follow_timer = QTimer()
-        self.follow_timer.timeout.connect(self._follow_cursor)
-        self.follow_timer.setInterval(16)
-
-        # Fonts
-        self.font_title = QFont("Segoe UI", 12, QFont.Weight.DemiBold)
-        self.font_option = QFont("Segoe UI", 10)
-        self.font_option_active = QFont("Segoe UI", 11, QFont.Weight.Medium)
-        self.font_icon = QFont("Segoe UI Emoji", 14)
-        self.font_small = QFont("Segoe UI", 9)
-
-    def _get_scale(self) -> float:
-        return self._scale
-
-    def _set_scale(self, value: float):
-        self._scale = value
-        self.update()
-
-    scale = pyqtProperty(float, _get_scale, _set_scale)
+    def start(self):
+        self.qt_manager.start()
 
     def set_theme(self, theme_name: str):
-        """Change theme"""
-        self.theme_name = theme_name
-        self.theme = load_theme(theme_name)
-        self.update()
+        self.current_theme_name = theme_name
+        self.qt_manager.set_theme(theme_name)
 
-    def update_theme_colors(self, settings: Dict[str, str]):
-        """Update specific theme colors"""
-        for key, value in settings.items():
-            if hasattr(self.theme, key):
-                setattr(self.theme, key, value)
-        self.update()
+    def update_theme_color(self, settings: Dict[str, str]):
+        self.qt_manager.update_theme_color(settings)
 
-    def save_current_theme(self, name: str):
-        """Save current theme"""
-        save_theme(name, self.theme)
+    def save_theme(self, name: str):
+        self.qt_manager.save_theme(name)
 
     def show_menu(self, display: Dict, progress: float = None, icons: Dict = None):
-        """Show the wheel menu"""
-        self.options = [
-            display.get('left', ''),
-            display.get('center', ''),
-            display.get('right', '')
-        ]
-        self.title = display.get('title', '')
-        self.subtitle = display.get('subtitle', 'Double-tap to exit')
-        self.active_index = display.get('active_index', 1)
-        self.pulsing = display.get('pulsing', False)
-        self.progress = progress
-        self.icons = icons or {}
-
-        # Position at cursor
-        cursor_pos = QCursor.pos()
-        self.move(
-            cursor_pos.x() - self.wheel_size // 2,
-            cursor_pos.y() - self.wheel_size // 2
-        )
-
-        # Animate in
-        self._target_scale = 1.0
-        self.animation.stop()
-        self.animation.setStartValue(self._scale)
-        self.animation.setEndValue(1.0)
-        self.animation.start()
-
-        self.follow_timer.start()
-        if self.pulsing:
-            self.pulse_timer.start()
-
-        self.show()
-        # Hide cursor when menu is shown
-        self.setCursor(Qt.CursorShape.BlankCursor)
+        self.qt_manager.show_menu(display, progress, icons)
 
     def hide_menu(self):
-        """Hide with animation"""
-        self._target_scale = 0.0
-        self.animation.stop()
-        self.animation.setStartValue(self._scale)
-        self.animation.setEndValue(0.0)
-        self.animation.finished.connect(self._on_hide_complete)
-        self.animation.start()
+        self.qt_manager.hide_menu()
 
-    def _on_hide_complete(self):
-        self.animation.finished.disconnect(self._on_hide_complete)
-        self.follow_timer.stop()
-        self.pulse_timer.stop()
-        self.hide()
-        # Restore cursor when menu is hidden
-        self.setCursor(Qt.CursorShape.ArrowCursor)
+    def show_notification(self, message: str, duration_ms: int = 1500):
+        self.qt_manager.show_notification(message, duration_ms)
 
-    def _follow_cursor(self):
-        """Keep centered on cursor"""
-        cursor_pos = QCursor.pos()
-        self.move(
-            cursor_pos.x() - self.wheel_size // 2,
-            cursor_pos.y() - self.wheel_size // 2
-        )
-
-    def _update_pulse(self):
-        """Update pulse animation"""
-        self._pulse_phase += 0.12
-        self.update()
-
-    def paintEvent(self, event):
-        """Render the wheel"""
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
-        painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
-        painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform, True)
-
-        if self._scale <= 0.01:
-            return
-
-        # Apply scale transform from center
-        painter.translate(self.center)
-        painter.scale(self._scale, self._scale)
-        painter.translate(-self.center)
-
-        # Draw layers
-        self._draw_glow(painter)
-        self._draw_segments(painter)
-        self._draw_hub(painter)
-        if self.progress is not None:
-            self._draw_progress(painter)
-        self._draw_title(painter)
-        if self.subtitle and self._scale > 0.5:
-            self._draw_subtitle(painter)
-
-    def _draw_glow(self, painter: QPainter):
-        """Draw outer glow"""
-        glow_color = QColor(self.theme.glow)
-
-        for i in range(3):
-            glow_color.setAlpha(40 - i * 12)
-            pen = QPen(glow_color, 3 - i * 0.5)
-            painter.setPen(pen)
-            painter.setBrush(Qt.BrushStyle.NoBrush)
-
-            radius = self.outer_radius + 8 + i * 6
-            painter.drawEllipse(self.center, radius, radius)
-
-    def _draw_segments(self, painter: QPainter):
-        """Draw wheel segments"""
-        for i, (start_angle, span) in enumerate(self.segments):
-            if i >= len(self.options) or not self.options[i]:
-                continue
-
-            is_active = (i == self.active_index)
-
-            # Determine colors
-            if is_active and self.pulsing:
-                pulse = (math.sin(self._pulse_phase) + 1) / 2
-                bg_color = self._blend_colors(
-                    self.theme.segment_active,
-                    self.theme.accent_glow,
-                    pulse * 0.4
-                )
-            elif is_active:
-                bg_color = QColor(self.theme.segment_active)
-            else:
-                bg_color = QColor(self.theme.segment_inactive)
-
-            border_color = QColor(self.theme.accent if is_active else self.theme.border)
-            text_color = QColor(self.theme.text_active if is_active else self.theme.text_inactive)
-
-            # Create arc path
-            path = self._create_arc_path(start_angle, span)
-
-            # Draw segment with gradient
-            gradient = QRadialGradient(self.center, self.outer_radius)
-            gradient.setColorAt(0.3, bg_color.lighter(115))
-            gradient.setColorAt(1.0, bg_color)
-
-            painter.setBrush(QBrush(gradient))
-            painter.setPen(QPen(border_color, 2 if is_active else 1.5))
-            painter.drawPath(path)
-
-            # TEXT CLIPPING
-            # Save state before setting clip path
-            painter.save()
-            painter.setClipPath(path)
-
-            # Calculate text position
-            mid_angle = math.radians(start_angle + span / 2)
-            
-            # Dynamic positioning based on text length
-            label_full = self.options[i]
-            is_long_text = len(label_full) > 12
-            
-            base_radius = (self.inner_radius + self.outer_radius) / 2
-            text_radius = base_radius + 12 if is_long_text else base_radius
-            
-            text_x = self.center.x() + text_radius * math.cos(mid_angle)
-            text_y = self.center.y() - text_radius * math.sin(mid_angle)
-
-            # Draw icon if present
-            icon_key = ['left', 'center', 'right'][i]
-            icon = self.icons.get(icon_key, '')
-
-            if icon:
-                painter.save()
-                if is_active:
-                     # Scale up active icon
-                     icon_cy = text_y + (-22 if not is_long_text else -18) + 12 # approx center
-                     painter.translate(text_x, icon_cy)
-                     scale_factor = 1.1 + (0.05 * math.sin(self._pulse_phase)) # Breathing effect
-                     painter.scale(scale_factor, scale_factor)
-                     painter.translate(-text_x, -icon_cy)
-
-                painter.setFont(self.font_icon)
-                painter.setPen(text_color)
-                # If text is moved out, move icon out a bit too but keep separation
-                icon_y_offset = -22 if not is_long_text else -18
-                icon_rect = QRectF(text_x - 20, text_y + icon_y_offset, 40, 24)
-                painter.drawText(icon_rect, Qt.AlignmentFlag.AlignCenter, icon)
-                
-                painter.restore()
-                
-                text_y += 8 if not is_long_text else 12
-
-            # Draw label
-            label = label_full
-            if len(label) > 18:
-                label = label[:17] + "…"
-
-            # Choose font based on length and state
-            if is_long_text:
-                font = self.font_small
-                if is_active:
-                     # Create a bold version of small font
-                     font = QFont(self.font_small)
-                     font.setWeight(QFont.Weight.Medium)
-            else:
-                font = self.font_option_active if is_active else self.font_option
-                
-            painter.setFont(font)
-            painter.setPen(text_color)
-            
-            # Wider rect for longer text
-            rect_width = 130 if is_long_text else 100
-            text_rect = QRectF(text_x - (rect_width/2), text_y - 10, rect_width, 20)
-            painter.drawText(text_rect, Qt.AlignmentFlag.AlignCenter, label)
-            
-            # Restore painter state (removes clip)
-            painter.restore()
-
-    def _create_arc_path(self, start_angle: float, span: float) -> QPainterPath:
-        """Create a donut arc segment path"""
-        path = QPainterPath()
-
-        # Convert to radians
-        start_rad = math.radians(start_angle)
-        end_rad = math.radians(start_angle + span)
-
-        # Outer arc points
-        outer_start = QPointF(
-            self.center.x() + self.outer_radius * math.cos(start_rad),
-            self.center.y() - self.outer_radius * math.sin(start_rad)
-        )
-
-        # Start at outer arc start
-        path.moveTo(outer_start)
-
-        # Draw outer arc
-        outer_rect = QRectF(
-            self.center.x() - self.outer_radius,
-            self.center.y() - self.outer_radius,
-            self.outer_radius * 2,
-            self.outer_radius * 2
-        )
-        path.arcTo(outer_rect, start_angle, span)
-
-        # Line to inner arc
-        inner_end = QPointF(
-            self.center.x() + self.inner_radius * math.cos(end_rad),
-            self.center.y() - self.inner_radius * math.sin(end_rad)
-        )
-        path.lineTo(inner_end)
-
-        # Draw inner arc (reverse direction)
-        inner_rect = QRectF(
-            self.center.x() - self.inner_radius,
-            self.center.y() - self.inner_radius,
-            self.inner_radius * 2,
-            self.inner_radius * 2
-        )
-        path.arcTo(inner_rect, start_angle + span, -span)
-
-        path.closeSubpath()
-        return path
-
-    def _draw_hub(self, painter: QPainter):
-        """Draw center hub"""
-        # Hub background with gradient
-        hub_gradient = QRadialGradient(self.center, self.hub_radius)
-        bg_color = QColor(self.theme.bg)
-        hub_gradient.setColorAt(0, bg_color.lighter(130))
-        hub_gradient.setColorAt(1, bg_color)
-
-        painter.setBrush(QBrush(hub_gradient))
-        painter.setPen(QPen(QColor(self.theme.border), 2))
-        painter.drawEllipse(self.center, self.hub_radius, self.hub_radius)
-
-        # Center dot with glow
-        dot_radius = 6
-        accent = QColor(self.theme.accent)
-        accent_glow = QColor(self.theme.accent_glow)
-
-        # Glow
-        glow_gradient = QRadialGradient(self.center, self.hub_radius*0.7) # Larger glow area
-        accent_glow.setAlpha(100)
-        glow_gradient.setColorAt(0, accent_glow)
-        glow_gradient.setColorAt(1, QColor(0, 0, 0, 0))
-        painter.setBrush(QBrush(glow_gradient))
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawEllipse(self.center, self.hub_radius*0.7, self.hub_radius*0.7)
-
-        # Dot
-        painter.setBrush(QBrush(accent))
-        painter.setPen(QPen(accent_glow, 2))
-        painter.drawEllipse(self.center, dot_radius, dot_radius)
-
-    def _draw_progress(self, painter: QPainter):
-        """Draw progress ring in hub (around center dot)"""
-        if self.progress is None:
-            return
-
-        # Tighter ring around the center dot (dot is r=6)
-        ring_radius = 22
-        ring_width = 6
-
-        # Background ring
-        painter.setBrush(Qt.BrushStyle.NoBrush)
-        painter.setPen(QPen(QColor(self.theme.progress_bg), ring_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
-        painter.drawEllipse(self.center, ring_radius, ring_radius)
-
-        # Progress arc
-        if self.progress > 0:
-            # Determine color based on context (Title)
-            title_lower = self.title.lower() if self.title else ""
-            is_audio = any(x in title_lower for x in ['volume', 'gain', 'mic'])
-            
-            if is_audio:
-                # Audio Gradient: Green -> Yellow -> Red
-                # 0.0 -> 0.8 (0dB for VM) -> 1.0
-                if self.progress < 0.8:
-                    # Green to Yellow
-                    ratio = self.progress / 0.8
-                    r = int(255 * ratio)
-                    g = 255
-                    b = 0
-                    progress_color = QColor(r, g, b)
-                else:
-                    # Yellow to Red
-                    ratio = (self.progress - 0.8) / 0.2
-                    r = 255
-                    g = int(255 * (1 - ratio))
-                    b = 0
-                    progress_color = QColor(r, g, b)
-            else:
-                # Use accent color for non-audio progress rings
-                progress_color = QColor(self.theme.accent)
-                
-            painter.setPen(QPen(progress_color, ring_width, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
-
-            rect = QRectF(
-                self.center.x() - ring_radius,
-                self.center.y() - ring_radius,
-                ring_radius * 2,
-                ring_radius * 2
-            )
-            # Start from top (90°), go clockwise (negative span)
-            span = -360 * self.progress
-            painter.drawArc(rect, 90 * 16, int(span * 16))
-
-    def _draw_title(self, painter: QPainter):
-        """Draw title above wheel"""
-        if not self.title:
-            return
-
-        painter.setFont(self.font_title)
-        painter.setPen(QColor(self.theme.text_active))
-
-        title_rect = QRectF(0, self.center.y() - self.outer_radius - 35, self.wheel_size, 25)
-        painter.drawText(title_rect, Qt.AlignmentFlag.AlignCenter, self.title)
-
-    def _draw_subtitle(self, painter: QPainter):
-        """Draw subtitle in the bottom free space of the wheel"""
-        if not self.subtitle:
-            return
-
-        # Use slightly larger font than before since we have more space
-        font = QFont(self.font_small)
-        font.setPointSize(9)
-        painter.setFont(font)
-        
-        hint_color = QColor(self.theme.text_inactive)
-        hint_color.setAlpha(int(255 * min(1.0, (self._scale - 0.5) * 2)))
-        painter.setPen(hint_color)
-
-        # Position in the bottom gap between Left and Right wedges
-        # Center Y is self.center.y()
-        # Hub is 45, Outer is 130
-        # We target the area around y + 85
-        subtitle_rect = QRectF(
-            self.center.x() - 60, 
-            self.center.y() + 75,  # Moved down from previous y+15
-            120, 
-            40
-        )
-        
-        # Word wrap if needed
-        option = QTextOption()
-        option.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        option.setWrapMode(QTextOption.WrapMode.WordWrap)
-        
-        painter.drawText(subtitle_rect, self.subtitle, option)
+    def quit(self):
+        pass  # Qt app handles quit

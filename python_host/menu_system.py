@@ -52,6 +52,7 @@ class MenuMode(Enum):
     THEME_BOX = auto()             # Box color
     THEME_ACCENT = auto()          # Accent color
     THEME_TEXT = auto()            # Text color
+    THEME_GLOW = auto()            # Glow intensity/visibility
 
     # Voicemeeter submenus
     VM_SYSTEM = auto()             # System volume + mic mute
@@ -312,6 +313,8 @@ class MenuStateMachine:
             self.state.previous_command = self.state.current_command
             self.state.current_command = command_index
             self.update_display()
+            # Reset timer in normal mode too (for auto-hide)
+            self.reset_menu_timer()
         else:
             # Menu mode: Determine rotation direction and delegate to handler
             clockwise = self._is_rotating_clockwise(

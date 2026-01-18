@@ -1,408 +1,730 @@
 """
-Keychron V1 Menu System - State Machine
-Based on keychron_commands.ahk AutoHotkey v2 implementation
+Mode Handlers - Implement behavior for each menu mode
 
-Architecture:
-    - State machine tracks current mode (normal, menu modes)
-    - Event processor handles encoder events (CW/CCW/press/release)
-    - Command registry for extensible command system
-    - Mode handlers for different menu types
+Each handler implements:
+- on_enter: Setup when mode is activated
+- on_exit: Cleanup when mode is exited
+- on_rotation: Handle encoder rotation (CW/CCW)
+- on_press: Handle encoder press
+- get_display_text: Return text for overlay UI
 """
 
+from menu_system import ModeHandler, AppState, MenuMode
+from windows_api import SystemAPI
+from typing import Dict
 import time
 import threading
-from enum import Enum, auto
-from dataclasses import dataclass
-from typing import Optional, Callable, List, Dict, Any
-from abc import ABC, abstractmethod
 
 
 # ============================================================================
-# CONFIGURATION
+# MEDIA CONTROL MODE
 # ============================================================================
 
-class Config:
-    """Global configuration constants"""
-    DOUBLE_CLICK_MS = 300           # Double-click detection threshold
-    MENU_TIMEOUT_MS = 5000          # Auto-exit menu after inactivity
-    VOLUME_STEP = 2                 # Volume change percentage
-    WINDOW_TITLE_MAX_LEN = 22       # Max chars for window titles
-    NOTIFICATION_DURATION = 1500    # Default notification time (ms)
-    COMMAND_EXECUTE_DURATION = 2000 # Command execution notification time
-    ERROR_DURATION = 3000           # Error notification time
+class MediaModeHandler(ModeHandler):
+    """Media control: Play/Pause, Next/Prev track"""
 
+    def __init__(self, api: SystemAPI, state_machine):
+        self.api = api
+        self.sm = state_machine
+        self.last_active = -1
+        self.reset_timer: threading.Timer = None
 
-# ============================================================================
-# STATE DEFINITIONS
-# ============================================================================
+    def on_enter(self, state: AppState):
+        self.last_active = -1
+        if self.reset_timer:
+            self.reset_timer.cancel()
 
-class MenuMode(Enum):
-    """Available menu modes"""
-    NORMAL = auto()                 # Command selection mode
+    def on_exit(self, state: AppState):
+        if self.reset_timer:
+            self.reset_timer.cancel()
 
-    # Main menus
-    VOICEMEETER_MENU = auto()      # Voicemeeter submenu selector
-    MEDIA = auto()                 # Media control mode
-    VOLUME = auto()                # System volume control
-    WINDOW_MENU = auto()           # Window manager submenu selector
+    def _trigger_highlight(self, index: int):
+        """Highlight an item briefly"""
+        self.last_active = index
+        
+        if self.reset_timer:
+            self.reset_timer.cancel()
+            
+        self.reset_timer = threading.Timer(0.5, self._reset_active)
+        self.reset_timer.start()
 
-    # Theme submenus
-    THEME_MENU = auto()            # Theme main menu
-    THEME_PRESET = auto()          # Theme presets selector
-    THEME_BOX = auto()             # Box color
-    THEME_ACCENT = auto()          # Accent color
-    THEME_TEXT = auto()            # Text color
+    def _reset_active(self):
+        """Reset highlight to neutral"""
+        self.last_active = -1
+        self.sm.update_display()
 
-    # Voicemeeter submenus
-    VM_SYSTEM = auto()             # System volume + mic mute
-    VM_MIC = auto()                # Microphone Gain
-    VM_MAIN_ROUTING = auto()       # Main audio routing
-    VM_MUSIC_GAIN = auto()         # Music gain control
-    VM_MUSIC_ROUTING = auto()      # Music routing
-    VM_COMM_GAIN = auto()          # Comm gain control
-    VM_COMM_ROUTING = auto()       # Comm routing
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Next/Previous track"""
+        if clockwise:
+            self.api.media.next_track()
+            self._trigger_highlight(2)
+        else:
+            self.api.media.prev_track()
+            self._trigger_highlight(0)
 
-    # Window submenus
-    WINDOW_CYCLE = auto()          # Alt-Tab like window switching
-    WINDOW_SNAP = auto()           # Window snapping
+    def on_press(self, state: AppState):
+        """Press: Play/Pause"""
+        self.api.media.play_pause()
+        self._trigger_highlight(1)
 
-    # App launcher menu
-    APP_LAUNCHER_MENU = auto()     # App launcher submenu selector
-
-    # Virtual Desktop modes (plugin)
-    VIRTUAL_DESKTOP = auto()       # Virtual desktop switcher
-    VIRTUAL_DESKTOP_MENU = auto()  # Virtual desktop actions menu
-
-    # Display Control modes (plugin)
-    DISPLAY_MENU = auto()          # Display control main menu
-    DISPLAY_BRIGHTNESS = auto()    # Brightness adjustment
-    DISPLAY_MODE = auto()          # Display mode selector
-    DISPLAY_TOGGLE = auto()        # Monitor toggle
-
-    # Context-aware modes (plugin)
-    CONTEXT_MENU = auto()          # Context-specific commands
-
-
-@dataclass
-class AppState:
-    """Application state container"""
-    current_command: int = 0        # Selected command (0-3)
-    previous_command: int = 0       # Previous command
-    menu_mode: MenuMode = MenuMode.NORMAL
-    submenu_index: int = 0          # Current submenu selection
-    last_click_time: float = 0      # For double-click detection
-    click_count: int = 0            # Click counter
-    last_rotation_index: int = 0    # Last command index for direction detection
-    routing_selection: int = 0      # For routing modes: 0=A1, 1=A2, 2=A3
-    menu_timer: Optional[float] = None  # Timestamp for auto-exit
-    window_list: List[Any] = None   # Cached window list
-
-    def __post_init__(self):
-        if self.window_list is None:
-            self.window_list = []
-
-
-# ============================================================================
-# COMMAND SYSTEM
-# ============================================================================
-
-@dataclass
-class Command:
-    """Command definition"""
-    name: str
-    description: str
-    action: Callable[[], None]
-
-
-class CommandRegistry:
-    """Registry for commands (extensible)"""
-
-    def __init__(self):
-        self.commands: List[Command] = []
-
-    def register(self, name: str, description: str, action: Callable[[], None]) -> int:
-        """Register a command and return its index"""
-        cmd = Command(name=name, description=description, action=action)
-        self.commands.append(cmd)
-        return len(self.commands) - 1
-
-    def get(self, index: int) -> Optional[Command]:
-        """Get command by index"""
-        if 0 <= index < len(self.commands):
-            return self.commands[index]
-        return None
-
-    def count(self) -> int:
-        """Get total number of commands"""
-        return len(self.commands)
-
-
-# ============================================================================
-# MODE HANDLER BASE CLASS
-# ============================================================================
-
-class ModeHandler(ABC):
-    """Base class for mode-specific behavior"""
-
-    @abstractmethod
-    def on_enter(self, state: AppState) -> None:
-        """Called when entering this mode"""
-        pass
-
-    @abstractmethod
-    def on_exit(self, state: AppState) -> None:
-        """Called when exiting this mode"""
-        pass
-
-    @abstractmethod
-    def on_rotation(self, state: AppState, clockwise: bool) -> None:
-        """Handle rotation event"""
-        pass
-
-    @abstractmethod
-    def on_press(self, state: AppState) -> None:
-        """Handle press event"""
-        pass
-
-    @abstractmethod
     def get_display_text(self, state: AppState) -> Dict[str, str]:
-        """Return display text for menu overlay
+        return {
+            'left': 'Previous Track',
+            'center': 'Play/Pause',
+            'right': 'Next Track',
+            'title': '',
+            'icons': {'left': '⏮', 'center': '⏯', 'right': '⏭'},
+            'active_index': self.last_active,
+            'pulsing': self.last_active != -1
+        }
 
-        Returns:
-            Dict with keys: 'left', 'center', 'right' for wheel layout
-        """
+
+# ============================================================================
+# VOLUME CONTROL MODE
+# ============================================================================
+
+class VolumeModeHandler(ModeHandler):
+    """System volume control"""
+
+    def __init__(self, api: SystemAPI, volume_step: int = 2):
+        self.api = api
+        self.volume_step = volume_step
+
+    def on_enter(self, state: AppState):
         pass
 
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Adjust volume"""
+        if clockwise:
+            self.api.volume.adjust_volume(self.volume_step)
+        else:
+            self.api.volume.adjust_volume(-self.volume_step)
+
+    def on_press(self, state: AppState):
+        """Press: Toggle mute"""
+        self.api.volume.toggle_mute()
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        volume = self.api.volume.get_volume()
+        muted = self.api.volume.get_mute()
+
+        return {
+            'left': 'Volume Down',
+            'center': f'{volume}%',
+            'right': 'Volume Up',
+            'title': '🔇 MUTED' if muted else '🔊 Volume',
+            'progress': volume / 100.0,
+            'icons': {'left': '−', 'center': '🔇' if muted else '🔊', 'right': '+'}
+        }
+
 
 # ============================================================================
-# STATE MACHINE
+# WINDOW MENU MODE (Submenu selector)
 # ============================================================================
 
-class MenuStateMachine:
-    """Central state machine for menu system"""
+class WindowMenuHandler(ModeHandler):
+    """Window manager submenu selector"""
 
-    def __init__(self):
-        self.state = AppState()
-        self.commands = CommandRegistry()
-        self.mode_handlers: Dict[MenuMode, ModeHandler] = {}
-        self.ui_callback: Optional[Callable[[Dict[str, str]], None]] = None
-        self.notification_callback: Optional[Callable[[str, int], None]] = None
-        self.single_click_timer: Optional[threading.Timer] = None
+    def __init__(self, state_machine):
+        self.sm = state_machine
+        self.submenus = [
+            {'name': 'Window Cycle', 'mode': MenuMode.WINDOW_CYCLE},
+            {'name': 'Window Snap', 'mode': MenuMode.WINDOW_SNAP},
+            {'name': 'Show Desktop', 'action': self._show_desktop}
+        ]
 
-    def register_mode_handler(self, mode: MenuMode, handler: ModeHandler):
-        """Register a handler for a specific mode"""
-        self.mode_handlers[mode] = handler
+    def _show_desktop(self):
+        """Action: Show desktop"""
+        self.sm.api.windows.show_desktop()
+        self.sm.exit_menu_mode()
 
-    def set_ui_callback(self, callback: Callable[[Dict[str, str]], None]):
-        """Set callback for UI updates"""
-        self.ui_callback = callback
+    def on_enter(self, state: AppState):
+        state.submenu_index = 0
 
-    def set_notification_callback(self, callback: Callable[[str, int], None]):
-        """Set callback for notifications"""
-        self.notification_callback = callback
+    def on_exit(self, state: AppState):
+        pass
 
-    def show_notification(self, message: str, duration: int = None):
-        """Show notification via callback"""
-        if self.notification_callback:
-            self.notification_callback(message, duration or Config.NOTIFICATION_DURATION)
-
-    def update_display(self):
-        """Update UI display based on current state"""
-        if self.state.menu_mode == MenuMode.NORMAL:
-            # Show current command selection using the wheel
-            if self.ui_callback:
-                count = self.commands.count()
-                if count > 0:
-                    current = self.state.current_command
-                    
-                    # Calculate indices with wrapping
-                    prev_idx = (current - 1) % count
-                    next_idx = (current + 1) % count
-                    
-                    cmd_curr = self.commands.get(current)
-                    cmd_prev = self.commands.get(prev_idx)
-                    cmd_next = self.commands.get(next_idx)
-                    
-                    display = {
-                        'title': 'Main Menu',
-                        'center': cmd_curr.name if cmd_curr else '',
-                        'left': cmd_prev.name if cmd_prev else '',
-                        'right': cmd_next.name if cmd_next else '',
-                        'subtitle': cmd_curr.description if cmd_curr else '',
-                        'active_index': 1 # Center is active
-                    }
-                    self.ui_callback(display)
-            
-            # Legacy notification (optional, might be redundant if wheel is shown)
-            # cmd = self.commands.get(self.state.current_command)
-            # if cmd and self.notification_callback:
-            #     self.notification_callback(cmd.name, Config.NOTIFICATION_DURATION)
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Cycle through submenus"""
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.submenus)
         else:
-            # Show menu overlay
-            handler = self.mode_handlers.get(self.state.menu_mode)
-            if handler and self.ui_callback:
-                display = handler.get_display_text(self.state)
-                self.ui_callback(display)
+            state.submenu_index = (state.submenu_index - 1) % len(self.submenus)
 
-    def reset_menu_timer(self):
-        """Reset the auto-exit timer"""
-        self.state.menu_timer = time.time()
+    def on_press(self, state: AppState):
+        """Press: Execute selected submenu"""
+        submenu = self.submenus[state.submenu_index]
+        if 'mode' in submenu:
+            # Enter submenu mode
+            self.sm.enter_mode(submenu['mode'])
+        elif 'action' in submenu:
+            # Execute action
+            submenu['action']()
 
-    def check_menu_timeout(self) -> bool:
-        """Check if menu should auto-exit"""
-        # Allow timeout in all modes
-        if self.state.menu_timer is None:
-            return False
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        total = len(self.submenus)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
 
-        elapsed = (time.time() - self.state.menu_timer) * 1000
-        return elapsed > Config.MENU_TIMEOUT_MS
+        return {
+            'left': self.submenus[prev_idx]['name'],
+            'center': f"▶ {self.submenus[state.submenu_index]['name']}",
+            'right': self.submenus[next_idx]['name']
+        }
 
-    def enter_mode(self, mode: MenuMode):
-        """Transition to a new mode"""
-        # Exit current mode
-        old_handler = self.mode_handlers.get(self.state.menu_mode)
-        if old_handler:
-            old_handler.on_exit(self.state)
 
-        # Update state
-        self.state.menu_mode = mode
-        self.state.click_count = 0
-        self.state.last_rotation_index = 0
-        self.reset_menu_timer()
+# ============================================================================
+# WINDOW CYCLE MODE (Alt-Tab like)
+# ============================================================================
 
-        # Enter new mode
-        new_handler = self.mode_handlers.get(mode)
-        if new_handler:
-            new_handler.on_enter(self.state)
+class WindowCycleHandler(ModeHandler):
+    """Alt-Tab like window cycling"""
 
-        # Trigger LED update if available
-        if hasattr(self, 'led') and self.led:
-            self.led.set_mode_color(mode.name)
+    def __init__(self, api: SystemAPI):
+        self.api = api
 
-        self.update_display()
+    def on_enter(self, state: AppState):
+        """Build window list"""
+        state.window_list = self.api.windows.get_visible_windows()
+        state.submenu_index = 0
 
-    def exit_menu_mode(self):
-        """Exit to normal mode"""
-        if self.state.menu_mode != MenuMode.NORMAL:
-            self.enter_mode(MenuMode.NORMAL)
-            self.show_notification("Returned to Normal Mode", Config.NOTIFICATION_DURATION)
-    
-    def _execute_single_click(self):
-        """Execute single click action after delay"""
-        self.state.click_count = 0
-        handler = self.mode_handlers.get(self.state.menu_mode)
-        if handler:
-            handler.on_press(self.state)
-            self.update_display()
-            self.reset_menu_timer()
+    def on_exit(self, state: AppState):
+        state.window_list = []
 
-    # ========================================================================
-    # EVENT HANDLERS
-    # ========================================================================
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Cycle through windows"""
+        if not state.window_list:
+            return
 
-    def handle_rotation(self, command_index: int):
-        """Handle rotation event
-
-        Args:
-            command_index: The command index (0-3) from firmware
-                          Sequence determines direction (0→1→2→3→0 = CW)
-        """
-        if self.state.menu_mode == MenuMode.NORMAL:
-            # Normal mode: Update command selection
-            self.state.previous_command = self.state.current_command
-            self.state.current_command = command_index
-            self.update_display()
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(state.window_list)
         else:
-            # Menu mode: Determine rotation direction and delegate to handler
-            clockwise = self._is_rotating_clockwise(
-                self.state.last_rotation_index,
-                command_index
-            )
-            self.state.last_rotation_index = command_index
+            state.submenu_index = (state.submenu_index - 1) % len(state.window_list)
 
-            handler = self.mode_handlers.get(self.state.menu_mode)
-            if handler:
-                handler.on_rotation(self.state, clockwise)
-                self.update_display()
-                self.reset_menu_timer()
+    def on_press(self, state: AppState):
+        """Press: Switch to selected window"""
+        if state.window_list and 0 <= state.submenu_index < len(state.window_list):
+            window = state.window_list[state.submenu_index]
+            if self.api.windows.activate_window(window.hwnd):
+                # Exit after successful switch
+                from menu_system import MenuMode
+                state.menu_mode = MenuMode.NORMAL
 
-    def handle_press(self):
-        """Handle press event"""
-        if self.state.menu_mode == MenuMode.NORMAL:
-            # Normal mode: Execute current command
-            cmd = self.commands.get(self.state.current_command)
-            if cmd:
-                try:
-                    # Capture mode before execution
-                    previous_mode = self.state.menu_mode
-                    
-                    cmd.action()
-                    
-                    # Only show notification if we stayed in NORMAL mode
-                    # (i.e., it was a simple action, not a menu transition)
-                    if self.state.menu_mode == previous_mode:
-                        self.show_notification(f"Executed: {cmd.name}", Config.COMMAND_EXECUTE_DURATION)
-                    
-                    # If we changed mode, enter_mode() already called update_display()
-                    
-                except Exception as e:
-                    self.show_notification(f"Error: {e}", Config.ERROR_DURATION)
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        if not state.window_list:
+            return {
+                'left': '',
+                'center': '⚠ No windows found',
+                'right': ''
+            }
+
+        if len(state.window_list) == 1:
+            title = state.window_list[0].title[:22]
+            return {
+                'left': '',
+                'center': f'▶ {title}',
+                'right': ''
+            }
+
+        # Multiple windows
+        total = len(state.window_list)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+
+        prev_title = state.window_list[prev_idx].title[:22]
+        curr_title = state.window_list[state.submenu_index].title[:22]
+        next_title = state.window_list[next_idx].title[:22]
+
+        return {
+            'left': prev_title,
+            'center': f'▶ {curr_title}',
+            'right': next_title
+        }
+
+
+# ============================================================================
+# WINDOW SNAP MODE
+# ============================================================================
+
+class WindowSnapHandler(ModeHandler):
+    """Window snapping to screen edges"""
+
+    def __init__(self, api: SystemAPI, state_machine):
+        self.api = api
+        self.sm = state_machine
+        self.snap_options = [
+            {'name': '◧ Snap Left', 'action': api.windows.snap_window_left},
+            {'name': '◨ Snap Right', 'action': api.windows.snap_window_right},
+            {'name': '⬜ Maximize', 'action': api.windows.maximize_window}
+        ]
+
+    def on_enter(self, state: AppState):
+        state.submenu_index = 0
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Cycle through snap options"""
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.snap_options)
         else:
-            # Menu mode: Single click - delegate to handler
-            current_time = time.time() * 1000  # Convert to ms
-            time_since_last = current_time - self.state.last_click_time
-            
-            # Cancel pending single click if any
-            if self.single_click_timer:
-                self.single_click_timer.cancel()
-                self.single_click_timer = None
+            state.submenu_index = (state.submenu_index - 1) % len(self.snap_options)
 
-            if time_since_last < Config.DOUBLE_CLICK_MS:
-                # Click came within threshold
-                self.state.click_count += 1
+    def on_press(self, state: AppState):
+        """Press: Execute snap action and exit"""
+        option = self.snap_options[state.submenu_index]
+        option['action']()
+        # Exit after snapping
+        self.sm.exit_menu_mode()
 
-                if self.state.click_count >= 2:
-                    # Double-click: Exit menu mode
-                    self.state.click_count = 0
-                    self.exit_menu_mode()
-                    return
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        total = len(self.snap_options)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+
+        return {
+            'left': self.snap_options[prev_idx]['name'],
+            'center': f"▶ {self.snap_options[state.submenu_index]['name']}",
+            'right': self.snap_options[next_idx]['name']
+        }
+
+
+# ============================================================================
+# VOICEMEETER HANDLERS
+# ============================================================================
+
+class VoicemeeterMenuHandler(ModeHandler):
+    """Voicemeeter submenu selector"""
+
+    def __init__(self, state_machine, vm_controller):
+        self.sm = state_machine
+        self.vm = vm_controller
+        self.submenus = [
+            {'name': 'Microphone Control', 'mode': MenuMode.VM_MIC},
+            {'name': 'Main Routing', 'mode': MenuMode.VM_MAIN_ROUTING},
+            {'name': 'Music Gain', 'mode': MenuMode.VM_MUSIC_GAIN},
+            {'name': 'Music Routing', 'mode': MenuMode.VM_MUSIC_ROUTING},
+            {'name': 'Comm Gain', 'mode': MenuMode.VM_COMM_GAIN},
+            {'name': 'Comm Routing', 'mode': MenuMode.VM_COMM_ROUTING},
+        ]
+
+    def on_enter(self, state: AppState):
+        state.submenu_index = 0
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Cycle through submenus"""
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.submenus)
+        else:
+            state.submenu_index = (state.submenu_index - 1) % len(self.submenus)
+
+    def on_press(self, state: AppState):
+        """Press: Enter selected submenu"""
+        submenu = self.submenus[state.submenu_index]
+        self.sm.enter_mode(submenu['mode'])
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        total = len(self.submenus)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+
+        return {
+            'left': self.submenus[prev_idx]['name'],
+            'center': f"▶ {self.submenus[state.submenu_index]['name']}",
+            'right': self.submenus[next_idx]['name']
+        }
+
+
+class VMMicHandler(ModeHandler):
+    """Microphone Gain + Mute control (Strip 0)"""
+
+    def __init__(self, vm_controller):
+        self.vm = vm_controller
+        self.strip = 0 # Strip 0 is Mic
+        self.gain_step = 3.0
+
+    def on_enter(self, state: AppState):
+        pass
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Adjust mic gain"""
+        if clockwise:
+            self.vm.adjust_strip_gain(self.strip, self.gain_step)
+        else:
+            self.vm.adjust_strip_gain(self.strip, -self.gain_step)
+
+    def on_press(self, state: AppState):
+        """Press: Toggle mic mute"""
+        self.vm.toggle_mic_mute()
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        gain = round(self.vm.get_strip_gain(self.strip))
+        muted = self.vm.get_mic_mute()
+        
+        # Normalize gain to 0-1 range (-60 to +12 dB)
+        progress = (gain + 60) / 72.0
+
+        return {
+            'left': 'Gain Down',
+            'center': f'{gain} dB',
+            'right': 'Gain Up',
+            'title': '🎤 MIC MUTED' if muted else '🎤 Microphone',
+            'progress': max(0.0, min(1.0, progress)),
+            'icons': {'left': '−', 'center': '🔇' if muted else '🎤', 'right': '+'}
+        }
+
+
+class VMRoutingHandler(ModeHandler):
+    """Audio routing control (Main/Music/Comm to A1/A2/A3)"""
+
+    def __init__(self, vm_controller, strip: int, strip_name: str):
+        self.vm = vm_controller
+        self.strip = strip
+        self.strip_name = strip_name
+        self.outputs = ['A1', 'A2', 'A3']
+        self.output_names = ['Speakers', 'Wired', 'Wireless']
+        self.output_icons = ['🔊', '🎧', '📡']
+
+    def on_enter(self, state: AppState):
+        state.routing_selection = 0  # Start at A1
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Select output"""
+        if clockwise:
+            state.routing_selection = (state.routing_selection + 1) % 3
+        else:
+            state.routing_selection = (state.routing_selection - 1) % 3
+        time.sleep(0.03)  # Brief delay for smooth display
+
+    def on_press(self, state: AppState):
+        """Press: Toggle selected output"""
+        output = self.outputs[state.routing_selection]
+        self.vm.toggle_routing(self.strip, output)
+        time.sleep(0.05)  # Wait for update
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        # Get current routing states
+        states = [self.vm.get_routing(self.strip, out) for out in self.outputs]
+
+        prev_idx = (state.routing_selection - 1) % 3
+        next_idx = (state.routing_selection + 1) % 3
+
+        # Show status
+        status = "ON" if states[state.routing_selection] else "OFF"
+
+        return {
+            'left': self.output_names[prev_idx],
+            'center': f"{self.output_names[state.routing_selection]} [{status}]",
+            'right': self.output_names[next_idx],
+            'title': f'🎚 {self.strip_name} Routing',
+            'icons': {
+                'left': self.output_icons[prev_idx] if states[prev_idx] else '⊘',
+                'center': self.output_icons[state.routing_selection] if states[state.routing_selection] else '⊘',
+                'right': self.output_icons[next_idx] if states[next_idx] else '⊘'
+            }
+        }
+
+
+class VMGainHandler(ModeHandler):
+    """Strip gain control"""
+
+    def __init__(self, vm_controller, strip: int, strip_name: str, icon: str):
+        self.vm = vm_controller
+        self.strip = strip
+        self.strip_name = strip_name
+        self.icon = icon
+        self.gain_step = 3.0
+
+    def on_enter(self, state: AppState):
+        pass
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Rotate: Adjust gain"""
+        if clockwise:
+            self.vm.adjust_strip_gain(self.strip, self.gain_step)
+        else:
+            self.vm.adjust_strip_gain(self.strip, -self.gain_step)
+
+    def on_press(self, state: AppState):
+        """Press: Reset gain to 0 dB"""
+        self.vm.set_strip_gain(self.strip, 0.0)
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        gain = round(self.vm.get_strip_gain(self.strip))
+        # Normalize gain to 0-1 range (assuming -60 to +12 dB range)
+        progress = (gain + 60) / 72.0
+
+        return {
+            'left': 'Gain Down',
+            'center': f'{gain} dB',
+            'right': 'Gain Up',
+            'title': f'{self.icon} {self.strip_name} Gain',
+            'progress': max(0.0, min(1.0, progress)),
+            'icons': {'left': '−', 'center': self.icon, 'right': '+'}
+        }
+
+
+import json
+import os
+
+# ============================================================================
+# THEME SELECTION MODE
+# ============================================================================
+
+class ThemeMenuHandler(ModeHandler):
+    """Theme submenu selector"""
+
+    def __init__(self, state_machine):
+        self.sm = state_machine
+        self.submenus = [
+            {'name': 'Presets', 'mode': MenuMode.THEME_PRESET},
+            {'name': 'Box Color', 'mode': MenuMode.THEME_BOX},
+            {'name': 'Accent Color', 'mode': MenuMode.THEME_ACCENT},
+            {'name': 'Glow Color', 'mode': MenuMode.THEME_GLOW},
+            {'name': 'Text Color', 'mode': MenuMode.THEME_TEXT},
+        ]
+
+    def on_enter(self, state: AppState):
+        state.submenu_index = 0
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Cycle submenus"""
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.submenus)
+        else:
+            state.submenu_index = (state.submenu_index - 1) % len(self.submenus)
+
+    def on_press(self, state: AppState):
+        """Enter selected submenu"""
+        submenu = self.submenus[state.submenu_index]
+        self.sm.enter_mode(submenu['mode'])
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        total = len(self.submenus)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+
+        return {
+            'left': self.submenus[prev_idx]['name'],
+            'center': f"▶ {self.submenus[state.submenu_index]['name']}",
+            'right': self.submenus[next_idx]['name'],
+            'title': '🎨 Theme Settings'
+        }
+
+
+class ThemePresetHandler(ModeHandler):
+    """Select from available theme presets"""
+
+    def __init__(self, state_machine):
+        self.sm = state_machine
+        self.themes = []
+        self._load_theme_list()
+
+    def _load_theme_list(self):
+        """Load available themes from themes.json"""
+        import json
+        import os
+        try:
+            theme_file = os.path.join(os.path.dirname(__file__), 'themes.json')
+            if os.path.exists(theme_file):
+                with open(theme_file, 'r') as f:
+                    data = json.load(f)
+                    self.themes = list(data.keys())
             else:
-                # New click sequence
-                self.state.click_count = 1
+                self.themes = ['DARK', 'LIGHT', 'CYBER']
+        except:
+            self.themes = ['DARK', 'LIGHT', 'CYBER']
 
-            self.state.last_click_time = current_time
+    def on_enter(self, state: AppState):
+        self._load_theme_list()
+        state.submenu_index = 0
+        # Try to find current theme index
+        # We don't track current theme name in state, so default to 0
 
-            # Schedule single click execution
-            if self.state.click_count == 1:
-                self.single_click_timer = threading.Timer(
-                    Config.DOUBLE_CLICK_MS / 1000.0, 
-                    self._execute_single_click
-                )
-                self.single_click_timer.start()
-
-    def handle_long_press(self):
-        """Handle long press event"""
-        # Could be used for alternative actions in the future
+    def on_exit(self, state: AppState):
         pass
 
-    def handle_double_tap(self):
-        """Handle double tap event (from firmware)"""
-        # Cancel any pending single click timer to prevent it from firing
-        if self.single_click_timer:
-            self.single_click_timer.cancel()
-            self.single_click_timer = None
-        if self.state.menu_mode != MenuMode.NORMAL:
-            self.exit_menu_mode()
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Cycle presets"""
+        if not self.themes: return
 
-    @staticmethod
-    def _is_rotating_clockwise(prev_index: int, curr_index: int) -> bool:
-        """Determine rotation direction from command sequence
+        if clockwise:
+            state.submenu_index = (state.submenu_index + 1) % len(self.themes)
+        else:
+            state.submenu_index = (state.submenu_index - 1) % len(self.themes)
 
-        Normal increment: 0->1, 1->2, 2->3
-        Wrap around: 3->0
-        """
-        if curr_index == prev_index + 1:
-            return True
-        if prev_index == 3 and curr_index == 0:
-            return True
-        return False
+    def on_press(self, state: AppState):
+        """Apply theme and return"""
+        theme_name = self.themes[state.submenu_index]
+        # set_theme will also trigger save_config via the UI callback
+        self.sm.ui_callback({'set_theme': theme_name})
+        
+        self.sm.show_notification(f"Theme: {theme_name}", 1000)
+        from menu_system import MenuMode
+        self.sm.enter_mode(MenuMode.THEME_MENU)
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        if not self.themes:
+            return {'center': 'No Themes', 'left': '', 'right': '', 'title': 'Error'}
+
+        total = len(self.themes)
+        prev_idx = (state.submenu_index - 1) % total
+        next_idx = (state.submenu_index + 1) % total
+        
+        curr_theme = self.themes[state.submenu_index]
+
+        # Preview the theme instantly (Preview only, no save)
+        return {
+            'left': self.themes[prev_idx],
+            'center': f"▶ {curr_theme}",
+            'right': self.themes[next_idx],
+            'title': '🎨 Select Theme',
+            'preview_theme': curr_theme 
+        }
+
+
+class ThemeColorHandler(ModeHandler):
+    """Color picker for theme elements"""
+
+    COLORS = [
+        ("White", "#FFFFFF"), ("Red", "#FF0000"), ("Green", "#00FF00"), 
+        ("Blue", "#0088FF"), ("Yellow", "#FFFF00"), ("Cyan", "#00FFFF"), 
+        ("Magenta", "#FF00FF"), ("Orange", "#FFA500"), ("Purple", "#800080"), 
+        ("Black", "#000000"), ("Gray", "#808080"), ("Dark Gray", "#2d2d2d")
+    ]
+
+    def __init__(self, color_type: str):
+        self.color_type = color_type
+        self.current_idx = 0
+        self.should_save = False
+
+    def on_enter(self, state: AppState):
+        self.current_idx = 0
+        self.should_save = False
+
+    def on_exit(self, state: AppState):
+        pass
+
+    def on_rotation(self, state: AppState, clockwise: bool):
+        """Cycle colors"""
+        if clockwise:
+            self.current_idx = (self.current_idx + 1) % len(self.COLORS)
+        else:
+            self.current_idx = (self.current_idx - 1) % len(self.COLORS)
+
+    def on_press(self, state: AppState):
+        """Confirm and Save"""
+        self.should_save = True
+        from menu_system import MenuMode
+        state.menu_mode = MenuMode.THEME_MENU
+
+    def get_display_text(self, state: AppState) -> Dict[str, str]:
+        total = len(self.COLORS)
+        prev_idx = (self.current_idx - 1) % total
+        next_idx = (self.current_idx + 1) % total
+        
+        prev_name, _ = self.COLORS[prev_idx]
+        curr_name, hex_code = self.COLORS[self.current_idx]
+        next_name, _ = self.COLORS[next_idx]
+        
+        # Build theme update dictionary
+        settings = {}
+        if self.color_type == 'box':
+            settings = {'segment_inactive': hex_code, 'progress_bg': hex_code}
+        elif self.color_type == 'accent':
+            settings = {
+                'segment_active': hex_code, 
+                'accent': hex_code, 
+                'accent_glow': hex_code,
+                'progress_fill': hex_code,
+                'border': hex_code,
+                'glow': hex_code
+            }
+        elif self.color_type == 'glow':
+            settings = {'glow': hex_code, 'accent_glow': hex_code}
+        elif self.color_type == 'text':
+            settings = {'text_active': hex_code}
+
+        res = {
+            'left': prev_name,
+            'center': f"▶ {curr_name}",
+            'right': next_name,
+            'title': f'🎨 {self.color_type.title()} Color',
+            'set_theme_color': settings
+        }
+
+        if self.should_save:
+            # We don't know the exact theme name here easily, 
+            # but we can save to 'CUSTOM' or the currently active one.
+            # For simplicity, let's assume the user is updating the current active theme.
+            # In keychron_app.py we can pass the theme name or just have it save the current.
+            res['save_theme'] = 'CUSTOM' 
+            self.should_save = False
+            
+        return res
+
+
+# ============================================================================
+# HANDLER FACTORY
+# ============================================================================
+
+def create_handlers(api: SystemAPI, state_machine, vm_controller=None) -> Dict[MenuMode, ModeHandler]:
+    """Create all mode handlers
+
+    Args:
+        api: SystemAPI instance
+        state_machine: MenuStateMachine instance
+        vm_controller: VoicemeeterController instance (optional)
+
+    Returns:
+        Dict mapping MenuMode to ModeHandler instance
+    """
+    handlers = {
+        MenuMode.MEDIA: MediaModeHandler(api, state_machine),
+        MenuMode.VOLUME: VolumeModeHandler(api),
+        MenuMode.THEME_MENU: ThemeMenuHandler(state_machine),
+        MenuMode.THEME_PRESET: ThemePresetHandler(state_machine),
+        MenuMode.THEME_BOX: ThemeColorHandler('box'),
+        MenuMode.THEME_ACCENT: ThemeColorHandler('accent'),
+        MenuMode.THEME_GLOW: ThemeColorHandler('glow'),
+        MenuMode.THEME_TEXT: ThemeColorHandler('text'),
+        MenuMode.WINDOW_MENU: WindowMenuHandler(state_machine),
+        MenuMode.WINDOW_CYCLE: WindowCycleHandler(api),
+        MenuMode.WINDOW_SNAP: WindowSnapHandler(api, state_machine),
+    }
+
+    # Add Voicemeeter handlers if available
+    if vm_controller and vm_controller.is_available():
+        from voicemeeter_api import VoicemeeterConfig
+        config = VoicemeeterConfig()
+
+        handlers.update({
+            MenuMode.VOICEMEETER_MENU: VoicemeeterMenuHandler(state_machine, vm_controller),
+            MenuMode.VM_MIC: VMMicHandler(vm_controller),
+            MenuMode.VM_MAIN_ROUTING: VMRoutingHandler(vm_controller, config.MAIN_STRIP, "Main"),
+            MenuMode.VM_MUSIC_GAIN: VMGainHandler(vm_controller, config.MUSIC_STRIP, "Music", "🎵"),
+            MenuMode.VM_MUSIC_ROUTING: VMRoutingHandler(vm_controller, config.MUSIC_STRIP, "Music"),
+            MenuMode.VM_COMM_GAIN: VMGainHandler(vm_controller, config.COMM_STRIP, "Comm", "💬"),
+            MenuMode.VM_COMM_ROUTING: VMRoutingHandler(vm_controller, config.COMM_STRIP, "Comm"),
+        })
+
+    return handlers
